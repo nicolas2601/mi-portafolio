@@ -1,0 +1,218 @@
+---
+// Logo component with premium animations
+---
+
+<div class="logo-container flex items-center space-x-3">
+  <!-- Animated Logo Icon -->
+  <div class="relative w-10 h-10 flex items-center justify-center">
+    <!-- Main circle with gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 rounded-full animate-pulse-glow">
+      <div class="absolute inset-0.5 bg-gray-900 rounded-full flex items-center justify-center">
+        <!-- Inner animated elements -->
+        <div class="relative w-full h-full flex items-center justify-center">
+          <!-- Rotating rings -->
+          <div class="absolute inset-1 border-2 border-primary-400/30 rounded-full animate-spin-slow">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-primary-400 rounded-full"></div>
+          </div>
+          
+          <div class="absolute inset-2 border border-primary-300/20 rounded-full animate-spin-reverse">
+            <div class="absolute bottom-0 right-1/4 transform translate-x-1/2 translate-y-1/2 w-1 h-1 bg-primary-300 rounded-full"></div>
+          </div>
+          
+          <!-- Central icon -->
+          <div class="relative z-10 text-primary-400 font-bold text-lg animate-float">
+            N
+          </div>
+          
+          <!-- Pulsing core -->
+          <div class="absolute inset-3 bg-primary-500/20 rounded-full animate-ping" style="animation-duration: 2s;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Outer glow effect -->
+    <div class="absolute inset-0 bg-primary-500/20 rounded-full blur-lg animate-glow-pulse"></div>
+    
+    <!-- Energy particles -->
+    <div class="absolute top-0 left-0 w-1 h-1 bg-primary-400 rounded-full animate-particle-1"></div>
+    <div class="absolute top-2 right-0 w-0.5 h-0.5 bg-primary-300 rounded-full animate-particle-2"></div>
+    <div class="absolute bottom-1 left-1 w-0.5 h-0.5 bg-primary-500 rounded-full animate-particle-3"></div>
+  </div>
+  
+  <!-- Animated text -->
+  <div class="text-xl font-bold text-white relative overflow-hidden group">
+    <span class="relative z-10 transition-all duration-300 group-hover:text-primary-400">
+      Nicolas Moreno
+    </span>
+    
+    <!-- Animated underline -->
+    <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-500 group-hover:w-full"></div>
+    
+    <!-- Shimmer effect -->
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-400/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+  </div>
+</div>
+
+<style>
+  /* Custom animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(14, 165, 233, 0.6), 0 0 40px rgba(14, 165, 233, 0.3);
+    }
+  }
+  
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes particle-1 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: translate(10px, -5px) scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(15px, -10px) scale(0.6);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translate(8px, -15px) scale(0.4);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(0, -20px) scale(0.2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particle-2 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: translate(-8px, 5px) scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-12px, 12px) scale(0.6);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translate(-6px, 18px) scale(0.4);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(0, 25px) scale(0.2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particle-3 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: translate(12px, -3px) scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(20px, -8px) scale(0.6);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translate(25px, -5px) scale(0.4);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(30px, 0) scale(0.2);
+      opacity: 0;
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+  
+  .animate-spin-reverse {
+    animation: spin-reverse 6s linear infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  .animate-particle-1 {
+    animation: particle-1 4s ease-out infinite;
+  }
+  
+  .animate-particle-2 {
+    animation: particle-2 3.5s ease-out infinite 0.5s;
+  }
+  
+  .animate-particle-3 {
+    animation: particle-3 4.5s ease-out infinite 1s;
+  }
+  
+  /* Hover effects */
+  .logo-container:hover .animate-spin-slow {
+    animation-duration: 4s;
+  }
+  
+  .logo-container:hover .animate-spin-reverse {
+    animation-duration: 3s;
+  }
+  
+  .logo-container:hover .animate-float {
+    animation-duration: 1.5s;
+  }
+</style>
