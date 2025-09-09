@@ -27,14 +27,37 @@ const {title, description = "Portafolio de Nicolas Moreno - desarrollador backen
               <Logo />
             </a>
           </div>
+          <!-- Menú Desktop -->
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a href="/" class="hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-              <a href="/about" class="hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre Mí</a>
-              <a href="/projects" class="hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
-              <a href="/contact" class="hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+              <a href="/" class="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
+              <a href="/about" class="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre Mí</a>
+              <a href="/projects" class="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Proyectos</a>
+              <a href="/contact" class="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
             </div>
           </div>
+          
+          <!-- Botón Hamburger Móvil -->
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none focus:text-white transition-colors duration-300">
+              <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Menú Móvil Desplegable -->
+      <div id="mobile-menu" class="md:hidden hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300">Inicio</a>
+          <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300">Sobre Mí</a>
+          <a href="/projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300">Proyectos</a>
+          <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300">Contacto</a>
         </div>
       </div>
     </nav>

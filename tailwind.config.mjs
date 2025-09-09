@@ -65,11 +65,11 @@ export default {
         },
         glow: {
           '0%': { 
-            boxShadow: '0 0 5px rgba(14, 165, 233, 0.5), 0 0 10px rgba(14, 165, 233, 0.3)',
+            boxShadow: '0 0 5px rgba(156, 163, 175, 0.5), 0 0 10px rgba(156, 163, 175, 0.3)',
             filter: 'brightness(1)'
           },
           '100%': { 
-            boxShadow: '0 0 20px rgba(14, 165, 233, 0.8), 0 0 30px rgba(14, 165, 233, 0.6)',
+            boxShadow: '0 0 20px rgba(156, 163, 175, 0.8), 0 0 30px rgba(156, 163, 175, 0.6)',
             filter: 'brightness(1.2)'
           },
         },
