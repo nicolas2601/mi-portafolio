@@ -1,6 +1,9 @@
 # build output
 dist/
+<<<<<<< HEAD
 
+=======
+>>>>>>> e94b0b812f3f84289afe8670c6d1bbbeadb7eea5
 # generated types
 .astro/
 
@@ -18,7 +21,11 @@ pnpm-debug.log*
 .env.production
 
 # macOS-specific files
+<<<<<<< HEAD
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+=======
+.DS_Store
+>>>>>>> e94b0b812f3f84289afe8670c6d1bbbeadb7eea5
