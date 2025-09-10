@@ -4,10 +4,11 @@
   "framework": "astro",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
-    "RESEND_API_KEY": "$RESEND_API_KEY"
+    "RESEND_API_KEY": "$RESEND_API_KEY",
+    "CONTACT_EMAIL": "$CONTACT_EMAIL"
   },
   "functions": {
-    "src/pages/api/**/*.ts": {
+    "api/**/*.ts": {
       "runtime": "nodejs18.x"
     }
   }

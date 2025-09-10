@@ -9,9 +9,6 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: {
       enabled: true
-    },
-    analytics: {
-      enabled: true
     }
   }),
   integrations: [tailwind()]
