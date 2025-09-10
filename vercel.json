@@ -4,7 +4,7 @@
   "framework": "astro",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
-    "RESEND_API_KEY": "@resend_api_key"
+    "RESEND_API_KEY": "$RESEND_API_KEY"
   },
   "functions": {
     "src/pages/api/**/*.ts": {
