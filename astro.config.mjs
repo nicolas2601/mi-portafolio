@@ -6,11 +6,11 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: vercel({
-    // Configuración actualizada para Vercel Analytics
-    // La configuración webAnalytics está obsoleta para @vercel/analytics@1.4.0+
-    // Ahora se debe usar el componente Analytics directamente en el código
+    webAnalytics: {
+      enabled: true
+    }
   }),
   integrations: [tailwind(), react()]
 });
