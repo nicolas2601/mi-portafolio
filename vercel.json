@@ -1,6 +1,9 @@
 {
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
+  "buildCommand": "pnpm build && node vercel-deploy.js",
+  "outputDirectory": ".vercel/output",
   "framework": "astro",
-  "installCommand": "pnpm install --no-frozen-lockfile"
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

@@ -46,7 +46,28 @@ CONTACT_EMAIL=tu_email@ejemplo.com
 
 1. Conecta tu repositorio a Vercel
 2. No se requieren variables de entorno para el despliegue estático
-3. Asegúrate de que el adaptador de Vercel esté configurado como `static` en `astro.config.mjs`:
+3. Asegúrate de que el adaptador de Vercel esté configurado como `static` en `astro.config.mjs`
+
+### Solución a problemas de despliegue
+
+Si encuentras errores 404 (NOT_FOUND) al desplegar en Vercel, sigue estos pasos:
+
+1. Ejecuta el build normal:
+   ```bash
+   pnpm build
+   ```
+
+2. Ejecuta el script de despliegue para preparar la estructura correcta para Vercel:
+   ```bash
+   node vercel-deploy.js
+   ```
+
+3. Despliega en Vercel con la configuración actualizada:
+   ```bash
+   vercel deploy
+   ```
+
+Este proceso asegura que la configuración de rutas sea correcta para una SPA (Single Page Application) y evita los errores 404 en rutas distintas a la raíz.
 
 ```javascript
 // astro.config.mjs
