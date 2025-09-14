@@ -45,20 +45,18 @@ CONTACT_EMAIL=tu_email@ejemplo.com
 ### Configuración en Vercel
 
 1. Conecta tu repositorio a Vercel
-2. Configura las variables de entorno en el dashboard de Vercel:
-   - `RESEND_API_KEY`: Tu API key de Resend
-   - `CONTACT_EMAIL`: Email que recibirá los mensajes de contacto
-3. Asegúrate de que el adaptador de Vercel esté configurado como `serverless` en `astro.config.mjs`:
+2. No se requieren variables de entorno para el despliegue estático
+3. Asegúrate de que el adaptador de Vercel esté configurado como `static` en `astro.config.mjs`:
 
 ```js
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: vercel({
     webAnalytics: {
       enabled: true
@@ -68,23 +66,14 @@ export default defineConfig({
 });
 ```
 
-4. Verifica que tu archivo `vercel.json` tenga la configuración correcta:
+4. Verifica que tu archivo `vercel.json` tenga la configuración correcta para despliegue estático:
 
 ```json
 {
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "framework": "astro",
-  "installCommand": "pnpm install --no-frozen-lockfile",
-  "env": {
-    "RESEND_API_KEY": "$RESEND_API_KEY",
-    "CONTACT_EMAIL": "$CONTACT_EMAIL"
-  },
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "installCommand": "pnpm install --no-frozen-lockfile"
 }
 ```
 
@@ -96,11 +85,10 @@ export default defineConfig({
 
 Este error ocurre cuando hay una discrepancia entre la configuración de Astro y Vercel. Para solucionarlo:
 
-1. Asegúrate de usar el adaptador correcto en `astro.config.mjs`:
-   - Si tienes APIs o rutas dinámicas: usa `@astrojs/vercel/serverless` y `output: 'server'`
-   - Si solo tienes contenido estático: usa `@astrojs/vercel/static` y `output: 'static'`
+1. Asegúrate de usar el adaptador estático en `astro.config.mjs`:
+   - Usa `@astrojs/vercel/static` y `output: 'static'` para un despliegue estático sin APIs
 
-2. Verifica que la carpeta `api` esté correctamente estructurada si estás usando funciones serverless.
+2. Verifica que tu archivo `vercel.json` sea simple y no contenga configuraciones de funciones o APIs.
 
 3. Limpia la caché de Vercel antes de volver a desplegar:
    - Ve a la configuración del proyecto en Vercel
@@ -121,19 +109,18 @@ pnpm preview
 
 ## 📧 Formulario de Contacto
 
-El formulario de contacto utiliza:
-- Validación del lado del cliente y servidor
-- Envío de emails a través de Resend
-- Manejo de errores y mensajes de éxito
-- Sanitización de datos de entrada
+El formulario de contacto es una implementación básica HTML:
+- Formulario HTML simple sin procesamiento
+- No requiere configuración de API o variables de entorno
+- Diseño responsivo y accesible
 
 ## 🌐 Deployment
 
-El proyecto está configurado para deployment automático en Vercel:
+El proyecto está configurado para deployment estático en Vercel:
 
 1. Push a la rama `main`
-2. Vercel detecta automáticamente Astro
-3. Configura las variables de entorno necesarias
+2. Vercel detecta automáticamente Astro como proyecto estático
+3. No se requieren variables de entorno
 4. El sitio se despliega automáticamente
 
 ## 📝 Estructura del Proyecto
@@ -146,8 +133,6 @@ El proyecto está configurado para deployment automático en Vercel:
 │   ├── components/
 │   ├── layouts/
 │   ├── pages/
-│   │   ├── api/
-│   │   │   └── contact.ts
 │   │   ├── index.astro
 │   │   ├── about.astro
 │   │   ├── projects.astro
