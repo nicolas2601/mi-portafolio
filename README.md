@@ -47,7 +47,64 @@ CONTACT_EMAIL=tu_email@ejemplo.com
 1. Conecta tu repositorio a Vercel
 2. Configura las variables de entorno en el dashboard de Vercel:
    - `RESEND_API_KEY`: Tu API key de Resend
-3. El deployment se realizará automáticamente
+   - `CONTACT_EMAIL`: Email que recibirá los mensajes de contacto
+3. Asegúrate de que el adaptador de Vercel esté configurado como `serverless` en `astro.config.mjs`:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel/serverless';
+import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
+
+export default defineConfig({
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  }),
+  integrations: [tailwind(), react()]
+});
+```
+
+4. Verifica que tu archivo `vercel.json` tenga la configuración correcta:
+
+```json
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "framework": "astro",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "env": {
+    "RESEND_API_KEY": "$RESEND_API_KEY",
+    "CONTACT_EMAIL": "$CONTACT_EMAIL"
+  },
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
+```
+
+5. El deployment se realizará automáticamente
+
+## 🔧 Solución de problemas comunes
+
+### Error: Config file was not found at "/vercel/path0/.vercel/output/config.json"
+
+Este error ocurre cuando hay una discrepancia entre la configuración de Astro y Vercel. Para solucionarlo:
+
+1. Asegúrate de usar el adaptador correcto en `astro.config.mjs`:
+   - Si tienes APIs o rutas dinámicas: usa `@astrojs/vercel/serverless` y `output: 'server'`
+   - Si solo tienes contenido estático: usa `@astrojs/vercel/static` y `output: 'static'`
+
+2. Verifica que la carpeta `api` esté correctamente estructurada si estás usando funciones serverless.
+
+3. Limpia la caché de Vercel antes de volver a desplegar:
+   - Ve a la configuración del proyecto en Vercel
+   - Busca la opción "Clear Cache and Redeploy"
 
 ## 🚀 Desarrollo
 
