@@ -48,22 +48,38 @@ CONTACT_EMAIL=tu_email@ejemplo.com
 2. No se requieren variables de entorno para el despliegue estático
 3. Asegúrate de que el adaptador de Vercel esté configurado como `static` en `astro.config.mjs`:
 
-```js
+```javascript
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/static';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
 export default defineConfig({
   output: 'static',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    }
-  }),
   integrations: [tailwind(), react()]
 });
+```
+
+### Solución a problemas de despliegue
+
+Si encuentras el error "Config file was not found at '/vercel/path0/.vercel/output/config.json'" durante el despliegue, sigue estos pasos:
+
+1. Ejecuta el build local:
+```bash
+pnpm build
+```
+
+2. Ejecuta el script de preparación para Vercel:
+```bash
+node vercel-deploy.js
+```
+
+3. Despliega en Vercel:
+```bash
+vercel deploy
+```
+
+Este script crea la estructura de archivos necesaria para un despliegue estático en Vercel, incluyendo el archivo `config.json` requerido.
 ```
 
 4. Verifica que tu archivo `vercel.json` tenga la configuración correcta para despliegue estático:

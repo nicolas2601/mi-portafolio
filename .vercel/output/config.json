@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "^/(.*)$",
+      "dest": "/$1"
+    }
+  ],
+  "overrides": {
+    "index.html": {
+      "path": "index.html"
+    }
+  }
+}
