@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { personalInfo, education, certifications, workExperience, startup, skills, languages, strengths } from '../data/info.ts';
+
+export const prerender = true;
 ---
 
 <Layout title="Sobre Mí - Nicolas Moreno" description="Conoce más sobre Nicolas Moreno, desarrollador backend especializado en tecnologías modernas y fundador de TIKNO.">
