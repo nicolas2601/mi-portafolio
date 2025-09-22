@@ -2,7 +2,7 @@
 export const personalInfo = {
   nm:"Nicolas Moreno",
   name: "Nicolás Santiago Moreno Monroy",
-  title: "Desarrollador backend - fullstack ",
+  title: "Desarrollador backend",
   email: "nm5571762@gmail.com",
   phone: "+57 350 232 8517",
   location: "Bucaramanga, Santander, Colombia",
