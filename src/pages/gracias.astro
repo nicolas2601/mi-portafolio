@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Mensaje Enviado - Nicolas Moreno" description="Gracias por contactarme. Tu mensaje ha sido enviado correctamente.">
+  <!-- Hero Section con animación de partículas -->
+  <section class="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-900 via-primary-900/20 to-gray-900 flex items-center justify-center">
+    <!-- Fondo animado con partículas flotantes -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="floating-particles"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(14,165,233,0.1),transparent_50%)] animate-pulse"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(139,92,246,0.1),transparent_50%)] animate-pulse delay-1000"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 text-center">
+      <!-- Icono de éxito animado -->
+      <div class="mb-8 inline-flex items-center justify-center">
+        <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center animate-pulse">
+          <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Título principal con efecto de gradiente -->
+      <div class="text-center mb-8 animate-fade-in">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-primary-500 to-green-600 bg-clip-text text-transparent animate-gradient-x">
+          ¡Mensaje Enviado!
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Gracias por contactarme. He recibido tu mensaje y te responderé lo antes posible.
+        </p>
+        <div class="w-32 h-1 bg-gradient-to-r from-green-500 to-primary-500 mx-auto mt-8 rounded-full animate-pulse"></div>
+      </div>
+
+      <!-- Botón para volver -->
+      <a 
+        href="/" 
+        class="inline-flex items-center px-6 py-3 mt-8 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Animación de partículas flotantes */
+  .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .floating-particles::before,
+  .floating-particles::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    animation: pulse 15s infinite alternate;
+  }
+
+  .floating-particles::after {
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    animation-delay: 5s;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8) translate(-10%, -10%);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.2) translate(10%, 10%);
+      opacity: 0.8;
+    }
+  }
+
+  /* Animación de gradiente */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 15s ease infinite;
+  }
+
+  /* Animación de fade-in */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+</style>

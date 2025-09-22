@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import { personalInfo } from '../data/info.ts';
 ---
 
+<script src="../components/ContactFormValidation.js"></script>
+
 <Layout title="Contacto - Nicolas Moreno" description="Ponte en contacto conmigo para colaboraciones, proyectos o consultas profesionales.">
   <!-- Hero Section con animación de partículas -->
   <section class="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-900 via-primary-900/20 to-gray-900">
@@ -38,7 +40,14 @@ import { personalInfo } from '../data/info.ts';
               <p class="text-gray-400">Completa el formulario y te responderé lo antes posible</p>
             </div>
 
-            <form class="contact-form space-y-6" id="contactForm" action="https://formspree.io/f/your-formspree-id" method="POST">
+            <form class="contact-form space-y-6" id="contactForm" action="https://formsubmit.co/nm5571762@gmail.com" method="POST">
+              <!-- Campos ocultos para configuración de FormSubmit -->
+              <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_next" value="/gracias">
+              <input type="hidden" name="_template" value="table">
+              <!-- Honeypot para protección contra spam -->
+              <input type="text" name="_honey" style="display:none">
               <!-- Campo Nombre -->
               <div class="form-group">
                 <label for="name" class="block text-sm font-medium text-gray-300 mb-2">

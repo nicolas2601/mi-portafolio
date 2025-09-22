@@ -46,6 +46,12 @@ export const certifications = [
     issuer: "AWS academy",
     data: "Septiembre 2025",
     type: "Certificación"
+  },
+  {
+    name: "Data Engineering",
+    issuer: "AWS academy",
+    data: "Septiembre 2025",
+    type: "Certificación"
   }
 ];
 
