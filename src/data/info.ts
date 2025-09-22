@@ -57,14 +57,6 @@ export const certifications = [
 
 export const workExperience = [
   {
-    position: "Desarrollador Full-Stack",
-    company: "LOGOTEXO",
-    period: "Mayo 2025 - Julio 2025",
-    location: "Remoto, Bucaramanga",
-    description: "Desarrollo y mantenimiento de aplicaciones full-stack, contribución a proyectos escalables y colaboración en entornos distribuidos.",
-    type: "Trabajo remoto"
-  },
-  {
     position: "Programador Web Junior",
     company: "Accasoft ERP",
     period: "Junio 2023 - Junio 2024",
