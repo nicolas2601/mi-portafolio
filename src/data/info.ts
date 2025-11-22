@@ -240,7 +240,7 @@ export const projects = [
     id: 9,
     title: "Plataforma IOT Central",
     description: "Plataforma IoT central para la gestion de dispositivos IoT.",
-    image: "/iot.jpg",
+    image: "/iot.png",
     tech: ["Django", "Next.js", "PostgreSQL", "JWT", "tailwindcss", "mosquitto", "MQTT", "Docker", "Azure"],
     github: "https://github.com/nicolas2601/IOT_Central",
     featured: true
