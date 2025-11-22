@@ -1,6 +1,6 @@
 // src/data/info.ts - Información profesional completa
 export const personalInfo = {
-  nm:"Nicolas Moreno",
+  nm: "Nicolas Moreno",
   name: "Nicolás Santiago Moreno Monroy",
   title: "Desarrollador backend ",
   email: "nm5571762@gmail.com",
@@ -52,7 +52,26 @@ export const certifications = [
     issuer: "AWS academy",
     data: "Septiembre 2025",
     type: "Certificación"
+  },
+  {
+    name: "Machine Learning For Natural Language Processing",
+    issuer: "AWS academy",
+    data: "Noviembre 2025",
+    type: "Certificación"
+  },
+  {
+    name: "Generative AI Foundations",
+    issuer: "AWS academy",
+    data: "Noviembre 2025",
+    type: "Certificación"
+  },
+  {
+    name: "Introduction to IoT",
+    issuer: "Cisco Networking Academy",
+    data: "Octubre 2025",
+    type: "Certificación"
   }
+
 ];
 
 export const workExperience = [
@@ -82,39 +101,39 @@ export const startup = {
 
 export const skills = {
   programmingLanguages: [
-    { name: "Python"},
-    { name: "JavaScript (ES6+)"},
-    { name: "TypeScript"},
-    { name: "Java"},
-    { name: "C#"},
-    { name: "PHP"},
-    { name: "Kotlin"}
+    { name: "Python" },
+    { name: "JavaScript (ES6+)" },
+    { name: "TypeScript" },
+    { name: "Java" },
+    { name: "C#" },
+    { name: "PHP" },
+    { name: "Kotlin" }
   ],
   frontend: [
-    { name: "HTML5"},
-    { name: "CSS3"},
-    { name: "Bootstrap"},
-    { name: "React"},
-    { name: "Next.js"},
-    { name: "tailwindcss"}
+    { name: "HTML5" },
+    { name: "CSS3" },
+    { name: "Bootstrap" },
+    { name: "React" },
+    { name: "Next.js" },
+    { name: "tailwindcss" }
   ],
   backend: [
-    { name: "Node.js"},
-    { name: "Nest.js"},
-    { name: "Django"},
-    { name: "Laravel"},
-    {name: "express.js"},
-    {name: "springboot"},
+    { name: "Node.js" },
+    { name: "Nest.js" },
+    { name: "Django" },
+    { name: "Laravel" },
+    { name: "express.js" },
+    { name: "springboot" },
   ],
   databases: [
-    { name: "MySQL"},
-    { name: "PostgreSQL"},
-    { name: "NoSQL"}
+    { name: "MySQL" },
+    { name: "PostgreSQL" },
+    { name: "NoSQL" }
   ],
   infrastructure: [
-    { name: "Docker"},
-    { name: "Azure"},
-    { name: "Linux"}
+    { name: "Docker" },
+    { name: "Azure" },
+    { name: "Linux" }
   ],
   other: [
     "Testing manual de aplicaciones web",
@@ -186,7 +205,7 @@ export const projects = [
     title: "Juego de Precisión tipo 'Aimlabs'",
     description: "Creación de un juego tipo 'Aimlabs' en Python para mejorar la precisión y reflejos, diseñado para jugadores que buscan mejorar su puntería en juegos FPS.",
     image: "/juego python.jpg",
-    tech: ["Python", "Pygame", "Game Design", "NumPy", "Matplotlib" ],
+    tech: ["Python", "Pygame", "Game Design", "NumPy", "Matplotlib"],
     github: "https://github.com/nicolas2601/Aimlab-python",
     featured: true
   },
@@ -216,6 +235,25 @@ export const projects = [
     tech: ["Django", "React", "PostgreSQL", "JWT", "tailwindcss"],
     github: "https://github.com/nicolas2601/Ecommerce-TIKNO-Project",
     featured: true
+  },
+  {
+    id: 9,
+    title: "Plataforma IOT Central",
+    description: "Plataforma IoT central para la gestion de dispositivos IoT.",
+    image: "/iot.jpg",
+    tech: ["Django", "Next.js", "PostgreSQL", "JWT", "tailwindcss", "mosquitto", "MQTT", "Docker", "Azure"],
+    github: "https://github.com/nicolas2601/IOT_Central",
+    featured: true
+  },
+  {
+    id: 10,
+    title: "traductor LSC con Machine learning",
+    description: "applicacion con machine learning para traducir lenguaje corporativo a lenguaje comun.",
+    image: "/lsc.jpg",
+    tech: ["React Native", "FastApi", "RNN", "Transformers", "tailwindcss"],
+    github: "https://github.com/nicolas2601/data-ciencia-lsc",
+    featured: true
   }
+
 
 ];
