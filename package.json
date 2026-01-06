@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.1",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "^8.2.7",
+    "@astrojs/vercel": "^9.0.2",
     "@fontsource/inter": "^5.2.6",
     "@fontsource/space-grotesk": "^5.2.10",
     "@headlessui/react": "^2.2.7",
@@ -21,7 +21,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/node": "^5.3.21",
     "aos": "^2.3.4",
-    "astro": "^5.13.5",
+    "astro": "^5.16.6",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "lottie-react": "^2.4.1",

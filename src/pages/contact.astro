@@ -1,27 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Contact from "../components/Contact";
+import ContactComponent from "../components/Contact";
 
 export const prerender = true;
 ---
 
 <Layout title="Contacto | Nicolas Moreno">
-  <div class="pt-32 pb-20 min-h-screen flex flex-col justify-center">
-    <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      <div class="mb-16 text-center">
-        <h1 class="text-5xl md:text-7xl font-bold font-space mb-6">
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
-          >
-            Hablemos
-          </span>
-        </h1>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-          ¿Tienes un proyecto ambicioso? Estoy listo para el reto.
-        </p>
-      </div>
-
-      <Contact client:load />
-    </div>
-  </div>
+	<section class="min-h-screen pt-32 pb-20 relative bg-[var(--bg-primary)]">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl md:text-7xl font-bold text-[var(--text-primary)] mb-20 font-space tracking-tighter text-center">
+                Hablemos <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-amber-500">Juntos</span>
+            </h2>
+			<ContactComponent client:load />
+		</div>
+	</section>
 </Layout>

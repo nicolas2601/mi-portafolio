@@ -1,36 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import About from "../components/About";
-import ExperienceTimeline from "../components/ExperienceTimeline";
+import AboutComponent from "../components/About";
 
 export const prerender = true;
 ---
 
 <Layout title="Sobre Mí | Nicolas Moreno">
-  <div class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="mb-20">
-      <h1 class="text-5xl md:text-7xl font-bold font-space mb-8 text-center">
-        <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400"
-        >
-          Sobre Mí
-        </span>
-      </h1>
-      <p class="text-xl text-gray-400 text-center max-w-2xl mx-auto">
-        Explorando la intersección entre la ingeniería de software y la
-        creatividad digital.
-      </p>
-    </div>
-
-    <About client:load />
-
-    <div class="mt-32">
-      <h2
-        class="text-4xl md:text-5xl font-bold font-space mb-16 text-center text-white"
-      >
-        Trayectoria
-      </h2>
-      <ExperienceTimeline client:visible />
-    </div>
-  </div>
+	<AboutComponent client:load />
 </Layout>

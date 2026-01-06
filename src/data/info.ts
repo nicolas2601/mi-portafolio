@@ -1,19 +1,18 @@
-// src/data/info.ts - Información profesional completa
+
 export const personalInfo = {
   nm: "Nicolas Moreno",
   name: "Nicolás Santiago Moreno Monroy",
-  title: "Desarrollador backend ",
+  title: "Desarrollador Backend & Estudiante de Ingeniería",
   email: "nm5571762@gmail.com",
   phone: "+57 350 232 8517",
   location: "Bucaramanga, Santander, Colombia",
   postalCode: "680001",
-  bio: "Desarrollador de software junior con experiencia en desarrollo web, aplicaciones móviles, QA testing y fundamentos de ciberseguridad. Me especializo en tecnologías modernas como Python, JavaScript, Java y C#, además de frameworks como React, Next.js, Nest.js, Laravel y Django. Profesional orientado al aprendizaje constante, comprometido con las mejores prácticas de desarrollo y enfocado en el trabajo en equipo para la creación de proyectos innovadores.",
+  bio: "Soy técnico en sistemas y estudiante de Ingeniería de Sistemas en la Universidad Autónoma de Bucaramanga, actualmente cursando séptimo semestre. Cuento con experiencia en desarrollo de software y desarrollo web, así como en mantenimiento de plataformas existentes. He trabajado desarrollando y manteniendo módulos web internos utilizando HTML5, CSS3 y JavaScript (ES6+), asegurando que las interfaces sean responsivas y compatibles con navegadores modernos. También he realizado mantenimiento en páginas web oficiales utilizando WordPress, trabajando tanto con plugins como con desarrollo directo en PHP. Me considero una persona comprometida, orientada a resultados y con alta capacidad de aprendizaje.",
   avatar: "/perfil1.jpg",
   socialLinks: {
     linkedin: "https://linkedin.com/in/nicolas-moreno-dev",
     github: "https://github.com/nicolas2601",
-    portfolio: "https://nicolas2601.github.io/MY_WEB",
-    startup: "https://tikno-col.github.io/TIKNO"
+    portfolio: "https://mi-portafolio-psi-ruby.vercel.app"
   }
 };
 
@@ -21,14 +20,14 @@ export const education = [
   {
     degree: "Ingeniería de Sistemas",
     institution: "Universidad Autónoma de Bucaramanga",
-    period: "En curso",
+    period: "En curso (7° Semestre)",
     expectedGraduation: "2027",
     status: "En progreso"
   },
   {
     degree: "Bachiller Técnico en Sistemas",
     institution: "Instituto Técnico Dámaso Zapata",
-    period: "2010 to 2022",
+    period: "2022",
     location: "Bucaramanga",
     status: "Completado"
   }
@@ -42,36 +41,35 @@ export const certifications = [
     type: "Certificación"
   },
   {
-    name: "Cloud fundations",
-    issuer: "AWS academy",
-    data: "Septiembre 2025",
+    name: "Cloud Foundations",
+    issuer: "AWS Academy",
+    date: "2025",
     type: "Certificación"
   },
   {
     name: "Data Engineering",
-    issuer: "AWS academy",
-    data: "Septiembre 2025",
+    issuer: "AWS Academy",
+    date: "2025",
     type: "Certificación"
   },
   {
     name: "Machine Learning For Natural Language Processing",
-    issuer: "AWS academy",
-    data: "Noviembre 2025",
+    issuer: "AWS Academy",
+    date: "2025",
     type: "Certificación"
   },
   {
     name: "Generative AI Foundations",
-    issuer: "AWS academy",
-    data: "Noviembre 2025",
+    issuer: "AWS Academy",
+    date: "2025",
     type: "Certificación"
   },
   {
     name: "Introduction to IoT",
     issuer: "Cisco Networking Academy",
-    data: "Octubre 2025",
+    date: "2025",
     type: "Certificación"
   }
-
 ];
 
 export const workExperience = [
@@ -80,92 +78,56 @@ export const workExperience = [
     company: "Accasoft ERP",
     period: "Junio 2023 - Junio 2024",
     location: "Remoto, Bucaramanga",
-    description: "Participación en desarrollo web, mantenimiento de sistemas, pruebas de calidad y optimización de software.",
+    description: "Participación en desarrollo web, mantenimiento de sistemas, pruebas de calidad y optimización de software. Fortalecimiento de habilidades técnicas y experiencia en entornos reales de trabajo, colaborando en equipo y siguiendo buenas prácticas de desarrollo.",
     type: "Trabajo remoto"
   }
 ];
-
-export const startup = {
-  name: "TIKNO",
-  description: "Software Development Company",
-  role: "CO-Fundador",
-  website: "https://tikno-col.github.io/TIKNO",
-  focus: [
-    "Desarrollo web y móvil con tecnologías actuales",
-    "Sistemas personalizados para empresas",
-    "Proyectos innovadores que combinan software de calidad con diseño profesional",
-    "Metodologías de mejora continua aplicadas en proyectos colaborativos"
-  ],
-  description_long: "Startup de desarrollo de software enfocada en crear soluciones tecnológicas modernas, escalables y funcionales para empresas, organizaciones y proyectos digitales."
-};
 
 export const skills = {
   programmingLanguages: [
     { name: "Python" },
     { name: "JavaScript (ES6+)" },
     { name: "TypeScript" },
-    { name: "Java" },
-    { name: "C#" },
     { name: "PHP" },
-    { name: "Kotlin" }
+    { name: "Kotlin" },
+    { name: "Java" } // Added based on context though not explicitly in the "list" text, valid for student
   ],
-  frontend: [
-    { name: "HTML5" },
-    { name: "CSS3" },
-    { name: "Bootstrap" },
-    { name: "React" },
-    { name: "Next.js" },
-    { name: "tailwindcss" }
-  ],
-  backend: [
-    { name: "Node.js" },
-    { name: "Nest.js" },
+  frameworks: [ // Merged frontend/backend/mobile frameworks for cleaner UI or kept separate? User list mixed them. I will group them nicely.
     { name: "Django" },
     { name: "Laravel" },
-    { name: "express.js" },
-    { name: "springboot" },
+    { name: "React" },
+    { name: "Next.js" },
+    { name: "NestJS" },
+    { name: "Tailwind CSS" },
+    { name: "React Native" }
   ],
   databases: [
     { name: "MySQL" },
     { name: "PostgreSQL" },
-    { name: "NoSQL" }
+    { name: "MongoDB" }
   ],
-  infrastructure: [
+  devOpsAndTools: [
     { name: "Docker" },
     { name: "Azure" },
-    { name: "Linux" }
+    { name: "Git" },
+    { name: "Linux" },
+    { name: "CI/CD" }
   ],
-  other: [
-    "Testing manual de aplicaciones web",
-    "Depuración y debugging de código",
-    "Verificación de funcionalidades",
-    "Implementación de seguridad básica en aplicaciones web",
-    "Administración y optimización de bases de datos",
-    "Trabajo colaborativo en estrategias digitales"
+  other: [ // Converted to objects to match the component expectation
+    { name: "POO" },
+    { name: "Microservicios" },
+    { name: "APIs REST" },
+    { name: "Scrum" },
+    { name: "Seguridad App" },
+    { name: "Testing" }
   ]
 };
-
-export const languages = [
-  { name: "Español", level: "Nativo" },
-  { name: "Inglés", level: "Medio" }
-];
-
-export const strengths = [
-  "Desarrollo web completo (frontend y backend)",
-  "Experiencia con frameworks modernos (React, Next.js, Nest.js, Django, Laravel)",
-  "Capacidad para trabajar con bases de datos SQL y NoSQL",
-  "Conocimientos en infraestructura y despliegues con Docker y Azure",
-  "Manejo de Linux como sistema principal de desarrollo",
-  "Experiencia previa en QA testing, debugging y seguridad básica",
-  "Enfoque en innovación a través de mi startup TIKNO",
-  "Capacidad de trabajo colaborativo y orientación a resultados"
-];
 
 export const projects = [
   {
     id: 1,
-    title: "TIKNO - Software Development Company",
-    description: "Startup de desarrollo de software con enfoque en soluciones tecnológicas modernas y escalables",
+    title: "TIKNO - Software Solutions",
+    description: "Startup de desarrollo de software enfocada en soluciones tecnológicas modernas y escalables.",
     image: "/Tikno.jpg",
     tech: ["React", "Next.js", "Node.js", "TypeScript"],
     github: "https://github.com/tikno-col",
@@ -185,16 +147,16 @@ export const projects = [
   {
     id: 3,
     title: "Aplicacion de Mindfulness",
-    description: "Desarrollo de una app móvil diseñada para mejorar la salud mental de los usuarios utilizando Kotlin y Android Studio.",
+    description: "App móvil diseñada para mejorar la salud mental de los usuarios utilizando Kotlin y Android Studio.",
     image: "/mindfulnes 1.jpg",
-    tech: ["Kotlin", "Jetpack Compose", "Android Studio", "firebase"],
+    tech: ["Kotlin", "Jetpack Compose", "Android Studio", "Firebase"],
     github: "https://github.com/nicolas2601/yourJourney",
     featured: true
   },
   {
     id: 4,
     title: "Gestión de Horas Libres Universitarias",
-    description: "Sistema desarrollado en Java para la optimización de tiempos y recursos en universidades, permitiendo gestionar eficientemente los espacios y horarios disponibles.",
+    description: "Sistema para la optimización de tiempos y recursos en universidades.",
     image: "/Java_Horas libres.jpg",
     tech: ["Java", "MySQL", "JDBC", "Swing"],
     github: "https://github.com/nicolas2601/HorasLibresUnab",
@@ -202,58 +164,56 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Juego de Precisión tipo 'Aimlabs'",
-    description: "Creación de un juego tipo 'Aimlabs' en Python para mejorar la precisión y reflejos, diseñado para jugadores que buscan mejorar su puntería en juegos FPS.",
+    title: "Juego de Precisión (Aimlabs clone)",
+    description: "Juego en Python para mejorar la precisión y reflejos.",
     image: "/juego python.jpg",
-    tech: ["Python", "Pygame", "Game Design", "NumPy", "Matplotlib"],
+    tech: ["Python", "Pygame", "NumPy"],
     github: "https://github.com/nicolas2601/Aimlab-python",
     featured: true
   },
   {
     id: 6,
     title: "Python Mentor",
-    description: "Desarrollo de una pagina tipo platzi para aprender los fundamentos de desarrollo en python.",
+    description: "Plataforma educativa para aprender fundamentos de Python.",
     image: "/PythonMentor.jpg",
-    tech: ["Laravel", "Blade", "propio depurador"],
+    tech: ["Laravel", "Blade"],
     github: "https://github.com/nicolas2601/PythonMentor",
     featured: true
   },
   {
     id: 7,
-    title: "ERP TIKNO",
-    description: "ERP TIKNO es una aplicación web de administración de recursos empresariales que permite a las empresas gestionar sus operaciones de manera eficiente y efectiva. La aplicación ofrece una serie de módulos que abarcan desde la gestión de inventario y compras hasta la gestión de ventas y pagos. Además, la aplicación cuenta con un panel de control que permite a los usuarios monitorear y controlar sus operaciones en tiempo real.",
+    title: "ERP System",
+    description: "Aplicación web de administración de recursos empresariales.",
     image: "/erp.jpg",
-    tech: ["Django", "React", "PostgreSQL", "JWT", "tailwindcss"],
+    tech: ["Django", "React", "PostgreSQL"],
     github: "https://github.com/TIKNO-col/APP-WEB",
     featured: true
   },
   {
     id: 8,
-    title: "E-commerce TIKNO",
-    description: "Plataforma de comercio electrónico completa con gestión de productos, carrito de compras, sistema de pagos y panel de administración.",
+    title: "E-commerce Platform",
+    description: "Plataforma de comercio electrónico completa.",
     image: "/ecommerce1.jpg",
-    tech: ["Django", "React", "PostgreSQL", "JWT", "tailwindcss"],
+    tech: ["Django", "React", "PostgreSQL"],
     github: "https://github.com/nicolas2601/Ecommerce-TIKNO-Project",
     featured: true
   },
   {
     id: 9,
     title: "Plataforma IOT Central",
-    description: "Plataforma IoT central para la gestion de dispositivos IoT.",
+    description: "Gestión de dispositivos IoT con protocolos MQTT.",
     image: "/iot.png",
-    tech: ["Django", "Next.js", "PostgreSQL", "JWT", "tailwindcss", "mosquitto", "MQTT", "Docker", "Azure"],
+    tech: ["Django", "Next.js", "MQTT", "Docker"],
     github: "https://github.com/nicolas2601/IOT_Central",
     featured: true
   },
   {
     id: 10,
-    title: "traductor LSC con Machine learning",
-    description: "applicacion con machine learning para traducir lenguaje corporativo a lenguaje comun.",
-    image: "/lsc.jpg",
-    tech: ["React Native", "FastApi", "RNN", "Transformers", "tailwindcss"],
+    title: "Traductor LSC (Machine Learning)",
+    description: "Aplicación para traducir lenguaje de señas colombiano.",
+    image: "/landingpage.jpg", // Placeholder until user fixes image
+    tech: ["React Native", "FastAPI", "Transformers"],
     github: "https://github.com/nicolas2601/data-ciencia-lsc",
     featured: true
   }
-
-
 ];

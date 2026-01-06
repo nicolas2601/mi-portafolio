@@ -23,41 +23,41 @@ export default function Contact() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start relative">
             {/* Decorative Background for Contact Section */}
-            <div className="absolute -top-20 -left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -top-20 -left-20 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-[100px] pointer-events-none" />
 
             {/* Contact Info */}
             <div className="space-y-10 relative z-10">
-                <div className="bg-slate-900/50 backdrop-blur-xl p-8 rounded-3xl border border-white/5">
-                    <h3 className="text-2xl font-bold text-white mb-8 font-space">Información de Contacto</h3>
+                <div className="bg-[var(--bg-secondary)]/50 backdrop-blur-xl p-8 rounded-3xl border border-white/5">
+                    <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-8 font-space">Información de Contacto</h3>
 
                     <div className="space-y-6">
-                        <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-4 text-slate-300 hover:text-orange-400 transition-colors group">
-                            <div className="p-4 bg-white/5 rounded-2xl group-hover:bg-orange-500/20 transition-colors">
+                        <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-4 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors group">
+                            <div className="p-4 bg-white/5 rounded-2xl group-hover:bg-[var(--accent-primary)]/20 transition-colors">
                                 <Mail size={24} />
                             </div>
                             <div>
-                                <p className="text-sm text-slate-500">Email</p>
-                                <p className="font-medium">{personalInfo.email}</p>
+                                <p className="text-sm text-gray-500">Email</p>
+                                <p className="font-medium break-all">{personalInfo.email}</p>
                             </div>
                         </a>
 
-                        <a href={`tel:${personalInfo.phone}`} className="flex items-center gap-4 text-slate-300 hover:text-orange-400 transition-colors group">
-                            <div className="p-4 bg-white/5 rounded-2xl group-hover:bg-orange-500/20 transition-colors">
+                        <a href={`tel:${personalInfo.phone}`} className="flex items-center gap-4 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors group">
+                            <div className="p-4 bg-white/5 rounded-2xl group-hover:bg-[var(--accent-primary)]/20 transition-colors">
                                 <Phone size={24} />
                             </div>
                             <div>
-                                <p className="text-sm text-slate-500">Teléfono</p>
+                                <p className="text-sm text-gray-500">Teléfono</p>
                                 <p className="font-medium">{personalInfo.phone}</p>
                             </div>
                         </a>
 
-                        <div className="flex items-center gap-4 text-slate-300 group">
+                        <div className="flex items-center gap-4 text-[var(--text-secondary)] group">
                             <div className="p-4 bg-white/5 rounded-2xl">
                                 <MapPin size={24} />
                             </div>
                             <div>
-                                <p className="text-sm text-slate-500">Ubicación</p>
+                                <p className="text-sm text-gray-500">Ubicación</p>
                                 <p className="font-medium">{personalInfo.location}</p>
                             </div>
                         </div>
@@ -65,21 +65,21 @@ export default function Contact() {
                 </div>
 
                 <div className="flex gap-4">
-                    <a href={personalInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex-1 p-6 bg-slate-900/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-orange-500/50 transition-colors flex flex-col items-center gap-3 group">
-                        <Linkedin size={32} className="text-slate-400 group-hover:text-blue-500 transition-colors" />
-                        <span className="text-sm font-medium text-slate-300">LinkedIn</span>
+                    <a href={personalInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex-1 p-6 bg-[var(--bg-secondary)]/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-[var(--accent-primary)]/50 transition-colors flex flex-col items-center gap-3 group">
+                        <Linkedin size={32} className="text-gray-400 group-hover:text-blue-500 transition-colors" />
+                        <span className="text-sm font-medium text-gray-300">LinkedIn</span>
                     </a>
-                    <a href={personalInfo.socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex-1 p-6 bg-slate-900/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-orange-500/50 transition-colors flex flex-col items-center gap-3 group">
-                        <Github size={32} className="text-slate-400 group-hover:text-white transition-colors" />
-                        <span className="text-sm font-medium text-slate-300">GitHub</span>
+                    <a href={personalInfo.socialLinks.github} target="_blank" rel="noopener noreferrer" className="flex-1 p-6 bg-[var(--bg-secondary)]/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-[var(--accent-primary)]/50 transition-colors flex flex-col items-center gap-3 group">
+                        <Github size={32} className="text-gray-400 group-hover:text-white transition-colors" />
+                        <span className="text-sm font-medium text-gray-300">GitHub</span>
                     </a>
                 </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-slate-900/80 backdrop-blur-xl p-8 md:p-10 rounded-[40px] border border-white/10 shadow-2xl relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-2 font-space">Envíame un mensaje</h3>
-                <p className="text-slate-400 mb-8">Responderé lo antes posible.</p>
+            <div className="bg-[var(--bg-secondary)]/80 backdrop-blur-xl p-8 md:p-10 rounded-[40px] border border-white/10 shadow-2xl relative z-10">
+                <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 font-space">Envíame un mensaje</h3>
+                <p className="text-[var(--text-secondary)] mb-8">Responderé lo antes posible.</p>
 
                 {isSubmitSuccessful ? (
                     <motion.div
@@ -91,15 +91,17 @@ export default function Contact() {
                             <CheckCircle size={40} className="text-green-500" />
                         </div>
                         <h4 className="text-2xl font-bold text-white mb-2">¡Mensaje Enviado!</h4>
-                        <p className="text-slate-400">Gracias por contactarme. Te responderé pronto.</p>
+                        <p className="text-gray-400">Gracias por contactarme. Te responderé pronto.</p>
                     </motion.div>
                 ) : (
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                         <div className="space-y-2">
-                            <label htmlFor="name" className="text-sm font-medium text-slate-300 ml-1">Nombre</label>
+                            <label htmlFor="name" className="text-sm font-medium text-gray-300 ml-1">Nombre</label>
                             <input
+                                id="name"
+                                autoComplete="name"
                                 {...register('name', { required: 'El nombre es requerido' })}
-                                className={`w-full px-6 py-4 bg-slate-950/50 border rounded-2xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 transition-all ${errors.name ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-orange-500 focus:ring-orange-500/20'
+                                className={`w-full px-6 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.name ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-[var(--accent-primary)] focus:ring-[var(--accent-primary)]/20'
                                     }`}
                                 placeholder="Tu nombre"
                             />
@@ -111,8 +113,10 @@ export default function Contact() {
                         </div>
 
                         <div className="space-y-2">
-                            <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">Email</label>
+                            <label htmlFor="email" className="text-sm font-medium text-gray-300 ml-1">Email</label>
                             <input
+                                id="email"
+                                autoComplete="email"
                                 {...register('email', {
                                     required: 'El email es requerido',
                                     pattern: {
@@ -120,7 +124,7 @@ export default function Contact() {
                                         message: "Email inválido"
                                     }
                                 })}
-                                className={`w-full px-6 py-4 bg-slate-950/50 border rounded-2xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 transition-all ${errors.email ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-orange-500 focus:ring-orange-500/20'
+                                className={`w-full px-6 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 transition-all ${errors.email ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-[var(--accent-primary)] focus:ring-[var(--accent-primary)]/20'
                                     }`}
                                 placeholder="tu@email.com"
                             />
@@ -132,11 +136,13 @@ export default function Contact() {
                         </div>
 
                         <div className="space-y-2">
-                            <label htmlFor="message" className="text-sm font-medium text-slate-300 ml-1">Mensaje</label>
+                            <label htmlFor="message" className="text-sm font-medium text-gray-300 ml-1">Mensaje</label>
                             <textarea
+                                id="message"
+                                autoComplete="off"
                                 {...register('message', { required: 'El mensaje es requerido' })}
                                 rows={4}
-                                className={`w-full px-6 py-4 bg-slate-950/50 border rounded-2xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 transition-all resize-none ${errors.message ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-orange-500 focus:ring-orange-500/20'
+                                className={`w-full px-6 py-4 bg-black/50 border rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:ring-2 transition-all resize-none ${errors.message ? 'border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-[var(--accent-primary)] focus:ring-[var(--accent-primary)]/20'
                                     }`}
                                 placeholder="Cuéntame sobre tu proyecto..."
                             />
@@ -150,7 +156,7 @@ export default function Contact() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                            className="w-full py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                         >
                             {isSubmitting ? (
                                 <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />

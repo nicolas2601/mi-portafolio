@@ -32,17 +32,17 @@ function DockIcon({ mouseX, item }: { mouseX: any, item: any }) {
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             style={{ width }}
-            className="aspect-square rounded-full bg-gray-900/50 border border-white/10 backdrop-blur-md flex items-center justify-center relative group hover:bg-gray-800/80 transition-colors"
+            className="aspect-square rounded-full bg-[var(--bg-secondary)]/50 border border-white/10 backdrop-blur-md flex items-center justify-center relative group hover:bg-[var(--bg-secondary)]/80 transition-colors"
         >
             <motion.div
-                className="text-gray-400 group-hover:text-yellow-400 transition-colors"
+                className="text-[var(--text-secondary)] group-hover:text-[var(--accent-primary)] transition-colors"
                 style={{ width: useTransform(width, [40, 80], [20, 40]) }}
             >
                 <item.icon className="w-full h-full" />
             </motion.div>
 
             {/* Tooltip */}
-            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 whitespace-nowrap pointer-events-none">
+            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--bg-secondary)] text-[var(--text-primary)] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 whitespace-nowrap pointer-events-none">
                 {item.name}
             </span>
         </motion.a>
@@ -57,7 +57,7 @@ export default function Dock() {
             <motion.div
                 onMouseMove={(e) => mouseX.set(e.pageX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
-                className="flex items-end gap-4 px-4 py-3 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+                className="flex items-end gap-4 px-4 py-3 rounded-2xl bg-[var(--bg-primary)]/40 backdrop-blur-xl border border-white/10 shadow-2xl"
             >
                 {navItems.map((item) => (
                     <DockIcon key={item.name} mouseX={mouseX} item={item} />

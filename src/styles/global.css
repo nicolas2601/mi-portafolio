@@ -3,12 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-primary: #030712;
+    --bg-secondary: #0f172a;
+    --accent-primary: #FFD700;
+    --accent-secondary: #6366f1;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-black text-white overflow-x-hidden;
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden;
   }
 }
 
@@ -16,17 +25,21 @@
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 215, 0, 0.2);
     border-radius: 10px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 215, 0, 0.4);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700];
   }
 }

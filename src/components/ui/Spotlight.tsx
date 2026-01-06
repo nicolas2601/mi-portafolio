@@ -24,7 +24,7 @@ export default function Spotlight({
 
     return (
         <div
-            className={`group relative border border-white/10 bg-slate-900 overflow-hidden ${className}`}
+            className={`group relative border border-white/10 bg-[var(--bg-secondary)] overflow-hidden ${className}`}
             onMouseMove={handleMouseMove}
         >
             <motion.div
@@ -33,7 +33,7 @@ export default function Spotlight({
                     background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(249, 115, 22, 0.15),
+              rgba(255, 215, 0, 0.15),
               transparent 80%
             )
           `,

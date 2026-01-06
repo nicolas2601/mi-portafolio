@@ -1,0 +1,16 @@
+import{j as t,m as s}from"./proxy.CK7Kku_V.js";import{R as m}from"./index.DtoOFyvK.js";import{a as u}from"./use-combine-values.CaJ7kinX.js";import{c as a}from"./createLucideIcon.BjLgxr00.js";import{M as f,L as x}from"./mail.UyNHI1Zu.js";import{G as b}from"./github.C1GYMzad.js";import{a as r,u as v}from"./use-spring.iYYFWAIp.js";/**
+ * @license lucide-react v0.554.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const y=[["path",{d:"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",key:"jecpp"}],["rect",{width:"20",height:"14",x:"2",y:"6",rx:"2",key:"i6l2r4"}]],g=a("briefcase",y);/**
+ * @license lucide-react v0.554.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const w=[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"r6nss1"}]],k=a("house",w);/**
+ * @license lucide-react v0.554.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const j=[["path",{d:"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2",key:"975kel"}],["circle",{cx:"12",cy:"7",r:"4",key:"17ys0d"}]],M=a("user",j),N=[{name:"Inicio",href:"/",icon:k},{name:"Sobre Mí",href:"/about",icon:M},{name:"Proyectos",href:"/projects",icon:g},{name:"Contacto",href:"/contact",icon:f}],I=[{name:"GitHub",href:"https://github.com/nicolas2601",icon:b},{name:"LinkedIn",href:"https://linkedin.com/in/nicolas-moreno-dev",icon:x}];function d({mouseX:o,item:e}){const n=m.useRef(null),l=r(o,p=>{const c=n.current?.getBoundingClientRect()??{x:0,width:0};return p-c.x-c.width/2}),h=r(l,[-150,0,150],[40,80,40]),i=v(h,{mass:.1,stiffness:150,damping:12});return t.jsxs(s.a,{ref:n,href:e.href,target:e.href.startsWith("http")?"_blank":void 0,rel:e.href.startsWith("http")?"noopener noreferrer":void 0,style:{width:i},className:"aspect-square rounded-full bg-[var(--bg-secondary)]/50 border border-white/10 backdrop-blur-md flex items-center justify-center relative group hover:bg-[var(--bg-secondary)]/80 transition-colors",children:[t.jsx(s.div,{className:"text-[var(--text-secondary)] group-hover:text-[var(--accent-primary)] transition-colors",style:{width:r(i,[40,80],[20,40])},children:t.jsx(e.icon,{className:"w-full h-full"})}),t.jsx("span",{className:"absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[var(--bg-secondary)] text-[var(--text-primary)] text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 whitespace-nowrap pointer-events-none",children:e.name})]})}function B(){const o=u(1/0);return t.jsx("div",{className:"fixed bottom-8 left-1/2 -translate-x-1/2 z-50",children:t.jsxs(s.div,{onMouseMove:e=>o.set(e.pageX),onMouseLeave:()=>o.set(1/0),className:"flex items-end gap-4 px-4 py-3 rounded-2xl bg-[var(--bg-primary)]/40 backdrop-blur-xl border border-white/10 shadow-2xl",children:[N.map(e=>t.jsx(d,{mouseX:o,item:e},e.name)),t.jsx("div",{className:"w-px h-8 bg-white/10 mx-2 self-center"}),I.map(e=>t.jsx(d,{mouseX:o,item:e},e.name))]})})}export{B as default};
