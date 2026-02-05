@@ -1,10 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero";
+import UseCases from "../components/UseCases";
+import FinalCTA from "../components/FinalCTA";
 
 export const prerender = true;
 ---
 
-<Layout title="Nicolas Moreno | Arquitecto de Software">
-	<Hero client:load />
+<Layout title="Nicolas Moreno | Desarrollador Backend & Automatización">
+	<main class="relative z-10 w-full overflow-hidden">
+		<Hero client:load />
+
+		{
+			/* Hub Navigation: Users identify themselves here and click through to specific pages */
+		}
+		<div id="use-cases">
+			<UseCases client:visible />
+		</div>
+
+		<div id="contact">
+			<FinalCTA client:visible />
+		</div>
+	</main>
 </Layout>

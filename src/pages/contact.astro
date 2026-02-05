@@ -1,17 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ContactComponent from "../components/Contact";
+import PageHero from "../components/PageHero";
+import FinalCTA from "../components/FinalCTA";
+import FAQ from "../components/FAQ";
 
 export const prerender = true;
 ---
 
 <Layout title="Contacto | Nicolas Moreno">
-	<section class="min-h-screen pt-32 pb-20 relative bg-[var(--bg-primary)]">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl md:text-7xl font-bold text-[var(--text-primary)] mb-20 font-space tracking-tighter text-center">
-                Hablemos <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-amber-500">Juntos</span>
-            </h2>
-			<ContactComponent client:load />
-		</div>
-	</section>
+	<main>
+		<PageHero
+			title="Hablemos de tu Proyecto"
+			subtitle="Agenda una consultoría gratuita y definamos el siguiente paso."
+			variant="contact"
+			client:load
+		/>
+
+		<FinalCTA client:visible />
+
+		<FAQ client:visible />
+	</main>
 </Layout>

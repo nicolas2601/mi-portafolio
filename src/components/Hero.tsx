@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Sparkles, Code2 } from 'lucide-react';
+import { ArrowRight, Download, Sparkles, Code2, Terminal, Database, Cpu } from 'lucide-react';
 import { personalInfo } from '../data/info';
 import AnimatedGridPattern from './ui/AnimatedGridPattern';
 import { DecryptedText } from './ui/DecryptedText';
@@ -15,15 +15,22 @@ export default function Hero() {
         setIsMounted(true);
     }, []);
 
+    const techBadges = [
+        "Django", "NestJS", "React", "Docker", "PostgreSQL", "n8n"
+    ];
+
     return (
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-[var(--bg-primary)]">
+        <section
+            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-28 md:pt-20 bg-[var(--bg-primary)]"
+            aria-label="Introducción al portafolio de Nicolás Moreno"
+        >
             <AnimatedGridPattern
                 numSquares={30}
                 maxOpacity={0.1}
                 duration={3}
                 repeatDelay={1}
                 className={cn(
-                    "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+                    "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
                     "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
                     "fill-white/10 stroke-white/10"
                 )}
@@ -32,86 +39,115 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-primary)]/50 to-[var(--bg-primary)] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                     {/* Text Content */}
-                    <div className="relative z-20">
+                    <div className="relative z-20 text-center lg:text-left">
+                        {/* Availability Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-8 backdrop-blur-md"
+                            transition={{ delay: 0.1 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-8 backdrop-blur-md hover:bg-[var(--accent-primary)]/20 transition-colors cursor-default"
                         >
-                            <Sparkles size={16} />
-                            <span className="text-sm font-medium">Disponible para nuevos proyectos</span>
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span className="text-sm font-medium tracking-wide">Disponible para trabajar</span>
                         </motion.div>
 
-                        <h1 className="text-6xl md:text-8xl font-bold text-[var(--text-primary)] leading-tight mb-6 font-space tracking-tight">
-                            Hola, soy <br />
-                            <DecryptedText text={personalInfo.nm} className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-amber-500 to-[var(--accent-secondary)]" />
+                        {/* Main Heading H1 */}
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] leading-[1.1] mb-6 font-space tracking-tight">
+                            Desarrollador de Software y <br className="hidden lg:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-amber-500 to-[var(--accent-secondary)]">
+                                Automatización
+                            </span>
+                            <br /> en Bucaramanga
                         </h1>
 
-                        <p className="text-[var(--text-secondary)] text-xl md:text-2xl max-w-lg mb-10 leading-relaxed font-light">
-                            {personalInfo.title}. Transformo ideas complejas en experiencias digitales <span className="text-[var(--text-primary)] font-medium">memorables</span>.
-                        </p>
+                        {/* Description / Subhheading H2 */}
+                        <h2 className="text-[var(--text-secondary)] text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
+                            Transformo procesos manuales en sistemas web automatizados.
+                            Backend Developer especializado en <strong className="text-white font-medium">Django & NestJS</strong> que construye infraestructuras reales, no solo interfaces.
+                        </h2>
 
-                        <div className="flex flex-wrap gap-6 relative z-30">
-                             {/* Removed Magnet wrapper to test if it fixes the button bug. Often Magnet libs mess up click events. */}
-                            <ShinyButton href="/projects" className="bg-[var(--accent-primary)] text-black hover:bg-amber-400 border-none z-30">
-                                Ver Proyectos <ArrowRight size={20} />
+                        {/* Tech Badges */}
+                        <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-10 opacity-90">
+                            {techBadges.map((badge, index) => (
+                                <motion.span
+                                    key={badge}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.3 + (index * 0.05) }}
+                                    className="px-3 py-1 text-xs md:text-sm font-mono text-[var(--accent-primary)] bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 rounded-md"
+                                >
+                                    {badge}
+                                </motion.span>
+                            ))}
+                        </div>
+
+                        {/* CTAs */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative z-30">
+                            <ShinyButton href="/contact" className="bg-[var(--accent-primary)] text-black hover:bg-amber-400 border-none px-8 py-4 text-base font-bold shadow-[0_0_20px_rgba(251,191,36,0.2)] hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-shadow">
+                                Automatizar mi Negocio
                             </ShinyButton>
 
                             <Magnet padding={50} magnetStrength={3}>
                                 <motion.a
-                                    href="/Nicolas_Moreno_CV_v1.pdf"
-                                    download
+                                    href="/projects" // Changed to internal link for "Ver Proyectos" as requested
+                                    className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-colors backdrop-blur-sm w-full sm:w-auto"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold flex items-center gap-3 hover:bg-white/10 transition-colors backdrop-blur-sm"
                                 >
-                                    <span>Descargar CV</span>
-                                    <Download size={20} />
+                                    Ver Proyectos Reales <ArrowRight size={18} />
                                 </motion.a>
                             </Magnet>
                         </div>
                     </div>
 
-                    {/* 3D Visual Content */}
+                    {/* Visual Content / Profile Card */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ duration: 1, delay: 0.2, type: "spring" }}
-                        className="relative flex justify-center lg:justify-end perspective-1000"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="relative hidden lg:flex justify-end items-center"
                     >
-                        <div className="relative w-[400px] h-[500px] group">
-                            {/* Holographic Card Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 rounded-[40px] blur-xl group-hover:blur-2xl transition-all duration-500" />
+                        {/* Abstract Background Shapes behind image */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-3xl pointer-events-none" />
 
-                            <div className="relative w-full h-full bg-[var(--bg-secondary)]/80 backdrop-blur-xl border border-white/10 rounded-[40px] overflow-hidden shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-12 group-hover:rotate-x-12 preserve-3d">
-                                <img
-                                    src={personalInfo.avatar}
-                                    alt={personalInfo.name}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                                />
+                        <div className="relative w-[400px] h-[520px] rounded-3xl overflow-hidden border border-white/10 bg-[var(--bg-secondary)]/30 backdrop-blur-sm shadow-2xl group">
+                            {/* Hover Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
 
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent" />
+                            <img
+                                src={personalInfo.avatar}
+                                alt={`Foto de perfil de ${personalInfo.name} - Desarrollador Backend`}
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                            />
 
-                                {/* Floating Badge - Updated content */}
-                                <motion.div
-                                    className="absolute bottom-8 left-8 right-8 p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl"
-                                    whileHover={{ y: -5 }}
-                                >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-xs font-bold text-[var(--accent-primary)] tracking-wider">ESTADO ACTUAL</span>
-                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                                    </div>
-                                    <p className="text-xl font-bold text-white">Open to Work</p>
-                                    <p className="text-sm text-gray-400 flex items-center gap-2">
-                                        <Code2 size={14} />
-                                        Desarrollador Full Stack
-                                    </p>
-                                </motion.div>
+                            {/* Floating Tech Cards */}
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute top-8 right-8 p-3 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 z-20"
+                            >
+                                <Terminal className="text-[var(--accent-primary)]" size={24} />
+                            </motion.div>
+
+                            <motion.div
+                                animate={{ y: [0, 10, 0] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                className="absolute bottom-32 left-8 p-3 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 z-20"
+                            >
+                                <Database className="text-blue-400" size={24} />
+                            </motion.div>
+
+                            {/* Info Card at Bottom */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-20">
+                                <p className="text-[var(--accent-primary)] font-mono text-sm mb-1">Based in Colombia</p>
+                                <h3 className="text-white text-xl font-bold">Nicolas Moreno</h3>
+                                <p className="text-gray-400 text-sm">Ingeniero de Sistemas (7° Sem)</p>
                             </div>
                         </div>
                     </motion.div>

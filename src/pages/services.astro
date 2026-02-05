@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero";
+import ServicesSection from "../components/Services";
+import FinalCTA from "../components/FinalCTA";
+
+export const prerender = true;
+---
+
+<Layout title="Servicios | Nicolas Moreno">
+    <main>
+        <PageHero
+            title="Soluciones de Automatización & Backend"
+            subtitle="Infraestructura escalable y bots inteligentes para potenciar tu negocio."
+            variant="services"
+            client:load
+        />
+
+        <ServicesSection client:visible />
+
+        <FinalCTA client:visible />
+    </main>
+</Layout>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Home, User, Briefcase, Mail, Github, Linkedin } from 'lucide-react';
+import { Home, User, Briefcase, Mail, Github, Linkedin, Zap, FileText } from 'lucide-react';
 
 const navItems = [
     { name: 'Inicio', href: '/', icon: Home },
-    { name: 'Sobre Mí', href: '/about', icon: User },
+    { name: 'Servicios', href: '/services', icon: Zap },
     { name: 'Proyectos', href: '/projects', icon: Briefcase },
+    { name: 'Sobre Mí', href: '/about', icon: FileText },
     { name: 'Contacto', href: '/contact', icon: Mail },
 ];
 
@@ -53,11 +54,11 @@ export default function Dock() {
     const mouseX = useMotionValue(Infinity);
 
     return (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 max-w-full overflow-x-hidden">
             <motion.div
                 onMouseMove={(e) => mouseX.set(e.pageX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
-                className="flex items-end gap-4 px-4 py-3 rounded-2xl bg-[var(--bg-primary)]/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+                className="flex items-end gap-2 md:gap-4 px-4 py-3 rounded-2xl bg-[var(--bg-primary)]/40 backdrop-blur-xl border border-white/10 shadow-2xl"
             >
                 {navItems.map((item) => (
                     <DockIcon key={item.name} mouseX={mouseX} item={item} />
