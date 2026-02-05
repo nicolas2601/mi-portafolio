@@ -106,18 +106,18 @@ export default function Projects() {
                                     <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/10">
                                         <div className="flex gap-4">
                                             {project.github && (
-                                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                                <a href={project.github} aria-label={`Ver código fuente de ${project.title}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                                     <Github size={20} />
                                                 </a>
                                             )}
                                             {project.demo && (
-                                                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                                <a href={project.demo} aria-label={`Ver demo en vivo de ${project.title}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                                     <ExternalLink size={20} />
                                                 </a>
                                             )}
                                         </div>
 
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] hover:translate-x-1 transition-transform">
+                                        <a href={project.github} aria-label={`Ver detalles de ${project.title}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] hover:translate-x-1 transition-transform">
                                             Ver Detalles <ArrowRight size={16} />
                                         </a>
                                     </div>

@@ -46,13 +46,13 @@ export default function About() {
                             </div>
 
                             <div className="flex gap-4 justify-center">
-                                <a href={personalInfo.socialLinks.github} target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
+                                <a href={personalInfo.socialLinks.github} aria-label="Visitar perfil de GitHub" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
                                     <Github size={20} />
                                 </a>
-                                <a href={personalInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
+                                <a href={personalInfo.socialLinks.linkedin} aria-label="Visitar perfil de LinkedIn" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
                                     <Linkedin size={20} />
                                 </a>
-                                <a href={`mailto:${personalInfo.email}`} className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
+                                <a href={`mailto:${personalInfo.email}`} aria-label="Enviar correo electrónico" className="p-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[var(--accent-primary)] hover:text-black hover:border-[var(--accent-primary)] transition-all duration-300">
                                     <Mail size={20} />
                                 </a>
                             </div>

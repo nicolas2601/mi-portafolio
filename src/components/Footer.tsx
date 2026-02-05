@@ -10,6 +10,9 @@ export default function Footer() {
                 <Heart size={14} className="text-orange-500 fill-orange-500 animate-pulse" />
                 <span className="hidden sm:inline">y mucho café.</span>
             </div>
+            <div className="mt-2">
+                <a href="/privacy-policy" className="text-slate-600 hover:text-slate-400 text-xs transition-colors">Política de Privacidad</a>
+            </div>
         </footer>
     );
 }
