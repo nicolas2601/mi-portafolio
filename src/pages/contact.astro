@@ -9,18 +9,16 @@ export const prerender = true;
 
 <Layout
 	title="Contacto | Nicolas Moreno"
-	description="¿Listo para iniciar tu próximo proyecto? Agenda una consultoría gratuita o contáctame directamente para discutir cómo la automatización y el desarrollo backend pueden potenciar tu empresa."
+	description="Agenda una consultoría gratuita para tu próximo proyecto. Hablemos de automatización, backend y cómo escalar tu infraestructura tecnológica."
 >
-	<main>
-		<PageHero
-			title="Hablemos de tu Proyecto"
-			subtitle="Agenda una consultoría gratuita y definamos el siguiente paso."
-			variant="contact"
-			client:load
-		/>
+	<PageHero
+		title="Hablemos de tu Proyecto"
+		subtitle="Agenda una consultoría gratuita y definamos el siguiente paso."
+		variant="contact"
+		client:load
+	/>
 
-		<FinalCTA client:visible />
+	<FinalCTA client:visible />
 
-		<FAQ client:visible />
-	</main>
+	<FAQ client:visible />
 </Layout>

@@ -9,18 +9,16 @@ export const prerender = true;
 
 <Layout
     title="Servicios | Nicolas Moreno"
-    description="Soluciones de automatización de procesos, desarrollo de software a medida y consultoría técnica. Optimiza tu negocio con bots de WhatsApp, integraciones API y sistemas web escalables."
+    description="Soluciones de automatización, desarrollo web y bots de WhatsApp. Escala tu negocio con software a medida y consultoría técnica especializada."
 >
-    <main>
-        <PageHero
-            title="Soluciones de Automatización & Backend"
-            subtitle="Infraestructura escalable y bots inteligentes para potenciar tu negocio."
-            variant="services"
-            client:load
-        />
+    <PageHero
+        title="Soluciones de Automatización & Backend"
+        subtitle="Infraestructura escalable y bots inteligentes para potenciar tu negocio."
+        variant="services"
+        client:load
+    />
 
-        <ServicesSection client:visible />
+    <ServicesSection client:visible />
 
-        <FinalCTA client:visible />
-    </main>
+    <FinalCTA client:visible />
 </Layout>

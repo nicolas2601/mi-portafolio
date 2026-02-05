@@ -9,18 +9,16 @@ export const prerender = true;
 
 <Layout
 	title="Sobre Mí | Nicolas Moreno"
-	description="Conoce a Nicolas Moreno, Ingeniero de Sistemas en formación y apasionado por la tecnología. Mi trayectoria, habilidades técnicas en Django/React y filosofía de trabajo enfocada en resultados."
+	description="Nicolas Moreno, Ingeniero de Sistemas en formación. Especialista en Django/React enfocado en construir soluciones tecnológicas que resuelven problemas reales."
 >
-	<main>
-		<PageHero
-			title="Ingeniero & Solucionador de Problemas"
-			subtitle="Más allá del código: construyo sistemas que funcionan en el mundo real."
-			variant="about"
-			client:load
-		/>
+	<PageHero
+		title="Ingeniero & Solucionador de Problemas"
+		subtitle="Más allá del código: construyo sistemas que funcionan en el mundo real."
+		variant="about"
+		client:load
+	/>
 
-		<AboutComponent client:visible />
+	<AboutComponent client:visible />
 
-		<FinalCTA client:visible />
-	</main>
+	<FinalCTA client:visible />
 </Layout>

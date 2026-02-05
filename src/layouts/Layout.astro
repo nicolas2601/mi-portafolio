@@ -13,7 +13,7 @@ export interface Props {
 
 const {
   title,
-  description = "Desarrollador Backend y Especialista en Automatización en Bucaramanga, Colombia. Experto en Django, React y Bots para optimizar procesos de negocio y escalar sistemas.",
+  description = "Desarrollador Backend y Especialista en Automatización en Colombia. Experto en Django, React y sistemas escalables para optimizar tu negocio.",
 } = Astro.props;
 ---
 
@@ -23,7 +23,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="32x32" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <title>{title}</title>
 
@@ -49,10 +49,16 @@ const {
   <body
     class="bg-black text-white antialiased selection:bg-yellow-500/30 selection:text-yellow-200 cursor-none"
   >
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black"
+    >
+      Saltar al contenido principal
+    </a>
     <FluidCursor client:load />
     <Dock client:load />
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 

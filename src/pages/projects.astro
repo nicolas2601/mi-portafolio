@@ -9,18 +9,16 @@ export const prerender = true;
 
 <Layout
 	title="Proyectos Reales | Nicolas Moreno"
-	description="Explora mi portafolio de proyectos de desarrollo de software: Sistemas de reservas, plataformas IoT, E-commerce automatizados y aplicaciones móviles con IA. Código real, impacto real."
+	description="Portafolio de desarrollo backend y automatización: Sistemas de reservas, IoT y Apps con IA. Proyectos con código real e impacto medible."
 >
-	<main>
-		<PageHero
-			title="Portafolio de Ingeniería"
-			subtitle="Resultados medibles: Desde bots de WhatsApp hasta arquitecturas empresariales."
-			variant="projects"
-			client:load
-		/>
+	<PageHero
+		title="Portafolio de Ingeniería"
+		subtitle="Resultados medibles: Desde bots de WhatsApp hasta arquitecturas empresariales."
+		variant="projects"
+		client:load
+	/>
 
-		<ProjectsComponent client:visible />
+	<ProjectsComponent client:visible />
 
-		<FinalCTA client:visible />
-	</main>
+	<FinalCTA client:visible />
 </Layout>

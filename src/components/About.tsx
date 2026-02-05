@@ -35,6 +35,8 @@ export default function About() {
                                 <img
                                     src={personalInfo.avatar}
                                     alt={personalInfo.name}
+                                    width={400}
+                                    height={533}
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 via-transparent to-transparent" />
