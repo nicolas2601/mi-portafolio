@@ -123,6 +123,8 @@ export default function Hero() {
                             <img
                                 src={personalInfo.avatar}
                                 alt={`Foto de perfil de ${personalInfo.name} - Desarrollador Backend`}
+                                width={400}
+                                height={520}
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                             />
 

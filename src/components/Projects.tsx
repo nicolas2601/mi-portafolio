@@ -110,17 +110,19 @@ export default function Projects() {
                                             {project.github && (
                                                 <a href={project.github} aria-label={`Ver código fuente de ${project.title}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                                     <Github size={20} />
+                                                    <span className="sr-only">Código de {project.title}</span>
                                                 </a>
                                             )}
                                             {project.demo && (
                                                 <a href={project.demo} aria-label={`Ver demo en vivo de ${project.title}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                                     <ExternalLink size={20} />
+                                                    <span className="sr-only">Demo de {project.title}</span>
                                                 </a>
                                             )}
                                         </div>
 
                                         <a href={project.github} aria-label={`Ver detalles de ${project.title}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] hover:translate-x-1 transition-transform">
-                                            Ver Detalles <ArrowRight size={16} />
+                                            Ver Detalles <span className="sr-only">de {project.title}</span> <ArrowRight size={16} />
                                         </a>
                                     </div>
                                 </div>
