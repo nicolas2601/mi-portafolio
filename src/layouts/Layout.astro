@@ -23,7 +23,14 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/Logo.png" sizes="64x64" />
+    <!-- Favicon para SEO y navegadores -->
+    <link rel="icon" type="image/png" href="/Logo.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/Logo.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/Logo.png" />
+    <link rel="shortcut icon" href="/Logo.png" />
+    
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="/manifest.json" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <title>{title}</title>
 
