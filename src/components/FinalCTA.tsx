@@ -56,7 +56,7 @@ export default function FinalCTA() {
                             Hablemos de cómo automatizarlos y escalar.
                         </p>
 
-                        <ShinyButton href="https://cal.com/nicolasmoreno" className="w-full bg-[var(--accent-primary)] text-black hover:bg-amber-400 font-bold py-4 rounded-xl flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-all">
+                        <ShinyButton href="#contact" className="w-full bg-[var(--accent-primary)] text-black hover:bg-amber-400 font-bold py-4 rounded-xl flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-all">
                             <Calendar size={20} />
                             Agendar Llamada
                         </ShinyButton>
