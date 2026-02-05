@@ -30,6 +30,7 @@ function DockIcon({ mouseX, item }: { mouseX: any, item: any }) {
         <motion.a
             ref={ref}
             href={item.href}
+            aria-label={item.name}
             target={item.href.startsWith('http') ? '_blank' : undefined}
             rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             style={{ width }}
