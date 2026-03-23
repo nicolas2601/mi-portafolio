@@ -63,7 +63,7 @@ export default function About() {
                             </div>
 
                             <a
-                                href="/Nicolas_Moreno_CV_v1.pdf"
+                                href="/CV_Nicolas_Moreno.pdf"
                                 download
                                 className="block w-full py-4 text-center rounded-xl border border-white/10 bg-white/5 text-white font-bold hover:bg-white hover:text-black transition-all duration-300"
                             >

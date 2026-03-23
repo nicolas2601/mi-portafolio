@@ -91,7 +91,7 @@ export default function FinalCTA() {
                                 Ver GitHub
                             </a>
                             <a
-                                href="/CV.pdf"
+                                href="/CV_Nicolas_Moreno.pdf"
                                 className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-white font-bold flex items-center justify-center gap-2"
                             >
                                 <FileText size={20} />

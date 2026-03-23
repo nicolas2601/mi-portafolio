@@ -2,12 +2,12 @@
 export const personalInfo = {
   nm: "Nicolas Moreno",
   name: "Nicolás Santiago Moreno Monroy",
-  title: "Desarrollador Backend & Especialista en Automatización",
+  title: "Software Engineer & Full-Stack Developer",
   email: "nm5571762@gmail.com",
   phone: "+57 350 232 8517",
   location: "Bucaramanga, Santander, Colombia",
   postalCode: "680001",
-  bio: "Soy Técnico Profesional en Sistemas y estudiante de Ingeniería de Sistemas (7° Semestre) en Bucaramanga. Me especializo en transformar procesos manuales y complejos en sistemas web eficientes y automatizados.\n\nNo solo escribo código; diseño arquitecturas escalables que resuelven problemas de negocio reales. Mi enfoque combina la robustez del desarrollo Backend (Django, NestJS) con la agilidad de la automatización (n8n, Bots), ayudando a empresas a reducir costos operativos y escalar sin fricción.",
+  bio: "Ingeniero de Software con más de 2 años de experiencia práctica diseñando, desarrollando y desplegando aplicaciones web escalables y sistemas backend. Dominio de Python (Django), TypeScript (NestJS, Node.js) y frameworks frontend modernos (React, Next.js).\n\nHe construido desde plataformas de prospección automatizada con IA hasta dashboards IoT en tiempo real, pasando por e-commerce con automatización completa. Mi enfoque combina arquitectura backend robusta con automatización inteligente (n8n, bots de WhatsApp/Telegram), infraestructura containerizada con Docker y cloud con AWS (certificado). Disponible para roles remotos y contratos freelance desde Colombia, alineado con timezone de Americas.",
   avatar: "/perfil1.jpg",
   socialLinks: {
     linkedin: "https://linkedin.com/in/nicolas-moreno-dev",
@@ -74,11 +74,19 @@ export const certifications = [
 
 export const workExperience = [
   {
-    position: "Programador Web Junior",
+    position: "Freelance Software Developer",
+    company: "Independent Contractor",
+    period: "Enero 2024 - Presente",
+    location: "Remoto, Bucaramanga, Colombia",
+    description: "Diseño y desarrollo de aplicaciones web a medida para clientes PYME en sectores de logística, salud y comercio. Soluciones full-stack con Django, NestJS, React y Next.js con despliegues containerizados en Docker. Plataforma de prospección automatizada con Google Maps, CRM, generación de mensajes con IA y email outreach. Bots inteligentes para WhatsApp y Telegram. Infraestructura self-hosted con Coolify. Automatización de workflows con n8n.",
+    type: "Freelance remoto"
+  },
+  {
+    position: "Web Developer",
     company: "Accasoft ERP",
     period: "Junio 2023 - Junio 2024",
     location: "Remoto, Bucaramanga",
-    description: "Desarrollo y mantenimiento de módulos críticos para el sistema ERP de la compañía. Implementación de nuevas funcionalidades backend y frontend, optimización de consultas a base de datos y corrección de bugs en producción. Colaboración activa en un entorno ágil para asegurar la entrega continua de valor.",
+    description: "Desarrollo y mantenimiento de módulos web internos para sistema ERP empresarial. Interfaces responsivas cross-browser con HTML5, CSS3, JavaScript y PHP. Gestión de plataformas WordPress CMS. Colaboración en equipos multidisciplinarios con metodología ágil. Optimización de tiempos de carga frontend mediante refactorización de CSS/JS.",
     type: "Trabajo remoto"
   }
 ];

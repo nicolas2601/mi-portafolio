@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# AI Crawlers - Allowed for citation/discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://nicolasmoreno.site/sitemap.xml

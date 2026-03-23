@@ -66,11 +66,10 @@ export default function Hero() {
                             <br /> en Bucaramanga
                         </h1>
 
-                        {/* Description / Subhheading H2 */}
-                        <h2 className="text-[var(--text-secondary)] text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
-                            Transformo procesos manuales en sistemas web automatizados.
-                            Backend Developer especializado en <strong className="text-white font-medium">Django & NestJS</strong> que construye infraestructuras reales, no solo interfaces.
-                        </h2>
+                        {/* Description */}
+                        <p className="text-[var(--text-secondary)] text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
+                            Remote Full-Stack Developer especializado en <strong className="text-white font-medium">Django, NestJS & React</strong>. Transformo procesos manuales en sistemas web automatizados con APIs escalables, Docker y AWS.
+                        </p>
 
                         {/* Tech Badges */}
                         <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-10 opacity-90">
@@ -122,9 +121,10 @@ export default function Hero() {
 
                             <img
                                 src={personalInfo.avatar}
-                                alt={`Foto de perfil de ${personalInfo.name} - Desarrollador Backend`}
+                                alt={`Nicolas Moreno - Remote Software Engineer & Full-Stack Developer from Colombia`}
                                 width={400}
                                 height={520}
+                                fetchPriority="high"
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                             />
 

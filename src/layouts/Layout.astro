@@ -13,8 +13,10 @@ export interface Props {
 
 const {
   title,
-  description = "Desarrollador Backend y Especialista en Automatización en Colombia. Experto en Django, React y sistemas escalables para optimizar tu negocio.",
+  description = "Remote Backend Developer & Full-Stack Engineer from Colombia. Expert in Django, NestJS, React, Docker & AWS. Available for hire — portfolio, projects & CV.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -23,33 +25,116 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon para SEO y navegadores -->
+    <meta name="author" content="Nicolas Santiago Moreno Monroy" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="keywords" content="backend developer, full stack developer, remote developer Colombia, hire developer LATAM, Django developer, NestJS developer, React developer, software engineer, freelance developer, desarrollador backend, desarrollador fullstack Colombia, Nicolas Moreno" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="es" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/Logo.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/Logo.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/Logo.png" />
     <link rel="shortcut icon" href="/Logo.png" />
-    
+
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="/perfil1.jpg" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
     <!-- Manifest para PWA -->
     <link rel="manifest" href="/manifest.json" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL("/Logo.png", Astro.site)} />
+    <meta property="og:image" content={new URL("/perfil1.jpg", Astro.site)} />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="520" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Nicolas Moreno - Software Engineer" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta
-      property="twitter:image"
-      content={new URL("/Logo.png", Astro.site)}
-    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL.toString()} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL("/perfil1.jpg", Astro.site).toString()} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Nicolas Moreno - Software Engineer",
+      "url": "https://nicolasmoreno.site",
+      "description": "Portfolio of Nicolas Moreno, a remote Backend & Full-Stack Developer from Colombia specializing in Django, NestJS, React, and process automation.",
+      "inLanguage": "es"
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nicolas Santiago Moreno Monroy",
+      "url": "https://nicolasmoreno.site",
+      "image": "https://nicolasmoreno.site/perfil1.jpg",
+      "jobTitle": "Software Engineer & Full-Stack Developer",
+      "description": "Remote Backend & Full-Stack Developer from Colombia with 2+ years of experience in Django, NestJS, React, Docker, and AWS. Available for hire.",
+      "email": "nm5571762@gmail.com",
+      "telephone": "+573502328517",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bucaramanga",
+        "addressRegion": "Santander",
+        "addressCountry": "CO",
+        "postalCode": "680001"
+      },
+      "sameAs": [
+        "https://github.com/nicolas2601",
+        "https://linkedin.com/in/nicolas-moreno-dev"
+      ],
+      "knowsAbout": ["Python", "Django", "TypeScript", "NestJS", "React", "Next.js", "Docker", "AWS", "PostgreSQL", "Node.js", "REST APIs", "Process Automation", "React Native"],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidad Autonoma de Bucaramanga",
+        "sameAs": "https://www.unab.edu.co"
+      },
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Cloud Foundations", "credentialCategory": "Certificate" },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Data Engineering", "credentialCategory": "Certificate" },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Machine Learning for NLP", "credentialCategory": "Certificate" },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Generative AI Foundations", "credentialCategory": "Certificate" }
+      ]
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "dateCreated": "2024-01-01",
+      "dateModified": "2026-03-23",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Nicolas Santiago Moreno Monroy",
+        "url": "https://nicolasmoreno.site"
+      }
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://nicolasmoreno.site/" },
+        { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://nicolasmoreno.site/services" },
+        { "@type": "ListItem", "position": 3, "name": "Proyectos", "item": "https://nicolasmoreno.site/projects" },
+        { "@type": "ListItem", "position": 4, "name": "Sobre Mi", "item": "https://nicolasmoreno.site/about" },
+        { "@type": "ListItem", "position": 5, "name": "Contacto", "item": "https://nicolasmoreno.site/contact" }
+      ]
+    })} />
 
     <ViewTransitions />
   </head>
