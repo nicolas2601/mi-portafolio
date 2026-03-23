@@ -40,16 +40,27 @@ function copyFiles(source, target) {
   }
 }
 
-// Crear config.json para Vercel
+// Crear config.json para Vercel (con security headers)
 function createConfigJson() {
   const configJson = {
     "version": 3,
     "routes": [
+      {
+        "src": "/(.*)",
+        "headers": {
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+          "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vercel.live https://vitals.vercel-insights.com"
+        },
+        "continue": true
+      },
       { "handle": "filesystem" },
       { "src": "/.*", "dest": "/index.html" }
     ]
   };
-  
+
   const configPath = path.join(configDir, 'config.json');
   fs.writeFileSync(configPath, JSON.stringify(configJson, null, 2));
   console.log(`Archivo de configuración creado: ${configPath}`);
