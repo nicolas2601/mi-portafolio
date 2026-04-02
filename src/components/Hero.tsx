@@ -16,7 +16,7 @@ export default function Hero() {
     }, []);
 
     const techBadges = [
-        "Django", "NestJS", "React", "Docker", "PostgreSQL", "n8n"
+        "Python", "Django", "NestJS", "React", "Next.js", "Docker", "AWS", "PostgreSQL"
     ];
 
     return (
@@ -59,16 +59,16 @@ export default function Hero() {
 
                         {/* Main Heading H1 */}
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--text-primary)] leading-[1.1] mb-6 font-space tracking-tight">
-                            Desarrollador de Software y <br className="hidden lg:block" />
+                            Backend &{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-amber-500 to-[var(--accent-secondary)]">
-                                Automatización
+                                Full-Stack
                             </span>
-                            <br /> en Bucaramanga
+                            <br /> Developer
                         </h1>
 
                         {/* Description */}
                         <p className="text-[var(--text-secondary)] text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
-                            Remote Full-Stack Developer especializado en <strong className="text-white font-medium">Django, NestJS & React</strong>. Transformo procesos manuales en sistemas web automatizados con APIs escalables, Docker y AWS.
+                            Software Engineer con 2+ a&ntilde;os construyendo APIs escalables y aplicaciones web con <strong className="text-white font-medium">Django, NestJS, React & Next.js</strong>. Certificado AWS. Disponible para roles remotos.
                         </p>
 
                         {/* Tech Badges */}
@@ -89,7 +89,7 @@ export default function Hero() {
                         {/* CTAs */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative z-30">
                             <ShinyButton href="/contact" className="bg-[var(--accent-primary)] text-black hover:bg-amber-400 border-none px-8 py-4 text-base font-bold shadow-[0_0_20px_rgba(251,191,36,0.2)] hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-shadow">
-                                Automatizar mi Negocio
+                                Contactar
                             </ShinyButton>
 
                             <Magnet padding={50} magnetStrength={3}>
@@ -147,9 +147,9 @@ export default function Hero() {
 
                             {/* Info Card at Bottom */}
                             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-20">
-                                <p className="text-[var(--accent-primary)] font-mono text-sm mb-1">Based in Colombia</p>
+                                <p className="text-[var(--accent-primary)] font-mono text-sm mb-1">Remote from Colombia</p>
                                 <h3 className="text-white text-xl font-bold">Nicolas Moreno</h3>
-                                <p className="text-gray-400 text-sm">Ingeniero de Sistemas (7° Sem)</p>
+                                <p className="text-gray-400 text-sm">Backend & Full-Stack Developer</p>
                             </div>
                         </div>
                     </motion.div>
