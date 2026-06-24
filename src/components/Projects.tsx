@@ -121,7 +121,7 @@ export default function Projects() {
                                             )}
                                         </div>
 
-                                        <a href={project.github} aria-label={`Ver detalles de ${project.title}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] hover:translate-x-1 transition-transform">
+                                        <a href={(project as any).demo || project.github || "/projects"} aria-label={`Ver detalles de ${project.title}`} target={(project as any).demo || project.github ? "_blank" : undefined} rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] hover:translate-x-1 transition-transform">
                                             Ver Detalles <span className="sr-only">de {project.title}</span> <ArrowRight size={16} />
                                         </a>
                                     </div>

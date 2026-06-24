@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero";
-import UseCases from "../components/UseCases";
+import Projects from "../components/Projects";
 import FinalCTA from "../components/FinalCTA";
 
 export const prerender = true;
@@ -14,11 +14,9 @@ export const prerender = true;
 	<div class="relative z-10 w-full overflow-hidden">
 		<Hero client:load />
 
-		{
-			/* Hub Navigation: Users identify themselves here and click through to specific pages */
-		}
-		<div id="use-cases">
-			<UseCases client:visible />
+		{/* Proof first: real projects with measurable impact for recruiters */}
+		<div id="projects">
+			<Projects client:visible />
 		</div>
 
 		<div id="contact">

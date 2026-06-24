@@ -4,9 +4,9 @@ import { Home, User, Briefcase, Mail, Github, Linkedin, Zap, FileText } from 'lu
 
 const navItems = [
     { name: 'Inicio', href: '/', icon: Home },
-    { name: 'Servicios', href: '/services', icon: Zap },
     { name: 'Proyectos', href: '/projects', icon: Briefcase },
     { name: 'Sobre Mí', href: '/about', icon: FileText },
+    { name: 'CV', href: '/CV_Nicolas_Moreno.pdf', icon: User },
     { name: 'Contacto', href: '/contact', icon: Mail },
 ];
 

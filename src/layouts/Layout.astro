@@ -13,7 +13,7 @@ export interface Props {
 
 const {
   title,
-  description = "Remote Backend Developer & Full-Stack Engineer from Colombia. Expert in Django, NestJS, React, Docker & AWS. Available for hire — portfolio, projects & CV.",
+  description = "Remote Full-Stack Developer from Colombia. 2+ years with Django, NestJS, React, Docker & AWS. Regional winner of Hackathon Colombia 5.0 (MinTIC). Available for hire — portfolio, projects & CV.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -33,6 +33,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Hreflang -->
     <link rel="alternate" hreflang="es" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="CO-SAN" />
+    <meta name="geo.placename" content="Bucaramanga, Santander, Colombia" />
+    <meta name="geo.position" content="7.119349;-73.122742" />
+    <meta name="ICBM" content="7.119349, -73.122742" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/Logo.png" sizes="32x32" />
@@ -54,9 +60,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL("/perfil1.jpg", Astro.site)} />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="520" />
+    <meta property="og:image" content={new URL("/og.jpg", Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nicolás Moreno — Full-Stack Developer, ganador Hackathon Colombia 5.0" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content="Nicolas Moreno - Software Engineer" />
 
@@ -65,7 +72,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:url" content={canonicalURL.toString()} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL("/perfil1.jpg", Astro.site).toString()} />
+    <meta name="twitter:image" content={new URL("/og.jpg", Astro.site).toString()} />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -81,12 +88,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Nicolas Santiago Moreno Monroy",
+      "alternateName": "Nicolas Moreno",
       "url": "https://nicolasmoreno.site",
       "image": "https://nicolasmoreno.site/perfil1.jpg",
-      "jobTitle": "Software Engineer & Full-Stack Developer",
-      "description": "Remote Backend & Full-Stack Developer from Colombia with 2+ years of experience in Django, NestJS, React, Docker, and AWS. Available for hire.",
+      "jobTitle": "Full-Stack Developer",
+      "description": "Remote Full-Stack Developer and Systems Engineering student from Bucaramanga, Colombia, with 2+ years building production web apps and backend services in Python (Django, FastAPI), TypeScript (NestJS, Node.js, Bun) and React/Next.js. Regional winner of Hackathon Colombia 5.0 (MinTIC). Available for hire.",
       "email": "nm5571762@gmail.com",
       "telephone": "+573502328517",
+      "nationality": { "@type": "Country", "name": "Colombia" },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bucaramanga",
@@ -94,21 +103,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "addressCountry": "CO",
         "postalCode": "680001"
       },
+      "knowsLanguage": [
+        { "@type": "Language", "name": "Spanish" },
+        { "@type": "Language", "name": "English" }
+      ],
       "sameAs": [
         "https://github.com/nicolas2601",
         "https://linkedin.com/in/nicolas-moreno-dev"
       ],
-      "knowsAbout": ["Python", "Django", "TypeScript", "NestJS", "React", "Next.js", "Docker", "AWS", "PostgreSQL", "Node.js", "REST APIs", "Process Automation", "React Native"],
+      "knowsAbout": ["Python", "Django", "Django REST Framework", "FastAPI", "TypeScript", "NestJS", "Node.js", "Bun", "React", "Next.js", "React Native", "Docker", "Linux", "AWS", "PostgreSQL", "MongoDB", "REST APIs", "WebSockets", "MQTT", "LLM Integration", "Prompt Engineering", "n8n", "Process Automation", "OWASP", "CI/CD"],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Full-Stack Developer",
+        "occupationalCategory": "15-1252.00",
+        "skills": "Python, Django, FastAPI, TypeScript, NestJS, Node.js, React, Next.js, Docker, AWS, PostgreSQL, LLM integration"
+      },
+      "seeks": {
+        "@type": "Demand",
+        "name": "Remote Junior Full-Stack / Backend Developer roles (full-time or part-time, Americas timezone)"
+      },
+      "award": "Regional Winner — Hackathon Colombia 5.0, MinTIC (Bucaramanga, 2026)",
       "alumniOf": {
         "@type": "CollegeOrUniversity",
         "name": "Universidad Autonoma de Bucaramanga",
         "sameAs": "https://www.unab.edu.co"
       },
       "hasCredential": [
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Cloud Foundations", "credentialCategory": "Certificate" },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Data Engineering", "credentialCategory": "Certificate" },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Machine Learning for NLP", "credentialCategory": "Certificate" },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Generative AI Foundations", "credentialCategory": "Certificate" }
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Cloud Foundations", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Data Engineering", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Machine Learning for NLP", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Generative AI Foundations", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Introduction to IoT", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
+        { "@type": "EducationalOccupationalCredential", "name": "Programming Essentials in Python", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Cisco Networking Academy" } }
       ]
     })} />
 
@@ -116,7 +142,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@context": "https://schema.org",
       "@type": "ProfilePage",
       "dateCreated": "2024-01-01",
-      "dateModified": "2026-03-23",
+      "dateModified": "2026-06-24",
       "mainEntity": {
         "@type": "Person",
         "name": "Nicolas Santiago Moreno Monroy",

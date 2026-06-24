@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    background: radial-gradient(900px circle at 18% 12%, rgba(251,191,36,0.14), transparent 60%), #0a0a0a;
+    color:#fff; padding:64px 72px; position:relative; overflow:hidden;
+  }
+  .grid { position:absolute; inset:0; background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px; mask-image: radial-gradient(700px circle at 80% 100%, white, transparent); }
+  .badge { display:inline-flex; align-items:center; gap:10px; padding:9px 18px; border:1px solid rgba(251,191,36,0.35);
+    background:rgba(251,191,36,0.10); color:#fbbf24; border-radius:999px; font-size:21px; font-weight:600; }
+  .dot { width:11px; height:11px; border-radius:50%; background:#22c55e; box-shadow:0 0 12px #22c55e; }
+  h1 { font-size:84px; font-weight:700; line-height:1.04; margin:30px 0 16px; letter-spacing:-1.5px; }
+  h1 .accent { color:#fbbf24; }
+  .role { font-size:33px; color:#cbd5e1; font-weight:500; margin-bottom:30px; }
+  .award { font-size:25px; color:#e5e7eb; margin-bottom:34px; }
+  .award b { color:#fbbf24; }
+  .tech { display:flex; gap:12px; flex-wrap:wrap; }
+  .tech span { font-family:monospace; font-size:22px; color:#fbbf24; background:rgba(251,191,36,0.08);
+    border:1px solid rgba(251,191,36,0.20); padding:8px 16px; border-radius:9px; }
+  .foot { position:absolute; left:72px; bottom:54px; font-size:26px; color:#94a3b8; font-weight:600; }
+  .foot b { color:#fff; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="badge"><span class="dot"></span> Disponible para contratación · Remoto</div>
+  <h1>Nicolás Moreno<br><span class="accent">Full-Stack Developer</span></h1>
+  <div class="role">Python · TypeScript · React · Integración con IA</div>
+  <div class="award"><span style="color:#fbbf24">★</span> Ganador Regional <b>Hackathon Colombia 5.0</b> (MinTIC) · AWS Certified</div>
+  <div class="tech"><span>Django</span><span>NestJS</span><span>FastAPI</span><span>React</span><span>Next.js</span><span>Docker</span><span>AWS</span></div>
+  <div class="foot"><b>nicolasmoreno.site</b> &nbsp;·&nbsp; github.com/nicolas2601</div>
+</body>
+</html>

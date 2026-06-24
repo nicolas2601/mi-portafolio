@@ -7,7 +7,7 @@ export const personalInfo = {
   phone: "+57 350 232 8517",
   location: "Bucaramanga, Santander, Colombia",
   postalCode: "680001",
-  bio: "Ingeniero de Software con más de 2 años de experiencia práctica diseñando, desarrollando y desplegando aplicaciones web escalables y sistemas backend. Dominio de Python (Django), TypeScript (NestJS, Node.js) y frameworks frontend modernos (React, Next.js).\n\nHe construido desde plataformas de prospección automatizada con IA hasta dashboards IoT en tiempo real, pasando por e-commerce con automatización completa. Mi enfoque combina arquitectura backend robusta con automatización inteligente (n8n, bots de WhatsApp/Telegram), infraestructura containerizada con Docker y cloud con AWS (certificado). Disponible para roles remotos y contratos freelance desde Colombia, alineado con timezone de Americas.",
+  bio: "Desarrollador Full-Stack y estudiante de Ingeniería de Sistemas (UNAB, 8° semestre) con más de 2 años construyendo aplicaciones web y servicios backend en producción. Sólido en Python (Django, Django REST, FastAPI), TypeScript (NestJS, Node.js, Bun) y React/Next.js, con despliegue containerizado sobre Linux e integración de modelos de lenguaje (LLM).\n\nGanador regional de la Hackathon Colombia 5.0 (MinTIC, Bucaramanga). Autor de ghoscli, una CLI de codificación agéntica propia en TypeScript/Bun. He entregado desde plataformas IoT en tiempo real y sistemas de reservas automatizados hasta motores de prospección B2B con IA. Cómodo asumiendo una feature de punta a punta: API, base de datos, frontend y despliegue. Disponible para roles remotos (full o medio tiempo) en timezone de Américas (GMT-5).",
   avatar: "/perfil1.jpg",
   socialLinks: {
     linkedin: "https://linkedin.com/in/nicolas-moreno-dev",
@@ -20,7 +20,7 @@ export const education = [
   {
     degree: "Ingeniería de Sistemas",
     institution: "Universidad Autónoma de Bucaramanga",
-    period: "En curso (7° Semestre)",
+    period: "En curso (8° Semestre)",
     expectedGraduation: "2027",
     status: "En progreso"
   },
@@ -128,55 +128,52 @@ export const skills = {
 export const projects = [
   {
     id: 1,
-    title: "Sistema de Reservas Automatizado",
-    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo. Redujo el tiempo de gestión operativa drásticamente mediante flujos automatizados.",
-    image: "/reservas-dashboard.png", // Using existing relevant image or placeholder
-    tech: ["Django REST", "WhatsApp API", "PostgreSQL", "React", "Docker", "n8n"],
-    github: "https://github.com/tikno-col", // Linking to company/org if repo not public
-    demo: "https://tikno-col.github.io/TIKNO",
-    featured: true,
-    metrics: [
-      { value: "80%", label: "Menos tiempo manual" },
-      { value: "24/7", label: "Disponibilidad del Bot" }
-    ]
-  },
-  {
-    id: 2,
-    title: "Plataforma IoT con Dashboard Real-Time",
-    description: "Sistema de monitoreo en tiempo real para dispositivos IoT. Backend robusto capaz de procesar streams de datos de sensores y visualizarlos instantáneamente para toma de decisiones.",
+    title: "Plataforma IoT con Dashboard en Tiempo Real",
+    description: "Sistema de monitoreo en tiempo real para dispositivos IoT. Backend robusto que ingiere streams de telemetría de sensores y los visualiza al instante con gráficos en vivo y alertas por umbral.",
     image: "/iot.png",
-    tech: ["Django", "MQTT", "Next.js", "Docker", "WebSockets", "TimescaleDB"], // Updated stack to match Django+MQTT from before but enhanced desc
+    tech: ["Django", "MQTT", "Next.js", "TimescaleDB", "WebSockets", "Docker"],
     github: "https://github.com/nicolas2601/IOT_Central",
     featured: true,
     metrics: [
       { value: "100+", label: "Dispositivos conectados" },
-      { value: "<100ms", label: "Latencia Real-time" }
+      { value: "<100ms", label: "Latencia real-time" }
+    ]
+  },
+  {
+    id: 2,
+    title: "ghoscli — CLI de Codificación Agéntica",
+    description: "CLI propia de codificación con IA que corre en la terminal: TUI con Ink, loop de agente sobre API estilo /v1/messages, soporte multi-proveedor de LLM (Anthropic, MiniMax, OpenRouter), modos interactivo y headless, desarrollo guiado por specs y pruebas con bun:test.",
+    image: "/Portafolio.jpg",
+    tech: ["TypeScript", "Bun", "Ink", "React", "LLM", "TDD"],
+    featured: true,
+    metrics: [
+      { value: "Multi-LLM", label: "Anthropic / MiniMax" },
+      { value: "TDD", label: "Suite bun:test" }
     ]
   },
   {
     id: 3,
-    title: "E-commerce con Automatización Completa",
-    description: "Tienda online Fullstack con integración de pasarelas de pagos, gestión de inventario sincronizada y notificaciones transaccionales automáticas vía WhatsApp.",
-    image: "/ecommerce1.jpg",
-    tech: ["Django", "React", "PostgreSQL", "Stripe", "n8n", "WhatsApp API"],
-    github: "https://github.com/nicolas2601/Ecommerce-TIKNO-Project",
+    title: "Sistema de Reservas Automatizado",
+    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo. Redujo el tiempo de gestión operativa mediante flujos automatizados con n8n y atención 24/7.",
+    image: "/reservas-dashboard.png",
+    tech: ["Django REST", "WhatsApp API", "PostgreSQL", "React", "n8n", "Docker"],
     featured: true,
     metrics: [
-      { value: "0", label: "Intervención manual" },
-      { value: "Automático", label: "Procesamiento de pedidos" }
+      { value: "~80%", label: "Menos tiempo manual" },
+      { value: "24/7", label: "Bot de atención" }
     ]
   },
   {
     id: 4,
-    title: "Traductor LSC con IA (Machine Learning)",
-    description: "Aplicación móvil innovadora de inclusión social que utiliza modelos de IA para traducir Lenguaje de Señas Colombiano a texto en tiempo real.",
+    title: "Traductor de Lengua de Señas Colombiana (IA)",
+    description: "Aplicación móvil de inclusión social que usa modelos de IA (Transformers) para traducir Lengua de Señas Colombiana a texto en tiempo real, con ejecución nativa en dispositivo.",
     image: "/lsc-app.png",
-    tech: ["React Native", "FastAPI", "Transformers", "Python", "T5 Model"],
+    tech: ["React Native", "FastAPI", "Transformers", "Python", "T5"],
     github: "https://github.com/nicolas2601/data-ciencia-lsc",
     featured: true,
     metrics: [
-      { value: "95%", label: "Precisión en gestos" },
-      { value: "Mobile", label: "Ejecución nativa" }
+      { value: "Mobile", label: "Ejecución nativa" },
+      { value: "Real-time", label: "Traducción de gestos" }
     ]
   }
 ];

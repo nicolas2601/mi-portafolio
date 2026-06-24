@@ -68,7 +68,7 @@ export default function Hero() {
 
                         {/* Description */}
                         <p className="text-[var(--text-secondary)] text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
-                            Software Engineer con 2+ a&ntilde;os construyendo APIs escalables y aplicaciones web con <strong className="text-white font-medium">Django, NestJS, React & Next.js</strong>. Certificado AWS. Disponible para roles remotos.
+                            2+ a&ntilde;os construyendo APIs y apps web en producci&oacute;n con <strong className="text-white font-medium">Django, NestJS, React & Next.js</strong>. Ganador regional de la <strong className="text-white font-medium">Hackathon Colombia 5.0 (MinTIC)</strong> y certificado AWS. Disponible para roles remotos.
                         </p>
 
                         {/* Tech Badges */}
@@ -89,8 +89,19 @@ export default function Hero() {
                         {/* CTAs */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative z-30">
                             <ShinyButton href="/contact" className="bg-[var(--accent-primary)] text-black hover:bg-amber-400 border-none px-8 py-4 text-base font-bold shadow-[0_0_20px_rgba(251,191,36,0.2)] hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-shadow">
-                                Contactar
+                                Contratar
                             </ShinyButton>
+
+                            <motion.a
+                                href="/CV_Nicolas_Moreno.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-colors backdrop-blur-sm w-full sm:w-auto"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Descargar CV <Download size={18} />
+                            </motion.a>
 
                             <Magnet padding={50} magnetStrength={3}>
                                 <motion.a
