@@ -125,14 +125,37 @@ export const skills = {
 };
 
 
+export const projectCategories = [
+  "Todos",
+  "IA & Agentes",
+  "Seguridad",
+  "Backend & IoT",
+  "Mobile & ML",
+  "Dev Tools",
+];
+
 export const projects = [
   {
     id: 1,
+    title: "GobIA Auditor — Swarm de Agentes IA",
+    description: "Orquestador de IA construido en la Hackathon Colombia 5.0 (MinTIC): un swarm de agentes auditan contratos públicos del SECOP II detectando riesgos de transparencia y posibles irregularidades de forma automática.",
+    tech: ["TypeScript", "AI Agents", "MiniMax M2", "Next.js", "REST API"],
+    github: "https://github.com/nicolas2601/orquestador-minimax",
+    category: "IA & Agentes",
+    featured: true,
+    metrics: [
+      { value: "Hackathon", label: "Colombia 5.0 · MinTIC" },
+      { value: "Multi-agente", label: "Auditoría SECOP II" }
+    ]
+  },
+  {
+    id: 2,
     title: "Plataforma IoT con Dashboard en Tiempo Real",
-    description: "Sistema de monitoreo en tiempo real para dispositivos IoT. Backend robusto que ingiere streams de telemetría de sensores y los visualiza al instante con gráficos en vivo y alertas por umbral.",
+    description: "Sistema de monitoreo en tiempo real inspirado en Azure IoT Central. Backend que ingiere streams de telemetría de sensores y los visualiza al instante con gráficos en vivo y alertas por umbral.",
     image: "/iot.png",
     tech: ["Django", "MQTT", "Next.js", "TimescaleDB", "WebSockets", "Docker"],
     github: "https://github.com/nicolas2601/IOT_Central",
+    category: "Backend & IoT",
     featured: true,
     metrics: [
       { value: "100+", label: "Dispositivos conectados" },
@@ -140,27 +163,16 @@ export const projects = [
     ]
   },
   {
-    id: 2,
-    title: "ghoscli — CLI de Codificación Agéntica",
-    description: "CLI propia de codificación con IA que corre en la terminal: TUI con Ink, loop de agente sobre API estilo /v1/messages, soporte multi-proveedor de LLM (Anthropic, MiniMax, OpenRouter), modos interactivo y headless, desarrollo guiado por specs y pruebas con bun:test.",
-    image: "/Portafolio.jpg",
-    tech: ["TypeScript", "Bun", "Ink", "React", "LLM", "TDD"],
-    featured: true,
-    metrics: [
-      { value: "Multi-LLM", label: "Anthropic / MiniMax" },
-      { value: "TDD", label: "Suite bun:test" }
-    ]
-  },
-  {
     id: 3,
-    title: "Sistema de Reservas Automatizado",
-    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo. Redujo el tiempo de gestión operativa mediante flujos automatizados con n8n y atención 24/7.",
-    image: "/reservas-dashboard.png",
-    tech: ["Django REST", "WhatsApp API", "PostgreSQL", "React", "n8n", "Docker"],
-    featured: true,
+    title: "CyberRisk 27001 — Auditoría de Seguridad",
+    description: "Evaluación de riesgos de ciberseguridad con ejercicios de Red Team, metodología MAGERIT e ISO/IEC 27001:2022. Incluye laboratorios prácticos de explotación y plan de tratamiento de riesgos.",
+    tech: ["Red Team", "ISO 27001", "MAGERIT", "Pentesting", "OWASP"],
+    github: "https://github.com/nicolas2601/hackathon-cyberrisk-27001",
+    category: "Seguridad",
+    featured: false,
     metrics: [
-      { value: "~80%", label: "Menos tiempo manual" },
-      { value: "24/7", label: "Bot de atención" }
+      { value: "4 labs", label: "Explotación práctica" },
+      { value: "ISO 27001", label: "Gestión de riesgo" }
     ]
   },
   {
@@ -170,10 +182,76 @@ export const projects = [
     image: "/lsc-app.png",
     tech: ["React Native", "FastAPI", "Transformers", "Python", "T5"],
     github: "https://github.com/nicolas2601/data-ciencia-lsc",
+    category: "Mobile & ML",
     featured: true,
     metrics: [
       { value: "Mobile", label: "Ejecución nativa" },
       { value: "Real-time", label: "Traducción de gestos" }
+    ]
+  },
+  {
+    id: 5,
+    title: "ghoscli — CLI de Codificación Agéntica",
+    description: "CLI propia de codificación con IA que corre en la terminal: TUI con Ink, loop de agente sobre API estilo /v1/messages, soporte multi-proveedor de LLM (Anthropic, MiniMax, OpenRouter), modos interactivo y headless y desarrollo guiado por specs.",
+    image: "/Portafolio.jpg",
+    tech: ["TypeScript", "Bun", "Ink", "React", "LLM", "TDD"],
+    category: "Dev Tools",
+    featured: false,
+    metrics: [
+      { value: "Multi-LLM", label: "Anthropic / MiniMax" },
+      { value: "TDD", label: "Suite bun:test" }
+    ]
+  },
+  {
+    id: 6,
+    title: "SQL Injection Lab — Demo OWASP",
+    description: "Dos aplicaciones Flask gemelas (una vulnerable, una blindada) que demuestran de forma didáctica inyección SQL, XSS, SSTI y otras fallas del OWASP Top 10, con sus respectivas mitigaciones.",
+    tech: ["Python", "Flask", "OWASP", "Security", "SQLi"],
+    github: "https://github.com/nicolas2601/sql-injection-demo",
+    category: "Seguridad",
+    featured: false,
+    metrics: [
+      { value: "9 vulns", label: "Demostradas + fix" },
+      { value: "OWASP", label: "Top 10 aplicado" }
+    ]
+  },
+  {
+    id: 7,
+    title: "Generador de Marcas de Ganado con IA",
+    description: "Herramienta web para un cliente real que genera sellos de marcado de ganado con IA generativa (Gemini), partiendo de 29 figuras oficiales registradas. Embebible en WordPress.",
+    tech: ["Preact", "Hono", "Gemini AI", "TypeScript", "Vercel"],
+    github: "https://github.com/nicolas2601/marca-ganado-generator",
+    category: "IA & Agentes",
+    featured: false,
+    metrics: [
+      { value: "Cliente real", label: "Producto entregado" },
+      { value: "29 figuras", label: "Catálogo oficial" }
+    ]
+  },
+  {
+    id: 8,
+    title: "Sistema de Reservas Automatizado",
+    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo. Redujo el tiempo de gestión operativa mediante flujos automatizados con n8n y atención 24/7.",
+    image: "/reservas-dashboard.png",
+    tech: ["Django REST", "WhatsApp API", "PostgreSQL", "React", "n8n", "Docker"],
+    category: "Backend & IoT",
+    featured: false,
+    metrics: [
+      { value: "~80%", label: "Menos tiempo manual" },
+      { value: "24/7", label: "Bot de atención" }
+    ]
+  },
+  {
+    id: 9,
+    title: "router-skills — Provisioner de Agent Skills",
+    description: "Herramienta CLI cross-platform (Linux/macOS/Windows) que fuerza a Claude Code y opencode a usar Agent Skills en cada turno. Tooling para developers que trabajan con agentes de IA.",
+    tech: ["Node.js", "CLI", "Bash", "AI Tooling"],
+    github: "https://github.com/nicolas2601/router-skills",
+    category: "Dev Tools",
+    featured: false,
+    metrics: [
+      { value: "3 OS", label: "Linux/macOS/Win" },
+      { value: "CLI", label: "Zero-config" }
     ]
   }
 ];

@@ -114,6 +114,26 @@ export default function Hero() {
                                 </motion.a>
                             </Magnet>
                         </div>
+
+                        {/* Credibility strip */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="mt-10 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start"
+                        >
+                            {[
+                                { value: "2+", label: "Años de experiencia" },
+                                { value: "9+", label: "Proyectos públicos" },
+                                { value: "Top", label: "Hackathon Colombia 5.0" },
+                                { value: "6", label: "Certificaciones" },
+                            ].map((s) => (
+                                <div key={s.label} className="flex flex-col items-center lg:items-start">
+                                    <span className="text-2xl md:text-3xl font-bold text-white font-space leading-none">{s.value}</span>
+                                    <span className="text-[11px] text-gray-400 uppercase tracking-wider mt-1">{s.label}</span>
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
 
                     {/* Visual Content / Profile Card */}

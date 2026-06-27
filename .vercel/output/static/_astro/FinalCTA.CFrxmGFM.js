@@ -1,4 +1,4 @@
-import{j as e,m as t}from"./proxy.Bx4XWWtb.js";import"./index.DtoOFyvK.js";import{S as i}from"./ShinyButton.Bl4G7mlD.js";import{c as s}from"./createLucideIcon.BjLgxr00.js";import{G as r}from"./github.C1GYMzad.js";import{F as o}from"./file-text.DOxYZ3Lh.js";import{M as n}from"./mail.FdTd9lNv.js";import"./cn.Bzm_o1ou.js";/**
+import{j as e,m as t}from"./proxy.DiKztg8X.js";import"./index.DtoOFyvK.js";import{S as i}from"./ShinyButton.DAG0E29j.js";import{c as s}from"./createLucideIcon.BjLgxr00.js";import{G as r}from"./github.C1GYMzad.js";import{F as o}from"./file-text.DOxYZ3Lh.js";import{M as n}from"./mail.FdTd9lNv.js";import"./cn.Bzm_o1ou.js";/**
  * @license lucide-react v0.554.0 - ISC
  *
  * This source code is licensed under the ISC license.
