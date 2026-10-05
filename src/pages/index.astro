@@ -1,30 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero";
-import Projects from "../components/Projects";
-import TechStack from "../components/TechStack";
-import FinalCTA from "../components/FinalCTA";
+import P5Menu from "../components/P5Menu";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeaturedProjects from "../components/home/FeaturedProjects.astro";
+import "../styles/home.css";
 
 export const prerender = true;
 ---
 
 <Layout
-	title="Nicolas Moreno | Remote Backend & Full-Stack Developer | Django, NestJS, React | Colombia"
-	description="Hire Nicolas Moreno — Remote Software Engineer from Colombia. 2+ years building scalable APIs with Django, NestJS, React & Docker. AWS certified. Available for contract & full-time remote roles in LATAM timezone."
+	title="Nicolás Moreno | Software Engineer & Full-Stack Developer"
+	description="Nicolás Moreno, Software Engineer & Full-Stack Developer en Bucaramanga. Más de 2 años con Django, NestJS, React y automatización. Disponible remoto."
 >
-	<div class="relative z-10 w-full overflow-hidden">
-		<Hero client:load />
+	<div class="home-page">
+		<div class="home-stage">
+			<HomeHero />
 
-		{/* Proof first: real projects with measurable impact for recruiters */}
-		<div id="projects">
-			<Projects client:visible />
+			<section class="home-menu-section" aria-labelledby="home-menu-title">
+				<div class="home-section-heading">
+					<p class="home-kicker">Navigation / 01</p>
+					<h2 id="home-menu-title" class="p5-display home-section-title">Choose a route</h2>
+				</div>
+				<P5Menu client:load />
+			</section>
 		</div>
 
-		{/* Skills + credibility metrics */}
-		<TechStack client:visible />
-
-		<div id="contact">
-			<FinalCTA client:visible />
-		</div>
+		<FeaturedProjects />
 	</div>
 </Layout>

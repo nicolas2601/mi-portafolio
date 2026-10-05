@@ -1,0 +1,57 @@
+---
+import { personalInfo } from "../../data/info";
+import { p5Assets } from "../../lib/p5-assets";
+
+const [bioLead, bioHighlights = ""] = personalInfo.bio.split("\n\n");
+const firstBioSentence = `${bioLead.split(". ")[0]}.`;
+const valueProposition = `${firstBioSentence.replace(
+	"Desarrollador Full-Stack y estudiante de Ingeniería de Sistemas (UNAB, 8° semestre) con más de 2 años construyendo ",
+	"Construyo ",
+)} ${bioHighlights.split(". ")[0]}.`;
+const availability = bioHighlights.split(". ").at(-1) ?? "";
+---
+
+<section class="home-hero" aria-labelledby="home-title">
+	<div class="home-hero-art" aria-hidden="true">
+		<img
+			src={p5Assets.jokerFace.src}
+			alt=""
+			width={p5Assets.jokerFace.width}
+			height={p5Assets.jokerFace.height}
+			loading="eager"
+			fetchpriority="high"
+			decoding="async"
+		/>
+	</div>
+
+	<div class="home-identity home-reveal" style="--home-delay: 80ms">
+		<p class="home-kicker">Portfolio / Nicolás Moreno</p>
+		<h1 id="home-title" class="p5-display home-name">{personalInfo.name}</h1>
+		<p class="home-role">{personalInfo.title}</p>
+		<p class="home-value">{valueProposition}</p>
+		<p class="home-availability">
+			<span class="home-status-dot" aria-hidden="true"></span>
+			{availability}
+		</p>
+
+		<nav class="home-actions" aria-label="Direct links">
+			<a class="home-action home-action-primary" href="/CV_Nicolas_Moreno.pdf" download>
+				<span>Download CV</span>
+			</a>
+			<a class="home-action" href={personalInfo.socialLinks.github} target="_blank" rel="noreferrer">
+				<span>GitHub</span>
+			</a>
+			<a class="home-action" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noreferrer">
+				<span>LinkedIn</span>
+			</a>
+			<a class="home-action" href={`mailto:${personalInfo.email}`}>
+				<span>Email</span>
+			</a>
+		</nav>
+	</div>
+
+	<div class="home-hero-mark home-reveal" style="--home-delay: 220ms" aria-hidden="true">
+		<span>NM</span>
+		<span>CO / GMT-5</span>
+	</div>
+</section>
