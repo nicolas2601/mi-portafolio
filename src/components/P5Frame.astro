@@ -10,7 +10,10 @@ import P5Background from "./P5Background.astro";
     <a href="/" class="p5-frame-brand" aria-label="Nicolas Moreno home">
       <span>NM / SYSTEMS</span>
     </a>
-    <span class="p5-frame-meta">Bucaramanga / CO</span>
+    <div class="p5-frame-tools">
+      <span class="p5-frame-meta">Bucaramanga / CO</span>
+      <BackgroundMusic client:idle transition:persist="p5-music" />
+    </div>
   </header>
 
   <div class="relative z-10">
@@ -22,5 +25,4 @@ import P5Background from "./P5Background.astro";
     <p>Visual style inspired by Persona 5. Fan tribute, not affiliated with Atlus.</p>
   </footer>
 
-  <BackgroundMusic client:idle />
 </div>
