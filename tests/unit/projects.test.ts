@@ -49,4 +49,18 @@ describe("coverFor", () => {
 
     expect(coverFor(project)).toEqual({ kind: "screenshot", src: "/iot.png" });
   });
+
+  it("generates deterministic typographic data for non-allowlisted images", () => {
+    const project = {
+      title: "GobIA Auditor",
+      category: "IA & Agentes",
+      image: "/Portafolio.jpg",
+    };
+
+    const cover = coverFor(project);
+
+    expect(cover).toMatchObject({ kind: "generated", initials: "GA" });
+    expect(cover.tone).toMatch(/^tone-/);
+    expect(coverFor(project)).toEqual(cover);
+  });
 });

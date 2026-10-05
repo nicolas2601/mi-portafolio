@@ -20,6 +20,19 @@ const screenshotPaths = new Set([
   "/reservas-dashboard.png",
 ]);
 
+function initialsFor(title: string): string {
+  const words = title.trim().split(/\s+/).filter(Boolean);
+  if (words.length > 1) return words.slice(0, 2).map((word) => word[0]).join("").toUpperCase();
+  return title.trim().slice(0, 2).toUpperCase();
+}
+
+function toneFor(title: string, category: string): string {
+  const seed = `${category}:${title}`;
+  let hash = 0;
+  for (const character of seed) hash = (hash * 31 + character.charCodeAt(0)) % 4;
+  return `tone-${hash}`;
+}
+
 export type ProjectCover =
   | { kind: "screenshot"; src: string }
   | { kind: "generated"; initials: string; tone: string };
@@ -29,5 +42,9 @@ export function coverFor(project: { image?: string; title: string; category: str
     return { kind: "screenshot", src: project.image };
   }
 
-  return { kind: "generated", initials: "", tone: "" };
+  return {
+    kind: "generated",
+    initials: initialsFor(project.title),
+    tone: toneFor(project.title, project.category),
+  };
 }
