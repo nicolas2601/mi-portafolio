@@ -1,0 +1,69 @@
+---
+import { p5Assets } from "../../lib/p5-assets";
+
+type PersonalInfo = {
+  name: string;
+  nm: string;
+  title: string;
+  avatar: string;
+};
+
+interface Props {
+  info: PersonalInfo;
+}
+
+const { info } = Astro.props;
+---
+
+<header class="about-hero">
+  <div class="about-hero-copy">
+    <p class="about-kicker">PLAYER PROFILE / 01</p>
+    <h1 class="about-title">About me</h1>
+    <p class="about-name">{info.name}</p>
+    <p class="about-role">{info.title}</p>
+  </div>
+
+  <div class="about-portrait-wrap">
+    <div class="about-portrait-frame">
+      <img
+        class="about-portrait"
+        src={info.avatar}
+        alt="Retrato de Nicolás Santiago Moreno Monroy, desarrollador de software"
+        width="720"
+        height="900"
+        fetchpriority="high"
+      />
+      <span class="about-portrait-label">N. MORENO</span>
+    </div>
+    <img
+      class="about-art about-art-left"
+      src={p5Assets.char1.src}
+      width={p5Assets.char1.width}
+      height={p5Assets.char1.height}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    />
+    <img
+      class="about-art about-art-right"
+      src={p5Assets.icon1.src}
+      width={p5Assets.icon1.width}
+      height={p5Assets.icon1.height}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="about-hero-mark" aria-hidden="true">
+    <img
+      src={p5Assets.jokerFace.src}
+      width={p5Assets.jokerFace.width}
+      height={p5Assets.jokerFace.height}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    />
+    <span>IDENTITY</span>
+  </div>
+</header>

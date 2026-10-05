@@ -1,0 +1,39 @@
+---
+type Education = {
+  degree: string;
+  institution: string;
+  period: string;
+  expectedGraduation?: string;
+  location?: string;
+  status: string;
+};
+
+interface Props {
+  items: Education[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="about-section about-education" aria-labelledby="education-title">
+  <div class="about-section-heading">
+    <p class="about-index">03 / ORIGIN</p>
+    <h2 id="education-title">Education</h2>
+  </div>
+
+  <div class="education-ledger">
+    {items.map((item, index) => (
+      <article class:list={["education-entry", { "education-entry-featured": index === 0 }]}>
+        <span class="education-number">0{index + 1}</span>
+        <div class="education-main">
+          <h3>{item.degree}</h3>
+          <p>{item.institution}</p>
+        </div>
+        <div class="education-meta">
+          <span>{item.period}</span>
+          <span>{item.status}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
