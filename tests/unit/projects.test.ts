@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterProjects, sortFeaturedFirst } from "../../src/lib/projects";
+import { coverFor, filterProjects, sortFeaturedFirst } from "../../src/lib/projects";
 
 const sampleProjects = [
   { id: 1, title: "Alpha", category: "Dev Tools" },
@@ -40,5 +40,13 @@ describe("sortFeaturedFirst", () => {
 
     expect(sortFeaturedFirst(projects).map((project) => project.id)).toEqual([1, 7, 3, 9]);
     expect(projects.map((project) => project.id)).toEqual([9, 7, 3, 1]);
+  });
+});
+
+describe("coverFor", () => {
+  it("keeps an allowlisted project image as a screenshot cover", () => {
+    const project = { title: "IoT", category: "Backend & IoT", image: "/iot.png" };
+
+    expect(coverFor(project)).toEqual({ kind: "screenshot", src: "/iot.png" });
   });
 });
