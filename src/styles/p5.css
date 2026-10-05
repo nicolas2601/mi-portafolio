@@ -3,6 +3,7 @@
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
 @import "./menu.css";
+@import "./nav.css";
 
 @font-face {
   font-family: "Persona 5 Fan";
@@ -17,6 +18,9 @@
   --p5-black: #0d0d0d;
   --p5-white: #ffffff;
   --p5-surface: #1b1b1b;
+  --p5-violet: #7b3fe4;
+  --p5-violet-deep: #24123f;
+  --p5-lilac: #c9b0ff;
   --p5-font-display: "Anton", Impact, sans-serif;
   --p5-font-fan: "Persona 5 Fan", var(--p5-font-display);
   --p5-font-body: "Inter", system-ui, sans-serif;
@@ -89,7 +93,9 @@
     var(--p5-red) 14% 22%,
     var(--p5-black) 22% 38%,
     var(--p5-white) 38% 39%,
-    var(--p5-black) 39% 57%
+    var(--p5-black) 39% 44%,
+    var(--p5-violet) 44% 47%,
+    var(--p5-black) 47% 57%
   );
   opacity: 0.13;
   transform: rotate(-4deg) translate3d(0, 0, 0);
@@ -128,14 +134,14 @@
 }
 
 .p5-frame-header {
-  position: relative;
-  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 30;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   min-height: 4.5rem;
   padding: 0.75rem clamp(1.25rem, 4vw, 3rem);
   border-bottom: 1px solid color-mix(in srgb, var(--p5-white) 18%, transparent);
+  background: var(--p5-black);
 }
 
 .p5-frame-brand {
@@ -276,7 +282,7 @@
 .p5-music__slider {
   width: 0;
   opacity: 0;
-  accent-color: var(--p5-red);
+  accent-color: var(--p5-violet);
   cursor: pointer;
   transition: width 220ms var(--p5-ease-out), opacity 160ms ease;
 }
@@ -386,7 +392,6 @@
 }
 
 @media (max-width: 480px) {
-  .p5-frame-header,
   .p5-frame-footer {
     align-items: flex-start;
     flex-direction: column;

@@ -1,6 +1,10 @@
 ---
 import BackgroundMusic from "./BackgroundMusic";
 import P5Background from "./P5Background.astro";
+import PageFlow from "./PageFlow.astro";
+import SiteNav from "./SiteNav.astro";
+
+const isHome = Astro.url.pathname === "/";
 ---
 
 <div class="p5-shell">
@@ -10,6 +14,7 @@ import P5Background from "./P5Background.astro";
     <a href="/" class="p5-frame-brand" aria-label="NM / SYSTEMS home">
       <span>NM / SYSTEMS</span>
     </a>
+    <SiteNav />
     <div class="p5-frame-tools">
       <span class="p5-frame-meta">Bucaramanga / CO</span>
       <BackgroundMusic client:idle transition:persist="p5-music" />
@@ -18,6 +23,7 @@ import P5Background from "./P5Background.astro";
 
   <div class="relative z-10">
     <slot />
+    {!isHome && <PageFlow />}
   </div>
 
   <footer class="p5-frame-footer">
@@ -27,3 +33,27 @@ import P5Background from "./P5Background.astro";
   </footer>
 
 </div>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  const EDITABLE = "input, textarea, select, [contenteditable='true']";
+
+  // Escape always leads back to the main menu, like the back button of a game.
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || event.defaultPrevented) return;
+    if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
+    if (window.location.pathname === "/") return;
+    if (event.target instanceof Element && event.target.closest(EDITABLE)) return;
+
+    event.preventDefault();
+    navigate("/");
+  });
+
+  // On narrow screens the section nav scrolls sideways: keep the current page in view.
+  document.addEventListener("astro:page-load", () => {
+    document
+      .querySelector(".p5-nav__link[aria-current='page']")
+      ?.scrollIntoView({ inline: "center", block: "nearest" });
+  });
+</script>

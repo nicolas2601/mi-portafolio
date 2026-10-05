@@ -1,0 +1,22 @@
+---
+import { isCurrentRoute, siteRoutes } from "../lib/nav";
+
+const pathname = Astro.url.pathname;
+---
+
+<nav class="p5-nav" aria-label="Site sections">
+  <ul class="p5-nav__list">
+    {siteRoutes.map((route) => (
+      <li>
+        <a
+          class="p5-nav__link"
+          href={route.href}
+          title={route.hint}
+          aria-current={isCurrentRoute(pathname, route.href) ? "page" : undefined}
+        >
+          <span>{route.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

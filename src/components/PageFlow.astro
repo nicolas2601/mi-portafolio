@@ -1,0 +1,31 @@
+---
+import { neighborsOf } from "../lib/nav";
+
+const { previous, next } = neighborsOf(Astro.url.pathname);
+---
+
+<aside class="page-flow" aria-label="Keep exploring">
+  <p class="page-flow__kicker">Keep exploring</p>
+  <div class="page-flow__links">
+    {previous && (
+      <a class="page-flow__link page-flow__link--previous" href={previous.href} rel="prev">
+        <span class="page-flow__direction" aria-hidden="true">←</span>
+        <span class="page-flow__text">
+          <strong>{previous.label}</strong>
+          <small>{previous.hint}</small>
+        </span>
+      </a>
+    )}
+    <a class="page-flow__menu" href="/">Back to menu</a>
+    {next && (
+      <a class="page-flow__link page-flow__link--next" href={next.href} rel="next">
+        <span class="page-flow__text">
+          <strong>{next.label}</strong>
+          <small>{next.hint}</small>
+        </span>
+        <span class="page-flow__direction" aria-hidden="true">→</span>
+      </a>
+    )}
+  </div>
+  <p class="page-flow__esc" aria-hidden="true"><kbd>Esc</kbd> returns to the menu</p>
+</aside>

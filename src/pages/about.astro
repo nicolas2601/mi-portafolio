@@ -4,7 +4,6 @@ import AboutBio from "../components/about/AboutBio.astro";
 import AboutCertifications from "../components/about/AboutCertifications.astro";
 import AboutEducation from "../components/about/AboutEducation.astro";
 import AboutHero from "../components/about/AboutHero.astro";
-import AboutLinks from "../components/about/AboutLinks.astro";
 import AboutSkills from "../components/about/AboutSkills.astro";
 import { certifications, education, personalInfo, skills } from "../data/info";
 import "../styles/about.css";
@@ -25,6 +24,5 @@ const bioParagraphs = personalInfo.bio.split(/\n\s*\n/);
     <AboutEducation items={education} />
     <AboutCertifications items={certifications} />
     <AboutSkills groups={skills} />
-    <AboutLinks />
   </div>
 </Layout>

@@ -3,6 +3,7 @@ import {
   clampMenuIndex,
   menuActionForKey,
   moveMenuIndex,
+  resolveMenuKey,
 } from "../../src/lib/menu";
 
 describe("clampMenuIndex", () => {
@@ -27,5 +28,32 @@ describe("menuActionForKey", () => {
     expect(menuActionForKey("ArrowDown")).toBe("next");
     expect(menuActionForKey("Enter")).toBe("activate");
     expect(menuActionForKey("Escape")).toBe("ignore");
+  });
+});
+
+describe("resolveMenuKey", () => {
+  const idle = { hasModifier: false, isEditing: false, focusIsOnPage: true };
+
+  it("accepts arrows and W/S from anywhere on the page", () => {
+    expect(resolveMenuKey("ArrowDown", idle)).toBe("next");
+    expect(resolveMenuKey("ArrowUp", idle)).toBe("previous");
+    expect(resolveMenuKey("s", idle)).toBe("next");
+    expect(resolveMenuKey("W", idle)).toBe("previous");
+  });
+
+  it("opens the active entry with Enter only when nothing else has focus", () => {
+    expect(resolveMenuKey("Enter", idle)).toBe("activate");
+    expect(resolveMenuKey("Enter", { ...idle, focusIsOnPage: false })).toBe("ignore");
+  });
+
+  it("never steals keys from text fields or shortcuts", () => {
+    expect(resolveMenuKey("ArrowDown", { ...idle, isEditing: true })).toBe("ignore");
+    expect(resolveMenuKey("s", { ...idle, isEditing: true })).toBe("ignore");
+    expect(resolveMenuKey("ArrowDown", { ...idle, hasModifier: true })).toBe("ignore");
+  });
+
+  it("ignores unrelated keys", () => {
+    expect(resolveMenuKey("Tab", idle)).toBe("ignore");
+    expect(resolveMenuKey("Escape", idle)).toBe("ignore");
   });
 });

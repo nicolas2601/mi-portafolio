@@ -69,10 +69,9 @@ test.describe("home menu", () => {
     await context.close();
   });
 
-  test("arrow keys move focus and Enter follows the focused link", async ({ page }) => {
+  test("arrow keys work without focusing the menu first, Enter opens the entry", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
-    await menu.getByRole("link").first().focus();
 
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
@@ -84,10 +83,20 @@ test.describe("home menu", () => {
     await expect(page).toHaveURL(/\/resume$/);
   });
 
+  test("Enter alone opens the first entry and W/S also move", async ({ page }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+    const menu = page.getByRole("navigation", { name: "Primary navigation" });
+    await page.keyboard.press("s");
+    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/projects");
+    await page.keyboard.press("w");
+    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/about");
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/\/about$/);
+  });
+
   test("keyboard cannot move before the first entry", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
-    await menu.getByRole("link").first().focus();
     await page.keyboard.press("ArrowUp");
     await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/about");
     const focusedHref = await page.evaluate(() => document.activeElement?.getAttribute("href"));

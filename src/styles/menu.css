@@ -115,3 +115,35 @@
 	.p5-menu-link__star { transition-duration: 0ms; }
 	.p5-menu-link[data-active="true"] { transform: translateX(var(--p5-menu-offset, 0)) rotate(var(--p5-menu-rotate, 0deg)); }
 }
+
+.p5-menu__hint {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	margin: 0.9rem 0.4rem 0 0;
+	color: color-mix(in srgb, var(--p5-white) 80%, transparent);
+	font: 600 0.68rem/1 var(--p5-font-body);
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	animation: p5-menu-entry 520ms var(--p5-ease-out) 760ms both;
+}
+
+.p5-menu__hint kbd {
+	display: inline-grid;
+	min-width: 1.7rem;
+	height: 1.7rem;
+	padding: 0 0.45rem;
+	place-items: center;
+	background: var(--p5-white);
+	box-shadow: 0.15rem 0.15rem 0 var(--p5-violet);
+	color: var(--p5-black);
+	font: 700 0.72rem/1 var(--p5-font-body);
+	letter-spacing: 0.04em;
+	transform: skewX(-8deg);
+}
+
+.p5-menu__hint span { margin-right: 0.5rem; }
+
+@media (hover: none), (max-width: 860px) {
+	.p5-menu__hint { display: none; }
+}
