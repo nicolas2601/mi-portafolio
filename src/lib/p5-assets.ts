@@ -15,7 +15,6 @@ export const p5Assets = {
 
 export const p5Audio = {
   background: "/audio/background.mp3",
-  select: "/audio/select.mp3",
 } as const;
 
 export const p5Fonts = {
