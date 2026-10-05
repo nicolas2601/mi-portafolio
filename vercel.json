@@ -3,6 +3,9 @@
   "outputDirectory": ".vercel/output",
   "framework": "astro",
   "installCommand": "pnpm install --no-frozen-lockfile",
+  "redirects": [
+    { "source": "/services", "destination": "/", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
