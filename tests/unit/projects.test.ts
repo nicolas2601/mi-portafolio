@@ -10,4 +10,8 @@ describe("filterProjects", () => {
   it("returns every project for Todos", () => {
     expect(filterProjects(sampleProjects, "Todos")).toEqual(sampleProjects);
   });
+
+  it("returns only projects in the selected category", () => {
+    expect(filterProjects(sampleProjects, "Seguridad")).toEqual([sampleProjects[1]]);
+  });
 });
