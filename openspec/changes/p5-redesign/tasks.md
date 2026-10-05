@@ -1,7 +1,7 @@
 ## Wave 1 - Foundation (serial, one agent; blocks later waves)
 
-- [ ] 1.1 Remove `@tailwindcss/vite`; confirm `astro build` still green on Tailwind 3
-- [ ] 1.2 Add vitest + Playwright config and `npm test` / `npm run test:e2e` scripts
+- [x] 1.1 Remove `@tailwindcss/vite`; confirm `astro build` still green on Tailwind 3
+- [x] 1.2 Add vitest + Playwright config and `npm test` / `npm run test:e2e` scripts
 - [ ] 1.3 RED/GREEN: menu reducer in `src/lib/menu.ts` (clamp, next/prev, key mapping) with unit tests
 - [ ] 1.4 Add OFL display font via `@fontsource`; record license in `docs/` note or PR text
 - [ ] 1.5 Create `src/styles/p5.css` (tokens, skew/clip-path utilities, stripe keyframes, reduced-motion rules)
