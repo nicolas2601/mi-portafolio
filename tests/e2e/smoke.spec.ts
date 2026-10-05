@@ -65,7 +65,7 @@ test.describe("home menu", () => {
       .getByRole("navigation", { name: "Primary navigation" })
       .getByRole("link")
       .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
-    expect(hrefs).toEqual(expect.arrayContaining(["/about", "/projects", "/resume", "/contact"]));
+    expect(hrefs).toEqual(["/about", "/projects", "/resume", "/contact"]);
     await context.close();
   });
 
@@ -76,10 +76,10 @@ test.describe("home menu", () => {
 
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
-    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/projects");
+    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/resume");
 
     await page.keyboard.press("Enter");
-    await expect(page).toHaveURL(/\/projects$/);
+    await expect(page).toHaveURL(/\/resume$/);
   });
 
   test("keyboard cannot move before the first entry", async ({ page }) => {
@@ -87,6 +87,6 @@ test.describe("home menu", () => {
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
     await menu.getByRole("link").first().focus();
     await page.keyboard.press("ArrowUp");
-    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/");
+    await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/about");
   });
 });
