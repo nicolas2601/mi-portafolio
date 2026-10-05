@@ -29,3 +29,6 @@ pnpm-debug.log*
 =======
 .DS_Store
 >>>>>>> e94b0b812f3f84289afe8670c6d1bbbeadb7eea5
+
+# OpenSpec tooling
+.claude/
