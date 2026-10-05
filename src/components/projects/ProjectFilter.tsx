@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { filterProjects } from "../../lib/projects";
 
 interface ProjectFilterProps {
   categories: readonly string[];
 }
 
-function setProjectVisibility(category: string) {
-  const items = document.querySelectorAll<HTMLElement>("[data-project-item]");
+interface Counts {
+  visible: number;
+  total: number;
+}
+
+function readItems() {
+  return Array.from(document.querySelectorAll<HTMLElement>("[data-project-item]")).map(
+    (element) => ({ element, category: element.dataset.category ?? "" }),
+  );
+}
+
+function applyCategory(category: string): Counts {
+  const items = readItems();
+  const visible = new Set(filterProjects(items, category).map((item) => item.element));
   items.forEach((item) => {
-    item.hidden = category !== "Todos" && item.dataset.category !== category;
+    item.element.hidden = !visible.has(item.element);
   });
+  return { visible: visible.size, total: items.length };
 }
 
 export default function ProjectFilter({ categories }: ProjectFilterProps) {
   const [activeCategory, setActiveCategory] = useState("Todos");
+  const [counts, setCounts] = useState<Counts | null>(null);
+
+  useEffect(() => {
+    setCounts(applyCategory("Todos"));
+  }, []);
 
   function selectCategory(category: string) {
     setActiveCategory(category);
-    setProjectVisibility(category);
+    setCounts(applyCategory(category));
   }
 
   return (
@@ -35,6 +54,9 @@ export default function ProjectFilter({ categories }: ProjectFilterProps) {
           </button>
         ))}
       </div>
+      <p className="project-filter__count" role="status">
+        {counts ? `Showing ${counts.visible} of ${counts.total} projects` : ""}
+      </p>
     </div>
   );
 }
