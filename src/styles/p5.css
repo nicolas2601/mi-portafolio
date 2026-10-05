@@ -182,6 +182,7 @@
 .p5-frame-footer {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -197,6 +198,15 @@
   min-height: 44px;
   color: var(--p5-white);
   text-underline-offset: 0.25em;
+}
+
+.p5-frame-footer__credits {
+  flex: 0 0 100%;
+  margin: 0;
+  text-wrap: pretty;
+  color: color-mix(in srgb, var(--p5-white) 56%, transparent);
+  font-size: 0.68rem;
+  line-height: 1.5;
 }
 
 .p5-frame-footer__mark {
