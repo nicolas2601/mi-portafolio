@@ -7,6 +7,7 @@ import Dock from "../components/ui/Dock";
 import Footer from "../components/Footer";
 import FluidCursor from "../components/ui/FluidCursor";
 import P5Frame from "../components/P5Frame.astro";
+import StripeTransition from "../components/StripeTransition";
 
 export interface Props {
   title: string;
@@ -177,6 +178,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </a>
     <FluidCursor client:load />
     <Dock client:load />
+    <StripeTransition client:load />
 
     <P5Frame>
       <main id="main-content">
