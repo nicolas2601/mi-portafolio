@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ExperienceTimeline from "../components/resume/ExperienceTimeline.astro";
 import EducationLedger from "../components/resume/EducationLedger.astro";
-import CertificationLedger from "../components/resume/CertificationLedger.astro";
+import CertificationBoard from "../components/resume/CertificationBoard.astro";
 import SkillClouds from "../components/resume/SkillClouds.astro";
 import { certifications, education, personalInfo, skills, workExperience } from "../data/info";
 import "../styles/resume.css";
@@ -22,19 +22,20 @@ export const prerender = true;
         <p class="resume-intro-role">{personalInfo.title} / {personalInfo.location}</p>
       </div>
       <div class="resume-actions" aria-label="Resume actions">
-        <a class="resume-action" href="/CV_Nicolas_Moreno.pdf" download="Nicolas-Moreno-CV.pdf">Download CV PDF</a>
+        <a class="resume-action" href="/CV_Nicolas_Moreno.pdf" download="Nicolas_Moreno_CV_AI_Engineer.pdf">CV en español (PDF)</a>
+        <a class="resume-action" href="/Resume_Nicolas_Moreno_EN.pdf" download="Nicolas_Moreno_Resume_AI_Engineer_EN.pdf">Resume in English (PDF)</a>
         <a class="resume-action" href="/contact">Contact Nicolas</a>
       </div>
     </header>
 
     <ExperienceTimeline entries={workExperience} />
     <EducationLedger entries={education} />
-    <CertificationLedger entries={certifications} />
+    <CertificationBoard entries={certifications} />
     <SkillClouds groups={skills} />
 
     <div class="resume-final-actions">
-      <p>Full profile available as a printable PDF.</p>
-      <a href="/CV_Nicolas_Moreno.pdf" download="Nicolas-Moreno-CV.pdf">Download printable CV</a>
+      <p>AI Engineer profile, one page, in Spanish and English.</p>
+      <a href="/CV_Nicolas_Moreno.pdf" download="Nicolas_Moreno_CV_AI_Engineer.pdf">Download printable CV</a>
     </div>
   </div>
 </Layout>

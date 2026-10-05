@@ -55,42 +55,17 @@ export const education = [
 ];
 
 export const certifications = [
-  {
-    name: "Programming Essentials in Python",
-    issuer: "Cisco Networking Academy",
-    date: "Noviembre 2023",
-    type: "Curso"
-  },
-  {
-    name: "Cloud Foundations",
-    issuer: "AWS Academy",
-    date: "2025",
-    type: "Curso académico"
-  },
-  {
-    name: "Data Engineering",
-    issuer: "AWS Academy",
-    date: "2025",
-    type: "Curso académico"
-  },
-  {
-    name: "Machine Learning For Natural Language Processing",
-    issuer: "AWS Academy",
-    date: "2025",
-    type: "Curso académico"
-  },
-  {
-    name: "Generative AI Foundations",
-    issuer: "AWS Academy",
-    date: "2025",
-    type: "Curso académico"
-  },
-  {
-    name: "Introduction to IoT",
-    issuer: "Cisco Networking Academy",
-    date: "2025",
-    type: "Curso"
-  }
+  { name: "Ethical Hacker", issuer: "Cisco", issuedAt: "2026-05", date: "Mayo 2026", type: "Curso" },
+  { name: "Linux Unhatched", issuer: "Cisco", issuedAt: "2026-03", date: "Marzo 2026", type: "Curso" },
+  { name: "Introduction to Cybersecurity", issuer: "Cisco", issuedAt: "2026-03", date: "Marzo 2026", type: "Curso" },
+  { name: "Networking Academy Learn-A-Thon 2025", issuer: "Cisco", issuedAt: "2026-01", date: "Enero 2026", type: "Evento" },
+  { name: "Introduction to IoT", issuer: "Cisco", issuedAt: "2025-11", date: "Noviembre 2025", type: "Curso" },
+  { name: "Programming Essentials in Python", issuer: "Cisco", issuedAt: "2023-11", date: "Noviembre 2023", type: "Curso" },
+  { name: "Machine Learning for Natural Language Processing", issuer: "AWS Academy", issuedAt: "2025-11", date: "Noviembre 2025", type: "Curso académico" },
+  { name: "Generative AI Foundations", issuer: "AWS Academy", issuedAt: "2025-11", date: "Noviembre 2025", type: "Curso académico" },
+  { name: "Data Engineering", issuer: "AWS Academy", issuedAt: "2025-09", date: "Septiembre 2025", type: "Curso académico" },
+  { name: "Cloud Foundations", issuer: "AWS Academy", issuedAt: "2025-09", date: "Septiembre 2025", type: "Curso académico" },
+  { name: "EF SET English Certificate", issuer: "EF SET", issuedAt: null, date: "", type: "Examen de inglés", detail: "69/100 (C1 Advanced)" }
 ];
 
 export const workExperience = [

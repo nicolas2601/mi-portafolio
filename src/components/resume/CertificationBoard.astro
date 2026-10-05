@@ -1,0 +1,49 @@
+---
+import { groupCertifications } from "../../lib/certifications";
+import type { Certification } from "../../lib/certifications";
+import "../../styles/credentials.css";
+
+interface Props {
+  entries: Certification[];
+}
+
+const { entries } = Astro.props;
+const groups = groupCertifications(entries);
+const slugFor = (issuer: string) => issuer.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+---
+
+<section class="credentials" id="credentials" aria-labelledby="credentials-title">
+  <div class="credentials-heading">
+    <p class="credentials-kicker">03 / CREDENTIAL BOARD</p>
+    <h2 id="credentials-title">Certifications</h2>
+    <p class="credentials-total">
+      <strong>{entries.length}</strong> credentials from {groups.length} issuers
+    </p>
+  </div>
+
+  <div class="credentials-board">
+    {groups.map((group, index) => (
+      <article
+        class={`credential-sheet credential-sheet--${slugFor(group.issuer)}`}
+        style={`--sheet-index: ${index}`}
+      >
+        <header class="credential-sheet__head">
+          <h3>{group.issuer}</h3>
+          <span class="credential-sheet__count" aria-label={`${group.items.length} credentials`}>{group.items.length}</span>
+        </header>
+        <ul class="credential-sheet__list">
+          {group.items.map((item) => (
+            <li class="credential-chip">
+              <span class="credential-chip__name">{item.name}</span>
+              {item.detail && <span class="credential-chip__detail">{item.detail}</span>}
+              <span class="credential-chip__meta">
+                {item.type}
+                {item.date && <> · <time>{item.date}</time></>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

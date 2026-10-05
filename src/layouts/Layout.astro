@@ -4,6 +4,7 @@ import "../styles/global.css";
 import "../styles/p5.css";
 import P5Frame from "../components/P5Frame.astro";
 import StripeTransition from "../components/StripeTransition";
+import { certifications } from "../data/info";
 
 export interface Props {
   title: string;
@@ -125,14 +126,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "name": "Universidad Autonoma de Bucaramanga",
         "sameAs": "https://www.unab.edu.co"
       },
-      "hasCredential": [
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Cloud Foundations", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Data Engineering", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Machine Learning for NLP", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Generative AI Foundations", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
-        { "@type": "EducationalOccupationalCredential", "name": "AWS Academy Introduction to IoT", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Amazon Web Services" } },
-        { "@type": "EducationalOccupationalCredential", "name": "Programming Essentials in Python", "credentialCategory": "Certificate", "recognizedBy": { "@type": "Organization", "name": "Cisco Networking Academy" } }
-      ]
+      "hasCredential": certifications.map((certification) => ({
+        "@type": "EducationalOccupationalCredential",
+        "name": `${certification.issuer} ${certification.name}`,
+        "credentialCategory": certification.type,
+        "recognizedBy": { "@type": "Organization", "name": certification.issuer }
+      }))
     })} />
 
     <script type="application/ld+json" set:html={JSON.stringify({

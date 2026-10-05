@@ -1,38 +1,32 @@
 ---
-type Certification = {
-  name: string;
-  issuer: string;
-  date: string;
-  type: string;
-};
+import { groupCertifications } from "../../lib/certifications";
+import type { Certification } from "../../lib/certifications";
+import "../../styles/credentials.css";
 
 interface Props {
   items: Certification[];
 }
 
 const { items } = Astro.props;
+const groups = groupCertifications(items);
 ---
 
-<section class="about-section about-certifications" aria-labelledby="certifications-title">
+<section class="about-section credentials-teaser" aria-labelledby="certifications-title">
   <div class="about-section-heading about-section-heading-wide">
     <p class="about-index">04 / CLEARANCE</p>
     <h2 id="certifications-title">Certifications</h2>
-    <p class="about-section-note">Six completed records from Cisco Networking Academy and AWS Academy.</p>
   </div>
 
-  <div class="certification-ledger">
-    {items.map((item, index) => (
-      <article class:list={["certification-entry", { "certification-entry-featured": index === 0 }]}>
-        <div class="certification-count">{String(index + 1).padStart(2, "0")}</div>
-        <div class="certification-body">
-          <p class="certification-type">{item.type}</p>
-          <h3>{item.name}</h3>
-        </div>
-        <div class="certification-issuer">
-          <span>{item.issuer}</span>
-          <time>{item.date}</time>
-        </div>
-      </article>
+  <ul class="credentials-teaser__issuers">
+    {groups.map((group) => (
+      <li>
+        <strong>{group.items.length}</strong>
+        <span>{group.issuer}</span>
+      </li>
     ))}
-  </div>
+  </ul>
+  <p class="credentials-teaser__note">
+    Networking, cybersecurity, cloud, data and AI courses, plus an English proficiency exam.
+    <a href="/resume#credentials">See every credential</a>
+  </p>
 </section>
