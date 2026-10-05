@@ -1,24 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero";
-import ProjectsComponent from "../components/Projects";
-import FinalCTA from "../components/FinalCTA";
+import ProjectCard from "../components/projects/ProjectCard.astro";
+import ProjectFilter from "../components/projects/ProjectFilter";
+import { projectCategories, projects } from "../data/info";
+import { sortFeaturedFirst } from "../lib/projects";
+import "../styles/projects.css";
 
 export const prerender = true;
+
+const orderedProjects = sortFeaturedFirst(projects);
 ---
 
 <Layout
-	title="Portfolio & Projects | Nicolas Moreno | Django, React, IoT, AI Applications"
-	description="Real-world software engineering projects: automated booking systems, real-time IoT dashboards, e-commerce with full automation, and ML-powered mobile apps. Built with Django, React, NestJS & Docker."
+  title="Side Projects | Nicolas Moreno"
+  description="Proyectos reales de Nicolás Moreno: agentes de IA, sistemas IoT, seguridad, herramientas CLI, automatización y aplicaciones móviles construidas con código."
 >
-	<PageHero
-		title="Portafolio de Ingeniería"
-		subtitle="Resultados medibles: Desde bots de WhatsApp hasta arquitecturas empresariales."
-		variant="projects"
-		client:load
-	/>
+  <section class="projects-page" aria-labelledby="projects-title">
+    <header class="projects-intro">
+      <span class="projects-intro__label">PROJECT LOG</span>
+      <h1 id="projects-title">Side projects</h1>
+      <p>Builds, systems and tools from the working archive.</p>
+    </header>
 
-	<ProjectsComponent client:visible />
+    <ProjectFilter categories={projectCategories} client:visible />
 
-	<FinalCTA client:visible />
+    <div class="projects-list" aria-label="Project list">
+      {orderedProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
 </Layout>

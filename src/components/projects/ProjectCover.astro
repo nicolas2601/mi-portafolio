@@ -1,0 +1,38 @@
+---
+import { coverFor } from "../../lib/projects";
+import type { ProjectRecord } from "../../lib/projects";
+
+interface Props {
+  project: ProjectRecord;
+}
+
+const { project } = Astro.props;
+const cover = coverFor(project);
+const screenshotSize = cover.kind === "screenshot" && cover.src === "/iot.png"
+  ? { width: 800, height: 424 }
+  : { width: 640, height: 640 };
+---
+
+<div class="project-cover-shell">
+  {
+    cover.kind === "screenshot" ? (
+      <img
+        class="project-cover project-cover--screenshot"
+        src={cover.src}
+        width={screenshotSize.width}
+        height={screenshotSize.height}
+        loading="lazy"
+        decoding="async"
+        alt={`Vista previa de ${project.title}`}
+      />
+    ) : (
+      <div
+        class={`project-cover project-cover--generated ${cover.tone}`}
+        aria-hidden="true"
+      >
+        <span class="project-cover__initials">{cover.initials}</span>
+        <span class="project-cover__mark">PROJECT / LOG</span>
+      </div>
+    )
+  }
+</div>
