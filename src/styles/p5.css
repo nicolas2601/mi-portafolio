@@ -1,0 +1,137 @@
+@import "@fontsource/anton/400.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+:root {
+  --p5-red: #d92323;
+  --p5-black: #0d0d0d;
+  --p5-white: #ffffff;
+  --p5-surface: #1b1b1b;
+  --p5-font-display: "Anton", Impact, sans-serif;
+  --p5-font-body: "Inter", system-ui, sans-serif;
+  --p5-stripe-duration: 560ms;
+  --p5-fade-duration: 120ms;
+}
+
+.p5-shell {
+  min-height: 100vh;
+  background: var(--p5-black);
+  color: var(--p5-white);
+  font-family: var(--p5-font-body);
+}
+
+.p5-display {
+  font-family: var(--p5-font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.p5-skew {
+  transform: skewX(-8deg);
+}
+
+.p5-skew-content {
+  transform: skewX(8deg);
+}
+
+.p5-clip-right {
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+
+.p5-clip-left {
+  clip-path: polygon(0 0, 92% 0, 100% 100%, 8% 100%);
+}
+
+.p5-tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.p5-menu-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  color: var(--p5-white);
+  transition: color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.p5-menu-link[data-active="true"],
+.p5-menu-link:hover,
+.p5-menu-link:focus-visible {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--p5-red) 60%, transparent);
+}
+
+.p5-stripe-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: var(--p5-red);
+  transform: translateX(-110%) skewX(-12deg);
+  transform-origin: left center;
+  animation: p5-stripe-in var(--p5-stripe-duration) cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.p5-stripe-overlay::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: var(--p5-white);
+  transform: translateX(-100%);
+  animation: p5-stripe-detail var(--p5-stripe-duration) cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes p5-stripe-in {
+  0% {
+    transform: translateX(-110%) skewX(-12deg);
+  }
+  45%, 60% {
+    transform: translateX(-4%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(110%) skewX(-12deg);
+  }
+}
+
+@keyframes p5-stripe-detail {
+  0%, 25% {
+    transform: translateX(-100%);
+  }
+  55%, 70% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes p5-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p5-stripe-overlay,
+  .p5-stripe-overlay::after {
+    animation: none;
+  }
+
+  .p5-stripe-overlay {
+    background: var(--p5-black);
+    transform: none;
+    animation: p5-fade var(--p5-fade-duration) ease-out both;
+  }
+
+  .p5-menu-link {
+    transition-duration: 0ms;
+  }
+}
