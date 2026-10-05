@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterProjects } from "../../src/lib/projects";
+import { filterProjects, sortFeaturedFirst } from "../../src/lib/projects";
 
 const sampleProjects = [
   { id: 1, title: "Alpha", category: "Dev Tools" },
@@ -17,5 +17,16 @@ describe("filterProjects", () => {
 
   it("returns no projects for an unknown category", () => {
     expect(filterProjects(sampleProjects, "No existe")).toEqual([]);
+  });
+});
+
+describe("sortFeaturedFirst", () => {
+  it("places featured projects before regular projects", () => {
+    const projects = [
+      { id: 2, featured: false },
+      { id: 1, featured: true },
+    ];
+
+    expect(sortFeaturedFirst(projects)).toEqual([projects[1], projects[0]]);
   });
 });
