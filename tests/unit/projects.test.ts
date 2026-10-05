@@ -14,4 +14,8 @@ describe("filterProjects", () => {
   it("returns only projects in the selected category", () => {
     expect(filterProjects(sampleProjects, "Seguridad")).toEqual([sampleProjects[1]]);
   });
+
+  it("returns no projects for an unknown category", () => {
+    expect(filterProjects(sampleProjects, "No existe")).toEqual([]);
+  });
 });
