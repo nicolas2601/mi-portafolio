@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { injectHeaderRoutes, toBuildOutputRoutes, toRedirectRoutes } from "../../scripts/headers.mjs";
 
@@ -83,5 +85,34 @@ describe("toRedirectRoutes", () => {
     const redirects = toRedirectRoutes([{ source: "/services", destination: "/", statusCode: 301 }]);
     const result = injectHeaderRoutes({ routes: [{ handle: "filesystem" }] }, redirects);
     expect(result.routes).toEqual([...redirects, { handle: "filesystem" }]);
+  });
+});
+
+describe("the real vercel.json", () => {
+  const config = JSON.parse(readFileSync(join(process.cwd(), "vercel.json"), "utf8"));
+  const routes = toBuildOutputRoutes(config.headers);
+  const allHeaders = Object.assign({}, ...routes.map((route) => route.headers));
+
+  it("ships the security headers the audit expects", () => {
+    expect(allHeaders["X-Content-Type-Options"]).toBe("nosniff");
+    expect(allHeaders["X-Frame-Options"]).toBe("DENY");
+    expect(allHeaders["Referrer-Policy"]).toBeDefined();
+    expect(allHeaders["Permissions-Policy"]).toBeDefined();
+  });
+
+  it("has a CSP that restricts forms, objects and the base URI", () => {
+    const csp: string = allHeaders["Content-Security-Policy"];
+    expect(csp).toContain("object-src 'none'");
+    expect(csp).toContain("base-uri 'self'");
+    expect(csp).toContain("form-action 'self' https://formsubmit.co");
+    expect(csp).not.toContain("unsafe-eval");
+  });
+
+  it("redirects the removed /services page permanently", () => {
+    expect(toRedirectRoutes(config.redirects)).toContainEqual({
+      src: "/services",
+      headers: { Location: "/" },
+      status: 301,
+    });
   });
 });
