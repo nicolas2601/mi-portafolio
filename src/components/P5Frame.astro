@@ -1,21 +1,26 @@
-<div class="p5-shell relative overflow-hidden">
-  <div class="pointer-events-none absolute inset-0 z-0 opacity-20" aria-hidden="true">
-    <div class="absolute -left-16 top-24 h-1/2 w-24 rotate-12 bg-[var(--p5-red)]"></div>
-    <div class="absolute -right-20 bottom-16 h-2/3 w-32 -rotate-12 bg-[var(--p5-white)]"></div>
-  </div>
+---
+import BackgroundMusic from "./BackgroundMusic";
+import P5Background from "./P5Background.astro";
+---
 
-  <header class="relative z-10 flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-8">
-    <a href="/" class="p5-display text-lg tracking-widest text-[var(--p5-white)]" aria-label="Nicolas Moreno home">
-      NM / SYSTEMS
+<div class="p5-shell">
+  <P5Background />
+
+  <header class="p5-frame-header">
+    <a href="/" class="p5-frame-brand" aria-label="Nicolas Moreno home">
+      <span>NM / SYSTEMS</span>
     </a>
-    <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">Bucaramanga / CO</span>
+    <span class="p5-frame-meta">Bucaramanga / CO</span>
   </header>
 
   <div class="relative z-10">
     <slot />
   </div>
 
-  <footer class="relative z-10 border-t border-white/10 px-5 py-6 text-center text-xs text-white/60 sm:px-8">
+  <footer class="p5-frame-footer">
+    <span class="p5-frame-footer__mark">NM / 2026</span>
     <p>Visual style inspired by Persona 5. Fan tribute, not affiliated with Atlus.</p>
   </footer>
+
+  <BackgroundMusic client:idle />
 </div>
