@@ -9,7 +9,7 @@
 - [x] 1.7 Create `P5Menu.tsx` island (anchor items, keyboard nav, glow) using `src/lib/menu.ts`
 - [x] 1.8 Create `StripeTransition.tsx` + Astro `ClientRouter`; reduced-motion fallback
 - [x] 1.9 Add `vercel.json` 301 `/services` -> `/`
-- [ ] 1.10 Gate: `astro check`, `astro build`, unit tests green; one commit per RED/GREEN cycle
+- [x] 1.10 Gate: `astro check`, `astro build`, unit tests green; one commit per RED/GREEN cycle
 
 ## Wave 2 - Pages (parallel, 4 agents, disjoint files, each in its own worktree)
 
