@@ -70,7 +70,7 @@ test.describe("home menu", () => {
   });
 
   test("arrow keys move the active entry and Enter follows it", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "networkidle" });
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
     await menu.getByRole("link").first().focus();
 
@@ -83,7 +83,7 @@ test.describe("home menu", () => {
   });
 
   test("keyboard cannot move before the first entry", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "networkidle" });
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
     await menu.getByRole("link").first().focus();
     await page.keyboard.press("ArrowUp");
