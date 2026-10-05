@@ -1,0 +1,96 @@
+.legal-page {
+	width: min(100%, 60rem);
+	margin-inline: auto;
+	padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 4vw, 3rem) 5rem;
+	--legal-ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.legal-kicker {
+	margin: 0 0 0.6rem;
+	color: var(--p5-red);
+	font: 700 0.7rem/1.4 var(--p5-font-body);
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.legal-title {
+	margin: 0;
+	font-family: var(--p5-font-display);
+	font-size: clamp(3rem, 8vw, 6rem);
+	font-weight: 400;
+	line-height: 0.92;
+	text-shadow: 0.06em 0.06em 0 var(--p5-red);
+	text-transform: uppercase;
+	transform: rotate(-2deg);
+	transform-origin: left bottom;
+}
+
+.legal-intro {
+	max-width: 46ch;
+	margin: 1.5rem 0 0;
+	color: color-mix(in srgb, var(--p5-white) 76%, transparent);
+	font-size: 1.1rem;
+	line-height: 1.6;
+}
+
+.legal-sections {
+	display: grid;
+	gap: 1rem;
+	margin-top: 3rem;
+}
+
+.legal-section {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 1.25rem;
+	padding: 1.4rem 1.6rem;
+	background: var(--p5-surface);
+	transform: skewX(-4deg);
+	animation: legal-rise 520ms var(--legal-ease) var(--legal-delay, 0ms) both;
+}
+
+.legal-section > * { transform: skewX(4deg); }
+
+.legal-index {
+	color: var(--p5-red);
+	font: 400 2rem/1 var(--p5-font-display);
+}
+
+.legal-section h2 {
+	margin: 0 0 0.5rem;
+	font: 400 1.5rem/1.1 var(--p5-font-display);
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+}
+
+.legal-section p {
+	max-width: 62ch;
+	margin: 0;
+	color: color-mix(in srgb, var(--p5-white) 82%, transparent);
+	line-height: 1.7;
+}
+
+.legal-back { margin: 2.5rem 0 0; }
+
+.legal-back a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0 1.4rem;
+	background: var(--p5-white);
+	box-shadow: 0.3rem 0.3rem 0 var(--p5-red);
+	color: var(--p5-black);
+	font: 400 1.05rem/1 var(--p5-font-fan);
+	letter-spacing: var(--p5-fan-tracking);
+	text-decoration: none;
+	text-transform: uppercase;
+	transform: skewX(-12deg);
+}
+
+.legal-back a:focus-visible { outline: 3px solid var(--p5-white); outline-offset: 4px; }
+
+@keyframes legal-rise { from { opacity: 0; transform: translateY(1rem) skewX(-4deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+	.legal-section { animation: none; }
+}

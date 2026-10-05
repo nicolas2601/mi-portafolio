@@ -1,34 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero";
+import { personalInfo } from "../data/info";
+import "../styles/legal.css";
 
 export const prerender = true;
+
+const sections = [
+	{
+		title: "Qué datos se recopilan",
+		body: "Este portafolio no usa cookies de seguimiento ni crea cuentas. Solo recibo los datos que tú escribes de forma voluntaria en el formulario de contacto: nombre, correo electrónico y mensaje.",
+	},
+	{
+		title: "Cómo se envía el formulario",
+		body: "Los mensajes se envían a través de FormSubmit (formsubmit.co), un servicio de terceros que los reenvía a mi correo. FormSubmit procesa el contenido del mensaje únicamente para entregarlo; sus condiciones se pueden consultar en su sitio.",
+	},
+	{
+		title: "Para qué se usan",
+		body: "Uso tus datos solo para responderte y mantener una comunicación profesional. No los vendo, no los comparto con terceros y no los uso para publicidad.",
+	},
+	{
+		title: "Preferencias guardadas en tu navegador",
+		body: "Si activas la música de fondo, el sitio guarda en tu navegador (almacenamiento local) el volumen y si la dejaste encendida. Esos datos no salen de tu dispositivo.",
+	},
+	{
+		title: "Tus derechos",
+		body: `Puedes pedirme en cualquier momento que consulte, corrija o elimine los datos que me enviaste escribiendo a ${personalInfo.email}.`,
+	},
+];
 ---
 
 <Layout
-    title="Política de Privacidad | Nicolas Moreno"
-    description="Política de Privacidad de Nicolas Moreno. Conoce cómo protegemos tus datos, el uso de formularios de contacto y tu derecho a la privacidad en este portafolio."
+	title="Política de Privacidad | Nicolás Moreno"
+	description="Qué datos recibe este portafolio, cómo se envía el formulario de contacto, para qué se usan y cómo puedes pedir que se corrijan o eliminen."
 >
-    <PageHero
-        title="Política de Privacidad"
-        subtitle="Transparencia y seguridad en el manejo de tu información."
-        variant="default"
-        client:load
-    />
-    <section class="py-20 max-w-4xl mx-auto px-4 text-gray-300">
-        <h2 class="text-2xl font-bold text-white mb-4">Protección de Datos</h2>
-        <p class="mb-4">
-            Valoramos tu privacidad. Este sitio web de portafolio no recopila
-            datos personales sin tu consentimiento explícito a través del
-            formulario de contacto.
-        </p>
-        <h2 class="text-2xl font-bold text-white mb-4">
-            Información de Contacto
-        </h2>
-        <p>
-            Cualquier dato proporcionado (correo electrónico, nombre) se utiliza
-            únicamente con fines de comunicación profesional y no se comparte
-            con terceros.
-        </p>
-    </section>
+	<article class="legal-page">
+		<p class="legal-kicker">NM / Legal file</p>
+		<h1 class="legal-title">Política de privacidad</h1>
+		<p class="legal-intro">Transparencia sobre la información que pasa por este sitio.</p>
+
+		<div class="legal-sections">
+			{sections.map((section, index) => (
+				<section class="legal-section" style={`--legal-delay: ${index * 70}ms`}>
+					<span class="legal-index" aria-hidden="true">0{index + 1}</span>
+					<div>
+						<h2>{section.title}</h2>
+						<p>{section.body}</p>
+					</div>
+				</section>
+			))}
+		</div>
+
+		<p class="legal-back"><a href="/">Back to home</a></p>
+	</article>
 </Layout>
