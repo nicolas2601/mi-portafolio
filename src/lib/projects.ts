@@ -6,8 +6,10 @@ export function filterProjects<T extends { category: string }>(
   return projects.filter((project) => project.category === category);
 }
 
-export function sortFeaturedFirst<T extends { featured: boolean }>(
+export function sortFeaturedFirst<T extends { featured: boolean; id: number }>(
   projects: readonly T[],
 ): T[] {
-  return [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
+  return [...projects].sort(
+    (a, b) => Number(b.featured) - Number(a.featured) || a.id - b.id,
+  );
 }

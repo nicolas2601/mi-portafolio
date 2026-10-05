@@ -29,4 +29,16 @@ describe("sortFeaturedFirst", () => {
 
     expect(sortFeaturedFirst(projects)).toEqual([projects[1], projects[0]]);
   });
+
+  it("orders each group by id without mutating the input", () => {
+    const projects = [
+      { id: 9, featured: false },
+      { id: 7, featured: true },
+      { id: 3, featured: false },
+      { id: 1, featured: true },
+    ];
+
+    expect(sortFeaturedFirst(projects).map((project) => project.id)).toEqual([1, 7, 3, 9]);
+    expect(projects.map((project) => project.id)).toEqual([9, 7, 3, 1]);
+  });
 });
