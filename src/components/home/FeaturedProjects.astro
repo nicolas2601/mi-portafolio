@@ -1,0 +1,24 @@
+---
+import { projects } from "../../data/info";
+
+const featuredProjects = projects.filter((project) => project.featured);
+---
+
+<section class="home-featured" aria-labelledby="featured-title">
+	<div class="home-section-heading home-featured-heading">
+		<p class="home-kicker">Selected work / 02</p>
+		<h2 id="featured-title" class="p5-display home-section-title">Featured projects</h2>
+	</div>
+
+	<ul class="home-project-list">
+		{featuredProjects.map((project, index) => (
+			<li class={`home-project home-project-${index + 1} home-reveal`} style={`--home-delay: ${index * 80}ms`}>
+				<a href="/projects" aria-label={`${project.title}, ${project.category}`}>
+					<span class="home-project-number" aria-hidden="true">0{index + 1}</span>
+					<span class="home-project-title">{project.title}</span>
+					<span class="home-project-category">{project.category}</span>
+				</a>
+			</li>
+		))}
+	</ul>
+</section>
