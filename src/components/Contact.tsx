@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, type FieldError } from "react-hook-form";
 import { personalInfo } from "../data/info";
 
@@ -34,15 +34,20 @@ export default function Contact({ nextUrl }: ContactProps) {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({ mode: "onBlur" });
 
+  // Coming back from FormSubmit through the back button restores this state
+  // from the bfcache, so the submit button must not stay stuck on "Sending".
+  useEffect(() => {
+    const resetOnRestore = (event: PageTransitionEvent) => {
+      if (event.persisted) setIsRedirecting(false);
+    };
+    window.addEventListener("pageshow", resetOnRestore);
+    return () => window.removeEventListener("pageshow", resetOnRestore);
+  }, []);
+
   const onSubmit = () => {
     setSubmitError("");
     setIsRedirecting(true);
-    if (!formRef.current) {
-      setIsRedirecting(false);
-      setSubmitError("The form could not be sent. Please try again.");
-      return;
-    }
-    formRef.current.submit();
+    formRef.current?.submit();
   };
 
   const onInvalid = () => {
