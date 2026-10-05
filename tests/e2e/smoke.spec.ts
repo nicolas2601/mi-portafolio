@@ -69,7 +69,7 @@ test.describe("home menu", () => {
     await context.close();
   });
 
-  test("arrow keys move the active entry and Enter follows it", async ({ page }) => {
+  test("arrow keys move focus and Enter follows the focused link", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
     const menu = page.getByRole("navigation", { name: "Primary navigation" });
     await menu.getByRole("link").first().focus();
@@ -77,6 +77,8 @@ test.describe("home menu", () => {
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowDown");
     await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/resume");
+    const focusedHref = await page.evaluate(() => document.activeElement?.getAttribute("href"));
+    expect(focusedHref).toBe("/resume");
 
     await page.keyboard.press("Enter");
     await expect(page).toHaveURL(/\/resume$/);
@@ -88,5 +90,16 @@ test.describe("home menu", () => {
     await menu.getByRole("link").first().focus();
     await page.keyboard.press("ArrowUp");
     await expect(menu.locator('[data-active="true"]')).toHaveAttribute("href", "/about");
+    const focusedHref = await page.evaluate(() => document.activeElement?.getAttribute("href"));
+    expect(focusedHref).toBe("/about");
   });
+});
+
+test("the stripe overlay plays through the swap and then clears", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+  const overlay = page.locator(".p5-stripe-overlay");
+  await page.getByRole("link", { name: /^projects$/i }).first().click();
+  await expect(page).toHaveURL(/\/projects$/);
+  await expect(overlay).toHaveAttribute("data-active", "true");
+  await expect(overlay).toHaveAttribute("data-active", "false");
 });

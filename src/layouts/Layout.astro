@@ -46,7 +46,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="shortcut icon" href="/Logo.png" />
 
     <slot name="head" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <!-- Manifest para PWA -->
     <link rel="manifest" href="/manifest.json" />
@@ -153,9 +152,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://nicolasmoreno.site/" },
-        { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://nicolasmoreno.site/services" },
+        { "@type": "ListItem", "position": 2, "name": "Sobre mí", "item": "https://nicolasmoreno.site/about" },
         { "@type": "ListItem", "position": 3, "name": "Proyectos", "item": "https://nicolasmoreno.site/projects" },
-        { "@type": "ListItem", "position": 4, "name": "Sobre Mi", "item": "https://nicolasmoreno.site/about" },
+        { "@type": "ListItem", "position": 4, "name": "Currículum", "item": "https://nicolasmoreno.site/resume" },
         { "@type": "ListItem", "position": 5, "name": "Contacto", "item": "https://nicolasmoreno.site/contact" }
       ]
     })} />
@@ -169,10 +168,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     >
       Saltar al contenido principal
     </a>
-    <StripeTransition client:load />
+    <StripeTransition client:load transition:persist="p5-stripe" />
 
     <P5Frame>
-      <main id="main-content">
+      <main id="main-content" tabindex="-1">
         <slot />
       </main>
     </P5Frame>

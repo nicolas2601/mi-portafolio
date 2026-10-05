@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
 import { menuActionForKey, moveMenuIndex } from "../lib/menu";
 
@@ -23,20 +23,13 @@ function handleMenuKey(
   event: KeyboardEvent<HTMLElement>,
   activeIndex: number,
   itemCount: number,
-  setActiveIndex: (index: number) => void,
+  moveTo: (index: number) => void,
 ) {
   const action = menuActionForKey(event.key);
-  if (action === "ignore") return;
+  if (action !== "next" && action !== "previous") return;
 
   event.preventDefault();
-  if (action === "activate") {
-    event.currentTarget
-      .querySelector<HTMLElement>('[data-active="true"]')
-      ?.click();
-    return;
-  }
-
-  setActiveIndex(moveMenuIndex(activeIndex, action, itemCount));
+  moveTo(moveMenuIndex(activeIndex, action, itemCount));
 }
 
 function menuItemStyle(index: number): CSSProperties {
@@ -45,13 +38,19 @@ function menuItemStyle(index: number): CSSProperties {
 
 export default function P5Menu({ items = defaultItems }: P5MenuProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+
+  const moveTo = (index: number) => {
+    setActiveIndex(index);
+    linkRefs.current[index]?.focus();
+  };
 
   return (
     <nav
       aria-label="Primary navigation"
       className="p5-menu"
       onKeyDown={(event) =>
-        handleMenuKey(event, activeIndex, items.length, setActiveIndex)
+        handleMenuKey(event, activeIndex, items.length, moveTo)
       }
     >
       <ul className="p5-menu__list">
@@ -66,6 +65,9 @@ export default function P5Menu({ items = defaultItems }: P5MenuProps) {
             >
               <a
                 href={item.href}
+                ref={(element) => {
+                  linkRefs.current[index] = element;
+                }}
                 className="p5-menu-link"
                 data-active={isActive}
                 data-index={index}

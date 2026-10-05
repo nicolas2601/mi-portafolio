@@ -7,17 +7,22 @@ export default function StripeTransition() {
 
   useEffect(() => {
     let timeoutId: number | undefined;
+    let startedAt = 0;
 
     const startTransition = () => {
       window.clearTimeout(timeoutId);
+      startedAt = performance.now();
       setIsActive(true);
     };
 
+    // The overlay keeps animating across the page swap and ends exactly when
+    // its keyframes do, measured from the moment the navigation started.
     const finishTransition = () => {
-      timeoutId = window.setTimeout(
-        () => setIsActive(false),
-        STRIPE_TRANSITION_DURATION_MS,
+      const remaining = Math.max(
+        STRIPE_TRANSITION_DURATION_MS - (performance.now() - startedAt),
+        0,
       );
+      timeoutId = window.setTimeout(() => setIsActive(false), remaining);
     };
 
     document.addEventListener("astro:before-preparation", startTransition);
