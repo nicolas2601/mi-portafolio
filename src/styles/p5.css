@@ -2,6 +2,7 @@
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
+@import "./menu.css";
 
 @font-face {
   font-family: "Persona 5 Fan";
@@ -19,6 +20,9 @@
   --p5-font-display: "Anton", Impact, sans-serif;
   --p5-font-fan: "Persona 5 Fan", var(--p5-font-display);
   --p5-font-body: "Inter", system-ui, sans-serif;
+  --p5-fan-tracking: -0.06em;
+  --p5-fan-word-gap: 0.28em;
+  --p5-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --p5-stripe-duration: 560ms;
   --p5-fade-duration: 120ms;
 }
@@ -39,7 +43,8 @@
 
 .p5-display {
   font-family: var(--p5-font-fan);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--p5-fan-tracking);
+  word-spacing: var(--p5-fan-word-gap);
   text-transform: uppercase;
 }
 
@@ -62,158 +67,6 @@
 .p5-tap-target {
   min-height: 44px;
   min-width: 44px;
-}
-
-.p5-menu-link {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 44px;
-  padding: 0.55rem clamp(1.1rem, 4vw, 2rem) 0.55rem 0.8rem;
-  color: var(--p5-white);
-  font-family: var(--p5-font-fan);
-  font-size: var(--p5-menu-size, clamp(2.75rem, 12vw, 5rem));
-  font-style: italic;
-  letter-spacing: 0.015em;
-  line-height: 0.84;
-  text-decoration: none;
-  text-shadow: 0.08em 0.08em 0 var(--p5-black);
-  transform: translateX(var(--p5-menu-offset, 0)) rotate(var(--p5-menu-rotate, 0deg));
-  transition: color 160ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.p5-menu__list {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.4rem, 1.5vw, 0.9rem);
-  margin: 0;
-  padding: clamp(1rem, 3vw, 2rem);
-  list-style: none;
-}
-
-.p5-menu__hint {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1rem;
-  margin: 0 clamp(1.75rem, 5vw, 3rem);
-  color: color-mix(in srgb, var(--p5-white) 48%, transparent);
-  font-family: var(--p5-font-fan);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-}
-
-.p5-menu-link__shape {
-  position: absolute;
-  z-index: -1;
-  inset: 0.12em -0.45em 0.06em -0.8em;
-  background: var(--p5-red);
-  clip-path: polygon(0 42%, 17% 4%, 82% 0, 100% 34%, 88% 100%, 12% 92%);
-  opacity: 0;
-  transform: scaleX(0.82) translateX(-0.8rem);
-  transform-origin: left center;
-  transition: opacity 160ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.p5-menu-link__label {
-  display: block;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  transform: skewX(var(--p5-menu-counter-skew, 0deg));
-}
-
-.p5-menu-link::after {
-  position: absolute;
-  top: 8%;
-  right: -0.05rem;
-  bottom: 4%;
-  width: 3px;
-  content: "";
-  background: var(--p5-white);
-  opacity: 0;
-  transform: scaleY(0.4);
-  transition: opacity 160ms ease, transform 220ms ease;
-}
-
-.p5-menu-link[data-active="true"] {
-  color: var(--p5-white);
-  text-shadow: 0.08em 0.08em 0 var(--p5-red);
-  transform: translateX(calc(var(--p5-menu-offset, 0) + 0.35rem)) rotate(var(--p5-menu-rotate, 0deg));
-}
-
-.p5-menu-link[data-active="true"] .p5-menu-link__shape,
-.p5-menu-link:hover .p5-menu-link__shape,
-.p5-menu-link:focus-visible .p5-menu-link__shape {
-  opacity: 1;
-  transform: scaleX(1) translateX(0);
-}
-
-.p5-menu-link[data-active="true"] .p5-menu-link__shape {
-  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--p5-white) 72%, transparent));
-}
-
-.p5-menu-link[data-active="true"]::after,
-.p5-menu-link:hover::after,
-.p5-menu-link:focus-visible::after {
-  opacity: 1;
-  transform: scaleY(1);
-}
-
-.p5-menu-link:focus-visible {
-  outline: 3px solid var(--p5-white);
-  outline-offset: 5px;
-}
-
-.p5-menu-item {
-  opacity: 0;
-  animation: p5-menu-entry 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--p5-menu-index) * 70ms);
-}
-
-.p5-menu-item:nth-child(1) .p5-menu-link {
-  --p5-menu-size: clamp(3rem, 13vw, 5.3rem);
-  --p5-menu-counter-skew: 6deg;
-  --p5-menu-rotate: -1deg;
-}
-
-.p5-menu-item:nth-child(2) .p5-menu-link {
-  --p5-menu-size: clamp(2.65rem, 11vw, 4.5rem);
-  --p5-menu-offset: clamp(0.4rem, 5vw, 1.5rem);
-  --p5-menu-counter-skew: 11deg;
-  --p5-menu-rotate: 1deg;
-}
-
-.p5-menu-item:nth-child(3) .p5-menu-link {
-  --p5-menu-size: clamp(2.8rem, 12vw, 4.9rem);
-  --p5-menu-offset: clamp(0.1rem, 2vw, 0.7rem);
-  --p5-menu-counter-skew: 0deg;
-}
-
-.p5-menu-item:nth-child(4) .p5-menu-link {
-  --p5-menu-size: clamp(2.9rem, 12.5vw, 5.1rem);
-  --p5-menu-offset: clamp(0.3rem, 4vw, 1.1rem);
-  --p5-menu-counter-skew: 3deg;
-  --p5-menu-rotate: -1deg;
-}
-
-.p5-menu-item:nth-child(5) .p5-menu-link {
-  --p5-menu-size: clamp(2.25rem, 10vw, 4rem);
-  --p5-menu-offset: clamp(0.15rem, 2.5vw, 0.8rem);
-  --p5-menu-counter-skew: 4deg;
-  --p5-menu-rotate: -2deg;
-}
-
-@keyframes p5-menu-entry {
-  from {
-    opacity: 0;
-    transform: translateX(3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .p5-background {
@@ -295,7 +148,8 @@
   color: var(--p5-white);
   font-family: var(--p5-font-fan);
   font-size: clamp(1rem, 2vw, 1.35rem);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--p5-fan-tracking);
+  word-spacing: var(--p5-fan-word-gap);
   text-decoration: none;
   transform: skewX(-8deg);
 }
@@ -334,50 +188,104 @@
 .p5-frame-footer__mark {
   color: var(--p5-red);
   font-family: var(--p5-font-fan);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--p5-fan-tracking);
+  word-spacing: var(--p5-fan-word-gap);
   text-transform: uppercase;
 }
 
-.p5-music {
-  position: fixed;
-  right: clamp(0.75rem, 3vw, 2rem);
-  bottom: clamp(0.75rem, 3vw, 2rem);
-  z-index: 40;
+.p5-frame-tools {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.35rem 0.45rem 0.35rem 0.6rem;
-  background: color-mix(in srgb, var(--p5-black) 88%, transparent);
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 5% 90%);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.p5-music {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .p5-music__button {
-  min-width: 44px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   min-height: 44px;
-  padding: 0.35rem 0.6rem;
+  padding: 0.35rem 0.9rem;
   border: 1px solid color-mix(in srgb, var(--p5-white) 48%, transparent);
   background: transparent;
   color: var(--p5-white);
   cursor: pointer;
   font-family: var(--p5-font-fan);
-  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  letter-spacing: var(--p5-fan-tracking);
+  word-spacing: var(--p5-fan-word-gap);
+  text-transform: uppercase;
+  transform: skewX(-10deg);
+  transition: transform 160ms var(--p5-ease-out), background-color 160ms ease;
 }
+
+.p5-music__button > * { transform: skewX(10deg); }
+.p5-music__button:active { transform: skewX(-10deg) scale(0.97); }
 
 .p5-music__button[data-playing="true"] {
   border-color: var(--p5-white);
   background: var(--p5-red);
 }
 
-.p5-music__slider {
-  width: 5.5rem;
-  accent-color: var(--p5-red);
-  cursor: pointer;
+.p5-music__button[data-hint="true"]::after {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--p5-red);
+  content: "";
+  animation: p5-music-ping 1.8s var(--p5-ease-out) infinite;
+  pointer-events: none;
 }
 
-.p5-menu-link[data-active="true"],
-.p5-menu-link:hover,
-.p5-menu-link:focus-visible {
-  color: var(--p5-white);
+.p5-music__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 1rem;
+  height: 0.9rem;
+}
+
+.p5-music__bars i {
+  flex: 1;
+  height: 100%;
+  background: currentcolor;
+  transform: scaleY(0.25);
+  transform-origin: bottom;
+}
+
+.p5-music__button[data-playing="true"] .p5-music__bars i {
+  animation: p5-music-bar 700ms ease-in-out infinite alternate;
+}
+
+.p5-music__bars i:nth-child(2) { animation-delay: 120ms; }
+.p5-music__bars i:nth-child(3) { animation-delay: 260ms; }
+
+.p5-music__slider {
+  width: 0;
+  opacity: 0;
+  accent-color: var(--p5-red);
+  cursor: pointer;
+  transition: width 220ms var(--p5-ease-out), opacity 160ms ease;
+}
+
+.p5-music[data-playing="true"] .p5-music__slider {
+  width: 5.5rem;
+  opacity: 1;
+}
+
+@keyframes p5-music-bar {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes p5-music-ping {
+  from { opacity: 0.9; transform: scale(1); }
+  to { opacity: 0; transform: scale(1.25); }
 }
 
 .p5-stripe-overlay {
@@ -444,6 +352,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .p5-music__bars i,
+  .p5-music__button::after {
+    animation: none;
+  }
+
   .p5-stripe-overlay,
   .p5-stripe-overlay::after {
     animation: none;
@@ -455,23 +368,12 @@
     animation: p5-fade var(--p5-fade-duration) ease-out both;
   }
 
-  .p5-menu-link,
-  .p5-menu-link__shape,
-  .p5-menu-link::after {
-    transition-duration: 0ms;
-  }
-
-  .p5-menu-item,
   .p5-background__stripes,
   .p5-background__stripes::after,
   .p5-background__halftone {
     animation: none;
     opacity: 1;
     transform: none;
-  }
-
-  .p5-menu-link[data-active="true"] {
-    transform: translateX(var(--p5-menu-offset, 0)) rotate(var(--p5-menu-rotate, 0deg));
   }
 }
 
@@ -492,9 +394,5 @@
 
   .p5-frame-meta {
     letter-spacing: 0.18em;
-  }
-
-  .p5-menu-link {
-    padding-right: 1.1rem;
   }
 }

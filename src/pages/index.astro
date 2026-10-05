@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import P5Menu from "../components/P5Menu";
 import HomeHero from "../components/home/HomeHero.astro";
 import FeaturedProjects from "../components/home/FeaturedProjects.astro";
 import "../styles/home.css";
@@ -13,18 +12,7 @@ export const prerender = true;
 	description="Nicolás Moreno, Software Engineer & Full-Stack Developer en Bucaramanga. Más de 2 años con Django, NestJS, React y automatización. Disponible remoto."
 >
 	<div class="home-page">
-		<div class="home-stage">
-			<HomeHero />
-
-			<section class="home-menu-section" aria-labelledby="home-menu-title">
-				<div class="home-section-heading">
-					<p class="home-kicker">Navigation / 01</p>
-					<h2 id="home-menu-title" class="p5-display home-section-title">Choose a route</h2>
-				</div>
-				<P5Menu client:load />
-			</section>
-		</div>
-
+		<HomeHero />
 		<FeaturedProjects />
 	</div>
 </Layout>

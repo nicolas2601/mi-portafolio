@@ -8,6 +8,9 @@ export const personalInfo = {
   location: "Bucaramanga, Santander, Colombia",
   postalCode: "680001",
   bio: "Desarrollador full-stack y estudiante de Ingeniería de Sistemas (UNAB, 8° semestre) con más de 2 años construyendo y operando software en producción para clientes PYME: APIs en Python y TypeScript, automatización con n8n y agentes LLM con guardrails y evaluación.\n\nPrimer puesto regional y finalista nacional en la Hackathon Colombia 5.0 (MinTIC, 2026). Autor de herramientas para agentes de IA publicadas en npm y con 3 pull requests aceptados en n8n y umami. Mi tesis aplica aprendizaje autosupervisado a imágenes médicas, con asesoría de KAUST.\n\nDisponible para roles remotos (full o medio tiempo) en timezone de Américas (GMT-5). Inglés B1: lectura técnica fluida y escritura diaria.",
+  tagline: "Desarrollador full-stack en Bucaramanga, Colombia. Django, NestJS y React en producción, agentes LLM con guardrails. Primer puesto regional en la Hackathon Colombia 5.0.",
+  availability: "Open to remote roles",
+  timezone: "GMT-5",
   avatar: "/perfil1.jpg",
   socialLinks: {
     linkedin: "https://linkedin.com/in/nicolas-moreno-dev",

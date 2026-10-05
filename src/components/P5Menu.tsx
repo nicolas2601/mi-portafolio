@@ -49,7 +49,7 @@ export default function P5Menu({ items = defaultItems }: P5MenuProps) {
   return (
     <nav
       aria-label="Primary navigation"
-      className="p5-menu w-full max-w-2xl"
+      className="p5-menu"
       onKeyDown={(event) =>
         handleMenuKey(event, activeIndex, items.length, setActiveIndex)
       }
@@ -73,21 +73,13 @@ export default function P5Menu({ items = defaultItems }: P5MenuProps) {
                 onMouseEnter={() => setActiveIndex(index)}
               >
                 <span className="p5-menu-link__shape" aria-hidden="true" />
+                <span className="p5-menu-link__star" aria-hidden="true" />
                 <span className="p5-menu-link__label">{item.label}</span>
-                {isActive && (
-                  <span className="ml-auto text-sm" aria-hidden="true">
-                    /
-                  </span>
-                )}
               </a>
             </li>
           );
         })}
       </ul>
-      <p className="p5-menu__hint" aria-hidden="true">
-        <span>UP / DOWN MOVE</span>
-        <span>ENTER OPEN</span>
-      </p>
     </nav>
   );
 }

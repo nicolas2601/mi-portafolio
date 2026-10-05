@@ -1,57 +1,61 @@
 ---
 import { personalInfo } from "../../data/info";
 import { p5Assets } from "../../lib/p5-assets";
+import P5Menu from "../P5Menu";
+import type { P5MenuItem } from "../P5Menu";
 
-const [bioLead, bioHighlights = ""] = personalInfo.bio.split("\n\n");
-const firstBioSentence = `${bioLead.split(". ")[0]}.`;
-const valueProposition = `${firstBioSentence.replace(
-	"Desarrollador Full-Stack y estudiante de Ingeniería de Sistemas (UNAB, 8° semestre) con más de 2 años construyendo ",
-	"Construyo ",
-)} ${bioHighlights.split(". ")[0]}.`;
-const availability = bioHighlights.split(". ").at(-1) ?? "";
+const [firstName, ...lastNames] = personalInfo.nm.split(" ");
+const role = personalInfo.title.split(" & ")[0];
+const city = personalInfo.location.split(",")[0];
+const menuItems: readonly P5MenuItem[] = [
+	{ label: "About me", href: "/about" },
+	{ label: "Projects", href: "/projects" },
+	{ label: "Resume", href: "/resume" },
+	{ label: "Contact", href: "/contact" },
+];
 ---
 
 <section class="home-hero" aria-labelledby="home-title">
-	<div class="home-hero-art" aria-hidden="true">
-		<img
-			src={p5Assets.jokerFace.src}
-			alt=""
-			width={p5Assets.jokerFace.width}
-			height={p5Assets.jokerFace.height}
-			loading="eager"
-			fetchpriority="high"
-			decoding="async"
-		/>
-	</div>
+	<div class="home-slab" aria-hidden="true"></div>
 
-	<div class="home-identity home-reveal" style="--home-delay: 80ms">
-		<p class="home-kicker">Portfolio / Nicolás Moreno</p>
-		<h1 id="home-title" class="p5-display home-name">{personalInfo.name}</h1>
-		<p class="home-role">{personalInfo.title}</p>
-		<p class="home-value">{valueProposition}</p>
-		<p class="home-availability">
-			<span class="home-status-dot" aria-hidden="true"></span>
-			{availability}
-		</p>
+	<div class="home-identity">
+		<p class="home-tag"><span>Portfolio / 2026</span></p>
+		<h1 id="home-title" class="p5-display home-name">
+			<span class="home-name-first">{firstName}</span>
+			<span class="home-name-last">{lastNames.join(" ")}</span>
+		</h1>
+		<p class="home-role"><span class="p5-display">{role}</span></p>
+		<p class="home-pitch">{personalInfo.tagline}</p>
 
 		<nav class="home-actions" aria-label="Direct links">
-			<a class="home-action home-action-primary" href="/CV_Nicolas_Moreno.pdf" download>
-				<span>Download CV</span>
-			</a>
-			<a class="home-action" href={personalInfo.socialLinks.github} target="_blank" rel="noreferrer">
-				<span>GitHub</span>
-			</a>
-			<a class="home-action" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noreferrer">
-				<span>LinkedIn</span>
-			</a>
-			<a class="home-action" href={`mailto:${personalInfo.email}`}>
-				<span>Email</span>
-			</a>
+			<a class="home-action" href="/CV_Nicolas_Moreno.pdf" download aria-label="Download CV (PDF)"><span>Get CV</span></a>
+			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.github} target="_blank" rel="noreferrer"><span>GitHub</span></a>
+			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
 		</nav>
+
+		<ul class="home-status">
+			<li>{personalInfo.availability}</li>
+			<li>{city}, CO</li>
+			<li>{personalInfo.timezone}</li>
+		</ul>
 	</div>
 
-	<div class="home-hero-mark home-reveal" style="--home-delay: 220ms" aria-hidden="true">
-		<span>NM</span>
-		<span>CO / GMT-5</span>
+	<div class="home-portrait">
+		<div class="home-frame" aria-hidden="true">
+			<img
+				src={p5Assets.mainM2.src}
+				alt=""
+				width={p5Assets.mainM2.width}
+				height={p5Assets.mainM2.height}
+				loading="eager"
+				fetchpriority="high"
+				decoding="async"
+			/>
+		</div>
+		<figure class="home-polaroid">
+			<img src={personalInfo.avatar} alt={`Portrait of ${personalInfo.name}`} width="681" height="846" loading="eager" decoding="async" />
+			<figcaption class="p5-display">That's me</figcaption>
+		</figure>
+		<P5Menu client:load items={menuItems} />
 	</div>
 </section>
