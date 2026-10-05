@@ -12,10 +12,12 @@ Reference theme: Vite SPA, `react-router-dom`, framer-motion, plain CSS, 6 LFS v
 - Alternative B: Astro with no islands. Rejected: loses the keyboard-driven menu and transitions that define the look.
 - Cost: more integration work than a find-and-replace clone. Benefit: SEO and recruiter-readable content preserved.
 
-### D2. Original assets only
-- Characters, Joker art, `Persona5main.ttf`, music, videos are not copied. Identity comes from: skewed typography, clip-path shapes, halftone/duotone treatment of the owner's own photo (`/perfil1.jpg`), SVG stripes, animated CSS patterns.
-- Fonts: OFL-licensed display face via `@fontsource` (candidate: Anton or Bebas Neue for display, Inter for body; keep `@fontsource/inter`). Verify license before adding.
-- Audio: none in v1. If a select sound is wanted later, it must be original or CC0, off by default.
+### D2. Franchise assets allowed, isolated and optimized (owner decision 2026-10-05)
+- Owner chose to bring the reference's visual identity. Imported: 17 images (converted to WebP, <= 1600 px, 780 KB total) in `src/assets/p5/`, `Persona5main.ttf` in `public/fonts/`, two mp3 in `public/audio/`.
+- NOT available: the 6 reference videos (Git LFS objects return 404 on the server; `main1.mp4` alone is 226 MB). Replaced by CSS/SVG animated backgrounds. No video ships.
+- Risk accepted by owner: assets are Atlus property and the reference repo has no license (possible takedown). Mitigation: everything referenced through `src/lib/p5-assets.ts` so a full swap to original art is a file replacement; attribution footer.
+- Display font for body/headings stays OFL via `@fontsource`; the fan font is for the P5 menu and titles only.
+- Audio: off by default, `preload="none"`, starts only on explicit user action.
 - Footer line: "Visual style inspired by Persona 5. Fan tribute, not affiliated with Atlus."
 
 ### D3. Content-first, motion as enhancement

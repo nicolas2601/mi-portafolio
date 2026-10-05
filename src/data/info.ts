@@ -80,14 +80,6 @@ export const workExperience = [
     location: "Remoto, Bucaramanga, Colombia",
     description: "Diseño y desarrollo de aplicaciones web a medida para clientes PYME en sectores de logística, salud y comercio. Soluciones full-stack con Django, NestJS, React y Next.js con despliegues containerizados en Docker. Plataforma de prospección automatizada con Google Maps, CRM, generación de mensajes con IA y email outreach. Bots inteligentes para WhatsApp y Telegram. Infraestructura self-hosted con Coolify. Automatización de workflows con n8n.",
     type: "Freelance remoto"
-  },
-  {
-    position: "Web Developer",
-    company: "Accasoft ERP",
-    period: "Junio 2023 - Junio 2024",
-    location: "Remoto, Bucaramanga",
-    description: "Desarrollo y mantenimiento de módulos web internos para sistema ERP empresarial. Interfaces responsivas cross-browser con HTML5, CSS3, JavaScript y PHP. Gestión de plataformas WordPress CMS. Colaboración en equipos multidisciplinarios con metodología ágil. Optimización de tiempos de carga frontend mediante refactorización de CSS/JS.",
-    type: "Trabajo remoto"
   }
 ];
 
@@ -158,8 +150,8 @@ export const projects = [
     category: "Backend & IoT",
     featured: true,
     metrics: [
-      { value: "100+", label: "Dispositivos conectados" },
-      { value: "<100ms", label: "Latencia real-time" }
+      { value: "MQTT", label: "Ingesta de telemetría" },
+      { value: "Real-time", label: "Dashboard con alertas" }
     ]
   },
   {
@@ -231,13 +223,13 @@ export const projects = [
   {
     id: 8,
     title: "Sistema de Reservas Automatizado",
-    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo. Redujo el tiempo de gestión operativa mediante flujos automatizados con n8n y atención 24/7.",
+    description: "Plataforma web con bot de WhatsApp para gestión automática de reservas, pagos en línea y panel administrativo, con flujos automatizados en n8n y atención 24/7.",
     image: "/reservas-dashboard.png",
     tech: ["Django REST", "WhatsApp API", "PostgreSQL", "React", "n8n", "Docker"],
     category: "Backend & IoT",
     featured: false,
     metrics: [
-      { value: "~80%", label: "Menos tiempo manual" },
+      { value: "WhatsApp", label: "Reservas por bot" },
       { value: "24/7", label: "Bot de atención" }
     ]
   },

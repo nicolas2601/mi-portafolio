@@ -11,18 +11,27 @@
 - [x] 1.9 Add `vercel.json` 301 `/services` -> `/`
 - [x] 1.10 Gate: `astro check`, `astro build`, unit tests green; one commit per RED/GREEN cycle
 
+## Wave 1.5 - Assets and data (done by owner session before Wave 2)
+
+- [x] 1.11 Import 17 images as WebP into `src/assets/p5/`, font into `public/fonts/`, mp3 into `public/audio/`
+- [x] 1.12 Remove Accasoft entry and the three unverified metrics from `src/data/info.ts`; keep the hackathon claim
+- [ ] 1.13 `src/lib/p5-assets.ts` manifest (single import point for franchise assets) + `@font-face` for the fan font in `p5.css` (agent: wave2-shell)
+
 ## Wave 2 - Pages (parallel, 4 agents, disjoint files, each in its own worktree)
 
+Every page task has this acceptance in addition to its own: exactly one `<h1>`, unique `<title>` and meta description passed to `Layout`, canonical present, content in prerendered HTML, `astro build` green, nothing outside its own files edited.
+
+- [ ] 2.0 Shell extras (agent wave2-shell): manifest 1.13, opt-in BGM toggle (off by default, `preload="none"`), animated CSS/SVG background replacing video, mobile menu polish
 - [ ] 2.1 Home: `src/pages/index.astro` + `Home` content (value prop, CTAs, menu)
 - [ ] 2.2 About: `src/pages/about.astro` (bio, education, certifications) from `info.ts`
-- [ ] 2.3 Projects: `src/pages/projects.astro` + `ProjectFilter.tsx` + typographic cover fallback
+- [ ] 2.3 Projects: `src/pages/projects.astro` + `ProjectFilter.tsx`; real screenshots for IoT, LSC, reservas; generated P5-style typographic covers (no image files) for the other six
 - [ ] 2.4 Resume + Contact: `src/pages/resume.astro` (new), `src/pages/contact.astro` restyle, `/gracias` restyle
 
 ## Wave 3 - Hardening (serial)
 
 - [ ] 3.1 Delete dead code: `Services`, `UseCases`, `FAQ`, unused `ui/*`, `services.astro`, `Welcome.astro`
 - [ ] 3.2 Playwright smoke: every route 200, one h1, canonical, no-JS menu links, keyboard flow
-- [ ] 3.3 Asset scan for forbidden files (asset-originality spec)
+- [ ] 3.3 Asset policy scan (manifest-only imports, no video, image weight, silent first load)
 - [ ] 3.4 Lighthouse mobile + a11y, fix regressions
 - [ ] 3.5 squirrelscan `--coverage full` on Vercel preview, fix to >= 95
 - [ ] 3.6 Reviewer subagent pass (typescript-reviewer) and apply reasonable fixes
@@ -30,6 +39,6 @@
 
 ## Owner-only decisions (not delegated)
 
-- [ ] O.1 Accasoft entry: keep / rename / remove
-- [ ] O.2 Confirm or soften "regional winner" claim and the three metrics
-- [ ] O.3 Provide or approve cover images for projects without screenshots
+- [x] O.1 Accasoft entry: removed (owner, 2026-10-05)
+- [x] O.2 Keep only the "regional winner" claim; three unverified metrics replaced with descriptive labels (owner, 2026-10-05)
+- [x] O.3 Covers: 3 real screenshots + generated covers for the rest (owner, 2026-10-05)

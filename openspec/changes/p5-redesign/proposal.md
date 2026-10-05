@@ -23,7 +23,7 @@ Reference: https://github.com/ffaneto/persona5-website-theme (Vite + React Route
 - `p5-shell`: design tokens, shared layout, menu, stripe page transitions, keyboard navigation, reduced-motion and mobile behavior.
 - `portfolio-pages`: About, Projects, Resume, Contact pages rendered from `src/data/info.ts`.
 - `seo-preservation`: metadata, JSON-LD, sitemap, redirects, performance and accessibility budgets carried over from the current site.
-- `asset-originality`: no third-party copyrighted assets; attribution footer.
+- `asset-policy`: franchise fan assets isolated behind one manifest, optimized, audio opt-in, attribution footer.
 
 ### Modified Capabilities
 None (no archived specs exist yet).
