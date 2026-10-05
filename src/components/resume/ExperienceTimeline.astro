@@ -1,0 +1,41 @@
+---
+interface ExperienceEntry {
+  position: string;
+  company: string;
+  period: string;
+  location: string;
+  description: string;
+  type: string;
+}
+
+interface Props {
+  entries: ExperienceEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<section class="resume-section resume-experience" aria-labelledby="experience-title">
+  <div class="resume-section-heading">
+    <p class="resume-kicker">01 / FIELD LOG</p>
+    <h2 id="experience-title">Work Experience</h2>
+  </div>
+
+  <div class="resume-timeline">
+    {entries.map((entry, index) => (
+      <article class="resume-timeline-entry p5-reveal" style={`--delay: ${index * 70}ms`}>
+        <div class="resume-timeline-marker" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+        <div class="resume-timeline-content">
+          <div class="resume-entry-meta">
+            <span>{entry.period}</span>
+            <span>{entry.type}</span>
+          </div>
+          <h3>{entry.position}</h3>
+          <p class="resume-entry-company">{entry.company}</p>
+          <p class="resume-entry-location">{entry.location}</p>
+          <p class="resume-entry-description">{entry.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

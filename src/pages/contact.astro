@@ -1,24 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero";
-import FinalCTA from "../components/FinalCTA";
-import FAQ from "../components/FAQ";
+import Contact from "../components/Contact";
+import ContactDetails from "../components/contact/ContactDetails.astro";
+import "../styles/contact.css";
 
 export const prerender = true;
+const nextUrl = new URL("/gracias", Astro.site).toString();
 ---
 
 <Layout
-	title="Hire Nicolas Moreno | Contact & Free Consultation | Remote Developer Colombia"
-	description="Get in touch with Nicolas Moreno for backend development, automation, or full-stack projects. Free 30-minute consultation. Available for remote work from Colombia (Americas timezone)."
+  title="Contact | Nicolas Moreno | Build Systems Together"
+  description="Contacta a Nicolás Moreno para hablar sobre desarrollo backend, sistemas web y automatización. Escríbele por formulario, email o redes."
 >
-	<PageHero
-		title="Hablemos de tu Proyecto"
-		subtitle="Agenda una consultoría gratuita y definamos el siguiente paso."
-		variant="contact"
-		client:load
-	/>
+  <div class="contact-page">
+    <header class="contact-intro">
+      <p class="contact-kicker">NM / CONTACT PROTOCOL</p>
+      <h1>Contact</h1>
+      <p>Hablemos de sistemas web, backend y automatización.</p>
+    </header>
 
-	<FinalCTA client:visible />
-
-	<FAQ client:visible />
+    <div class="contact-layout">
+      <ContactDetails />
+      <section class="contact-form-panel" aria-labelledby="contact-form-title">
+        <Contact client:load nextUrl={nextUrl} />
+      </section>
+    </div>
+  </div>
 </Layout>
