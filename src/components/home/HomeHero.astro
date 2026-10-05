@@ -28,7 +28,7 @@ const menuItems: readonly P5MenuItem[] = [
 		<p class="home-pitch">{personalInfo.tagline}</p>
 
 		<nav class="home-actions" aria-label="Direct links">
-			<a class="home-action" href="/CV_Nicolas_Moreno.pdf" download aria-label="Get CV (PDF)"><span>Get CV</span></a>
+			<a class="home-action" href="/CV_Nicolas_Moreno.pdf" download="Nicolas_Moreno_CV_AI_Engineer.pdf" aria-label="Get CV (PDF)"><span>Get CV</span></a>
 			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.github} target="_blank" rel="noopener noreferrer"><span>GitHub</span></a>
 			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><span>LinkedIn</span></a>
 		</nav>
@@ -43,19 +43,15 @@ const menuItems: readonly P5MenuItem[] = [
 	<div class="home-portrait">
 		<div class="home-frame">
 			<img
-				src={p5Assets.mainM2.src}
-				alt="Masked character in black and white against a red background"
-				width={p5Assets.mainM2.width}
-				height={p5Assets.mainM2.height}
+				src={p5Assets.portrait.src}
+				alt={`Stylized portrait of ${personalInfo.name} in red, cream and black`}
+				width={p5Assets.portrait.width}
+				height={p5Assets.portrait.height}
 				loading="eager"
 				fetchpriority="high"
 				decoding="async"
 			/>
 		</div>
-		<figure class="home-polaroid">
-			<img src={personalInfo.avatar} alt={`Portrait of ${personalInfo.name}`} width="681" height="846" loading="eager" decoding="async" />
-			<figcaption class="p5-display">That's me</figcaption>
-		</figure>
 		<P5Menu client:load items={menuItems} />
 	</div>
 </section>
