@@ -150,7 +150,7 @@ export default function Contact({ nextUrl }: ContactProps) {
         <FieldError id="message-error" error={errors.message} />
       </div>
 
-      <div className="contact-honeypot" aria-hidden="true">
+      <div className="contact-honeypot" hidden>
         <label htmlFor="_honey">Leave this field empty</label>
         <input id="_honey" tabIndex={-1} autoComplete="off" {...register("_honey")} />
       </div>

@@ -4,9 +4,10 @@ import type { ProjectRecord } from "../../lib/projects";
 
 interface Props {
   project: ProjectRecord;
+  eager?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, eager = false } = Astro.props;
 ---
 
 <article
@@ -17,7 +18,7 @@ const { project } = Astro.props;
   data-project-item
   data-category={project.category}
 >
-  <ProjectCover project={project} />
+  <ProjectCover project={project} eager={eager} />
 
   <div class="project-item__content">
     <div class="project-item__eyebrow">
@@ -48,9 +49,8 @@ const { project } = Astro.props;
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Ver código de ${project.title} en GitHub`}
         >
-          VIEW SOURCE <span aria-hidden="true">↗</span>
+          VIEW SOURCE <span class="sr-only">of {project.title}</span> <span aria-hidden="true">↗</span>
         </a>
       )
     }

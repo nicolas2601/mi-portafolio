@@ -25,7 +25,7 @@ const orderedProjects = sortFeaturedFirst(projects);
     <ProjectFilter categories={projectCategories} client:visible />
 
     <div class="projects-list" aria-label="Project list">
-      {orderedProjects.map((project) => <ProjectCard project={project} />)}
+      {orderedProjects.map((project, index) => <ProjectCard project={project} eager={index < 2} />)}
     </div>
   </section>
 </Layout>

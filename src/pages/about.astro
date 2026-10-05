@@ -18,6 +18,7 @@ const bioParagraphs = personalInfo.bio.split(/\n\s*\n/);
   title="About Nicolás Moreno | Software Engineer"
   description="Nicolás Moreno: desarrollador Full-Stack y estudiante de Ingeniería de Sistemas en UNAB, con experiencia en aplicaciones web y servicios backend en producción."
 >
+  <link slot="head" rel="preload" as="image" href="/perfil1.jpg" fetchpriority="high" />
   <div class="about-page">
     <AboutHero info={personalInfo} />
     <AboutBio paragraphs={bioParagraphs} info={personalInfo} />

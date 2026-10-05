@@ -37,32 +37,21 @@ const { info } = Astro.props;
     </div>
     <img
       class="about-art about-art-left"
-      src={p5Assets.char1.src}
-      width={p5Assets.char1.width}
-      height={p5Assets.char1.height}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-    />
-    <img
-      class="about-art about-art-right"
-      src={p5Assets.icon1.src}
-      width={p5Assets.icon1.width}
-      height={p5Assets.icon1.height}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
+      src={p5Assets.dialogue2.src}
+      width={p5Assets.dialogue2.width}
+      height={p5Assets.dialogue2.height}
+      alt="Masked character drawn in black and white"
+      loading="eager"
     />
   </div>
 
-  <div class="about-hero-mark" aria-hidden="true">
+  <div class="about-hero-mark">
     <img
       src={p5Assets.jokerFace.src}
       width={p5Assets.jokerFace.width}
       height={p5Assets.jokerFace.height}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
+      alt="Character in a black jacket looking to the side"
+      loading="eager"
     />
     <span>IDENTITY</span>
   </div>

@@ -185,6 +185,14 @@
   font-size: 0.72rem;
 }
 
+.p5-frame-footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--p5-white);
+  text-underline-offset: 0.25em;
+}
+
 .p5-frame-footer__mark {
   color: var(--p5-red);
   font-family: var(--p5-font-fan);

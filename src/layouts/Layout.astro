@@ -45,8 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="apple-touch-icon" href="/Logo.png" />
     <link rel="shortcut icon" href="/Logo.png" />
 
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="/perfil1.jpg" fetchpriority="high" />
+    <slot name="head" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <!-- Manifest para PWA -->

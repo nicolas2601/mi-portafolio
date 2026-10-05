@@ -110,7 +110,6 @@ export default function BackgroundMusic() {
         data-playing={isPlaying}
         data-hint={!hasInteracted}
         aria-pressed={isPlaying}
-        aria-label={isPlaying ? "Turn background music off" : "Turn background music on"}
         onClick={handleToggle}
       >
         <span className="p5-music__bars" aria-hidden="true">
@@ -118,7 +117,7 @@ export default function BackgroundMusic() {
           <i />
           <i />
         </span>
-        <span className="p5-music__label">{isPlaying ? "Music on" : "Music off"}</span>
+        <span className="p5-music__label">Music</span>
       </button>
       <input
         className="p5-music__slider"

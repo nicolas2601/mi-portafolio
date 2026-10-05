@@ -28,9 +28,9 @@ const menuItems: readonly P5MenuItem[] = [
 		<p class="home-pitch">{personalInfo.tagline}</p>
 
 		<nav class="home-actions" aria-label="Direct links">
-			<a class="home-action" href="/CV_Nicolas_Moreno.pdf" download aria-label="Download CV (PDF)"><span>Get CV</span></a>
-			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.github} target="_blank" rel="noreferrer"><span>GitHub</span></a>
-			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
+			<a class="home-action" href="/CV_Nicolas_Moreno.pdf" download aria-label="Get CV (PDF)"><span>Get CV</span></a>
+			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.github} target="_blank" rel="noopener noreferrer"><span>GitHub</span></a>
+			<a class="home-action home-action-ghost" href={personalInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><span>LinkedIn</span></a>
 		</nav>
 
 		<ul class="home-status">
@@ -41,10 +41,10 @@ const menuItems: readonly P5MenuItem[] = [
 	</div>
 
 	<div class="home-portrait">
-		<div class="home-frame" aria-hidden="true">
+		<div class="home-frame">
 			<img
 				src={p5Assets.mainM2.src}
-				alt=""
+				alt="Masked character in black and white against a red background"
 				width={p5Assets.mainM2.width}
 				height={p5Assets.mainM2.height}
 				loading="eager"

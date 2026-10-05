@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import HomeHero from "../components/home/HomeHero.astro";
 import FeaturedProjects from "../components/home/FeaturedProjects.astro";
+import { p5Assets } from "../lib/p5-assets";
 import "../styles/home.css";
 
 export const prerender = true;
@@ -11,6 +12,8 @@ export const prerender = true;
 	title="Nicolás Moreno | Software Engineer & Full-Stack Developer"
 	description="Nicolás Moreno, Software Engineer & Full-Stack Developer en Bucaramanga. Más de 2 años con Django, NestJS, React y automatización. Disponible remoto."
 >
+	<link slot="head" rel="preload" as="image" href={p5Assets.mainM2.src} fetchpriority="high" />
+	<link slot="head" rel="preload" as="image" href="/perfil1.jpg" />
 	<div class="home-page">
 		<HomeHero />
 		<FeaturedProjects />

@@ -13,7 +13,7 @@ const featuredProjects = projects.filter((project) => project.featured);
 	<ul class="home-project-list">
 		{featuredProjects.map((project, index) => (
 			<li class={`home-project home-project-${index + 1} home-reveal`} style={`--home-delay: ${index * 80}ms`}>
-				<a href="/projects" aria-label={`${project.title}, ${project.category}`}>
+				<a href="/projects">
 					<span class="home-project-number" aria-hidden="true">0{index + 1}</span>
 					<span class="home-project-title">{project.title}</span>
 					<span class="home-project-category">{project.category}</span>

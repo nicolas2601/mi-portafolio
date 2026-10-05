@@ -4,9 +4,10 @@ import type { ProjectRecord } from "../../lib/projects";
 
 interface Props {
   project: ProjectRecord;
+  eager?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, eager = false } = Astro.props;
 const cover = coverFor(project);
 const screenshotSize = cover.kind === "screenshot" && cover.src === "/iot.png"
   ? { width: 800, height: 424 }
@@ -21,7 +22,7 @@ const screenshotSize = cover.kind === "screenshot" && cover.src === "/iot.png"
         src={cover.src}
         width={screenshotSize.width}
         height={screenshotSize.height}
-        loading="lazy"
+        loading={eager ? "eager" : "lazy"}
         decoding="async"
         alt={`Vista previa de ${project.title}`}
       />

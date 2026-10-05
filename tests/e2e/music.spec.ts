@@ -10,12 +10,12 @@ test.describe("background music", () => {
     });
 
     await page.goto("/", { waitUntil: "networkidle" });
-    const toggle = page.getByRole("button", { name: /turn background music on/i });
+    const toggle = page.getByRole("button", { name: /^music$/i });
     await expect(toggle).toHaveAttribute("aria-pressed", "false");
     expect(audioRequests).toEqual([]);
 
     await toggle.click();
-    await expect(page.getByRole("button", { name: /turn background music off/i })).toHaveAttribute(
+    await expect(page.getByRole("button", { name: /^music$/i })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
@@ -30,7 +30,7 @@ test.describe("background music", () => {
 
   test("keeps playing when navigating to another page", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
-    await page.getByRole("button", { name: /turn background music on/i }).click();
+    await page.getByRole("button", { name: /^music$/i }).click();
     await page.waitForTimeout(PLAY_SETTLE_MS);
 
     await page.getByRole("link", { name: /^about me$/i }).first().click();
@@ -46,9 +46,9 @@ test.describe("background music", () => {
 
   test("turns off again with the same button", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
-    await page.getByRole("button", { name: /turn background music on/i }).click();
-    await page.getByRole("button", { name: /turn background music off/i }).click();
-    await expect(page.getByRole("button", { name: /turn background music on/i })).toHaveAttribute(
+    await page.getByRole("button", { name: /^music$/i }).click();
+    await page.getByRole("button", { name: /^music$/i }).click();
+    await expect(page.getByRole("button", { name: /^music$/i })).toHaveAttribute(
       "aria-pressed",
       "false",
     );
