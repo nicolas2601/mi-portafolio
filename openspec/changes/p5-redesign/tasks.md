@@ -35,6 +35,8 @@ Every page task has this acceptance in addition to its own: exactly one `<h1>`, 
 - [ ] 3.4 Lighthouse mobile + a11y, fix regressions
 - [ ] 3.5 squirrelscan `--coverage full` on Vercel preview, fix to >= 95
 - [ ] 3.6 Reviewer subagent pass (typescript-reviewer) and apply reasonable fixes
+- [ ] 3.8 Security headers are NOT applied in production today (baseline 2026-10-05: no CSP, X-Frame-Options, nosniff, Referrer-Policy or Permissions-Policy on `https://nicolasmoreno.site/`, squirrel Security 84). Find why `vercel.json` headers and the `vercel-deploy.js` injection do not take effect, fix, and verify with `curl -sI` on the preview; confirm the CSP in `vercel.json` does not break fonts, audio or inline scripts
+- [ ] 3.9 Baseline to beat (live site, squirrel surface): overall 79/C; titles all > 60 chars, descriptions all > 160, one a11y error (`label-content-name-mismatch`), `image-file-size` error, 16 a11y warnings (contrast, heading order, touch targets). Final target >= 95
 - [ ] 3.7 Open PR to `main` (no AI attribution, conventional commits), verify Vercel preview and CI green
 
 ## Owner-only decisions (not delegated)

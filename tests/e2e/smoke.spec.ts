@@ -2,8 +2,8 @@ import { expect, test } from "@playwright/test";
 
 const SITE = "https://nicolasmoreno.site";
 const ROUTES = ["/", "/about", "/projects", "/resume", "/contact", "/privacy-policy"];
-const MAX_TITLE = 70;
-const DESCRIPTION_RANGE = { min: 110, max: 165 };
+const MAX_TITLE = 60;
+const DESCRIPTION_RANGE = { min: 120, max: 160 };
 const MOBILE = { width: 375, height: 812 };
 
 for (const route of ROUTES) {
