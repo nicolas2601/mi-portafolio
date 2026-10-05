@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-const PLAY_SETTLE_MS = 1200;
-
 test.describe("background music", () => {
   test("is off on first load and starts only after a click", async ({ page }) => {
     const audioRequests: string[] = [];
@@ -19,29 +17,20 @@ test.describe("background music", () => {
       "aria-pressed",
       "true",
     );
-    await page.waitForTimeout(PLAY_SETTLE_MS);
-
-    const isPlaying = await page.evaluate(() => {
-      const audio = document.querySelector("audio");
-      return Boolean(audio && !audio.paused && audio.currentTime > 0);
-    });
-    expect(isPlaying).toBe(true);
+    await expect
+      .poll(() => page.evaluate(() => document.querySelector("audio")?.currentTime ?? 0))
+      .toBeGreaterThan(0);
   });
 
   test("keeps playing when navigating to another page", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
     await page.getByRole("button", { name: /^music$/i }).click();
-    await page.waitForTimeout(PLAY_SETTLE_MS);
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(false);
 
     await page.getByRole("link", { name: /^about me$/i }).first().click();
     await expect(page).toHaveURL(/\/about$/);
-    await page.waitForTimeout(PLAY_SETTLE_MS);
 
-    const stillPlaying = await page.evaluate(() => {
-      const audio = document.querySelector("audio");
-      return Boolean(audio && !audio.paused);
-    });
-    expect(stillPlaying).toBe(true);
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(false);
   });
 
   test("turns off again with the same button", async ({ page }) => {
@@ -52,5 +41,28 @@ test.describe("background music", () => {
       "aria-pressed",
       "false",
     );
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(true);
+  });
+
+  test("resumes on the first click for a visitor who left music on", async ({ page }) => {
+    await page.addInitScript(() => window.localStorage.setItem("p5-bgm-enabled", "1"));
+    await page.goto("/", { waitUntil: "networkidle" });
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(true);
+
+    await page.mouse.click(5, 300);
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(false);
+  });
+
+  test("still works when localStorage throws", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(window, "localStorage", {
+        get() {
+          throw new Error("blocked");
+        },
+      });
+    });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.getByRole("button", { name: /^music$/i }).click();
+    await expect.poll(() => page.evaluate(() => document.querySelector("audio")?.paused)).toBe(false);
   });
 });

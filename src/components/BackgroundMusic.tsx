@@ -9,8 +9,25 @@ const FADE_STEP_COUNT = 12;
 const FADE_INTERVAL_MS = 24;
 const RESUME_EVENTS = ["pointerdown", "keydown"] as const;
 
+// Storage can throw (private mode, blocked cookies): music must still work.
+function readStorage(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeStorage(key: string, value: string): void {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Preferences are optional.
+  }
+}
+
 function readStoredVolume(): number {
-  const storedVolume = Number(window.localStorage.getItem(VOLUME_STORAGE_KEY));
+  const storedVolume = Number(readStorage(VOLUME_STORAGE_KEY));
   return Number.isFinite(storedVolume) && storedVolume > 0
     ? clampVolume(storedVolume)
     : DEFAULT_VOLUME;
@@ -22,6 +39,7 @@ export default function BackgroundMusic() {
   const [volume, setVolume] = useState(DEFAULT_VOLUME);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(true);
+  const startingRef = useRef(false);
 
   const stopFade = () => {
     if (fadeIntervalRef.current === undefined) return;
@@ -48,8 +66,9 @@ export default function BackgroundMusic() {
 
   const start = async (targetVolume: number) => {
     const audio = audioRef.current;
-    if (!audio) return false;
+    if (!audio || startingRef.current) return false;
 
+    startingRef.current = true;
     try {
       audio.volume = 0;
       await audio.play();
@@ -59,17 +78,19 @@ export default function BackgroundMusic() {
     } catch {
       setIsPlaying(false);
       return false;
+    } finally {
+      startingRef.current = false;
     }
   };
 
   useEffect(() => {
     const storedVolume = readStoredVolume();
     setVolume(storedVolume);
-    setHasInteracted(window.localStorage.getItem(ENABLED_STORAGE_KEY) !== null);
+    setHasInteracted(readStorage(ENABLED_STORAGE_KEY) !== null);
 
     // Browsers block autoplay: a returning visitor who left music on gets it
     // back on their first click or key press, never before.
-    if (window.localStorage.getItem(ENABLED_STORAGE_KEY) !== "1") return;
+    if (readStorage(ENABLED_STORAGE_KEY) !== "1") return;
     const resume = () => {
       RESUME_EVENTS.forEach((name) => window.removeEventListener(name, resume));
       void start(storedVolume);
@@ -86,19 +107,19 @@ export default function BackgroundMusic() {
     setHasInteracted(true);
     if (isPlaying) {
       setIsPlaying(false);
-      window.localStorage.setItem(ENABLED_STORAGE_KEY, "0");
+      writeStorage(ENABLED_STORAGE_KEY, "0");
       fadeTo(0, true);
       return;
     }
 
     const started = await start(volume);
-    if (started) window.localStorage.setItem(ENABLED_STORAGE_KEY, "1");
+    if (started) writeStorage(ENABLED_STORAGE_KEY, "1");
   };
 
   const handleVolumeChange = (nextVolume: number) => {
     const next = clampVolume(nextVolume);
     setVolume(next);
-    window.localStorage.setItem(VOLUME_STORAGE_KEY, String(next));
+    writeStorage(VOLUME_STORAGE_KEY, String(next));
     if (audioRef.current && isPlaying) fadeTo(next);
   };
 
