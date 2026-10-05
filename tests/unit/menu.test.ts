@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { clampMenuIndex, moveMenuIndex } from "../../src/lib/menu";
+import {
+  clampMenuIndex,
+  menuActionForKey,
+  moveMenuIndex,
+} from "../../src/lib/menu";
 
 describe("clampMenuIndex", () => {
   it("keeps an index inside the menu bounds", () => {
@@ -14,5 +18,14 @@ describe("moveMenuIndex", () => {
     expect(moveMenuIndex(4, "next", 5)).toBe(4);
     expect(moveMenuIndex(4, "previous", 5)).toBe(3);
     expect(moveMenuIndex(0, "previous", 5)).toBe(0);
+  });
+});
+
+describe("menuActionForKey", () => {
+  it("maps supported keyboard controls to menu actions", () => {
+    expect(menuActionForKey("ArrowUp")).toBe("previous");
+    expect(menuActionForKey("ArrowDown")).toBe("next");
+    expect(menuActionForKey("Enter")).toBe("activate");
+    expect(menuActionForKey("Escape")).toBe("ignore");
   });
 });
