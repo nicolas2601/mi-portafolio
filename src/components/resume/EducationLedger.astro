@@ -1,0 +1,41 @@
+---
+interface EducationEntry {
+  degree: string;
+  institution: string;
+  period: string;
+  expectedGraduation?: string;
+  location?: string;
+  status: string;
+}
+
+interface Props {
+  entries: EducationEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<section class="resume-section resume-education" aria-labelledby="education-title">
+  <div class="resume-section-heading">
+    <p class="resume-kicker">02 / ACADEMIC RECORD</p>
+    <h2 id="education-title">Education</h2>
+  </div>
+
+  <ol class="resume-education-list">
+    {entries.map((entry, index) => (
+      <li class="resume-education-row p5-reveal" style={`--delay: ${index * 70}ms`}>
+        <span class="resume-row-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+        <div class="resume-education-main">
+          <h3>{entry.degree}</h3>
+          <p>{entry.institution}</p>
+          {entry.location && <span>{entry.location}</span>}
+        </div>
+        <div class="resume-education-status">
+          <span>{entry.status}</span>
+          <time>{entry.period}</time>
+          {entry.expectedGraduation && <small>Expected {entry.expectedGraduation}</small>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

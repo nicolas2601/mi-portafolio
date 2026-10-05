@@ -1,0 +1,35 @@
+---
+interface Skill {
+  name: string;
+}
+
+interface Props {
+  groups: Record<string, Skill[]>;
+}
+
+const { groups } = Astro.props;
+const groupLabels: Record<string, string> = {
+  backend: "Backend",
+  frontend: "Frontend",
+  databases: "Databases",
+  automationAndCloud: "Automation & Cloud",
+};
+---
+
+<section class="resume-section resume-skills" aria-labelledby="skills-title">
+  <div class="resume-section-heading">
+    <p class="resume-kicker">04 / LOADOUT</p>
+    <h2 id="skills-title">Skills</h2>
+  </div>
+
+  <div class="resume-skill-groups">
+    {Object.entries(groups).map(([key, group], groupIndex) => (
+      <section class="resume-skill-group p5-reveal" style={`--delay: ${groupIndex * 70}ms`} aria-labelledby={`skill-${key}`}>
+        <h3 id={`skill-${key}`}>{groupLabels[key] ?? key}</h3>
+        <ul class="resume-skill-cloud">
+          {group.map((skill) => <li>{skill.name}</li>)}
+        </ul>
+      </section>
+    ))}
+  </div>
+</section>

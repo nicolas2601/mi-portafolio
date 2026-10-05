@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ExperienceTimeline from "../components/resume/ExperienceTimeline.astro";
+import EducationLedger from "../components/resume/EducationLedger.astro";
+import CertificationLedger from "../components/resume/CertificationLedger.astro";
+import SkillClouds from "../components/resume/SkillClouds.astro";
+import { certifications, education, personalInfo, skills, workExperience } from "../data/info";
+import "../styles/resume.css";
+
+export const prerender = true;
+---
+
+<Layout
+  title="Resume | Nicolas Moreno | Experience & Skills"
+  description="Experiencia, educación, certificaciones y habilidades de Nicolás Moreno, desarrollador de software de Bucaramanga. Descarga su CV en PDF."
+>
+  <div class="resume-page">
+    <header class="resume-intro">
+      <div>
+        <p class="resume-kicker">NM / PROFESSIONAL FILE</p>
+        <h1>Resume</h1>
+        <p class="resume-intro-role">{personalInfo.title} / {personalInfo.location}</p>
+      </div>
+      <div class="resume-actions" aria-label="Resume actions">
+        <a class="resume-action" href="/CV_Nicolas_Moreno.pdf" download="Nicolas-Moreno-CV.pdf">Download CV PDF</a>
+        <a class="resume-action" href="/contact">Contact Nicolas</a>
+      </div>
+    </header>
+
+    <ExperienceTimeline entries={workExperience} />
+    <EducationLedger entries={education} />
+    <CertificationLedger entries={certifications} />
+    <SkillClouds groups={skills} />
+
+    <div class="resume-final-actions">
+      <p>Full profile available as a printable PDF.</p>
+      <a href="/CV_Nicolas_Moreno.pdf" download="Nicolas-Moreno-CV.pdf">Download printable CV</a>
+    </div>
+  </div>
+</Layout>
