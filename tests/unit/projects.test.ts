@@ -60,7 +60,13 @@ describe("coverFor", () => {
     const cover = coverFor(project);
 
     expect(cover).toMatchObject({ kind: "generated", initials: "GA" });
-    expect(cover.tone).toMatch(/^tone-/);
+    if (cover.kind === "generated") expect(cover.tone).toMatch(/^tone-/);
     expect(coverFor(project)).toEqual(cover);
+  });
+
+  it("ignores punctuation when deriving initials", () => {
+    const project = { title: "ghoscli — CLI", category: "Dev Tools" };
+
+    expect(coverFor(project)).toMatchObject({ kind: "generated", initials: "GC" });
   });
 });

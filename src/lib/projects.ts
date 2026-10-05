@@ -1,3 +1,20 @@
+export interface ProjectMetric {
+  value: string;
+  label: string;
+}
+
+export interface ProjectRecord {
+  id: number;
+  title: string;
+  description: string;
+  tech: readonly string[];
+  category: string;
+  featured: boolean;
+  metrics: readonly ProjectMetric[];
+  image?: string;
+  github?: string;
+}
+
 export function filterProjects<T extends { category: string }>(
   projects: readonly T[],
   category: string,
@@ -21,9 +38,13 @@ const screenshotPaths = new Set([
 ]);
 
 function initialsFor(title: string): string {
-  const words = title.trim().split(/\s+/).filter(Boolean);
-  if (words.length > 1) return words.slice(0, 2).map((word) => word[0]).join("").toUpperCase();
-  return title.trim().slice(0, 2).toUpperCase();
+  const initials = title
+    .trim()
+    .split(/\s+/)
+    .map((word) => word.match(/[\p{L}\p{N}]/u)?.[0])
+    .filter((initial): initial is string => Boolean(initial));
+  if (initials.length > 1) return initials.slice(0, 2).join("").toUpperCase();
+  return title.replace(/[^\p{L}\p{N}]/gu, "").slice(0, 2).toUpperCase();
 }
 
 function toneFor(title: string, category: string): string {
@@ -37,7 +58,9 @@ export type ProjectCover =
   | { kind: "screenshot"; src: string }
   | { kind: "generated"; initials: string; tone: string };
 
-export function coverFor(project: { image?: string; title: string; category: string }): ProjectCover {
+export function coverFor(
+  project: Pick<ProjectRecord, "image" | "title" | "category">,
+): ProjectCover {
   if (project.image && screenshotPaths.has(project.image)) {
     return { kind: "screenshot", src: project.image };
   }
