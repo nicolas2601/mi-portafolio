@@ -5,7 +5,7 @@
 - [x] 1.3 RED/GREEN: menu reducer in `src/lib/menu.ts` (clamp, next/prev, key mapping) with unit tests
 - [x] 1.4 Add OFL display font via `@fontsource`; record license in `docs/` note or PR text
 - [x] 1.5 Create `src/styles/p5.css` (tokens, skew/clip-path utilities, stripe keyframes, reduced-motion rules)
-- [ ] 1.6 Create `P5Frame.astro` (chrome + attribution footer) and wire into `Layout.astro` without touching SEO head
+- [x] 1.6 Create `P5Frame.astro` (chrome + attribution footer) and wire into `Layout.astro` without touching SEO head
 - [ ] 1.7 Create `P5Menu.tsx` island (anchor items, keyboard nav, glow) using `src/lib/menu.ts`
 - [ ] 1.8 Create `StripeTransition.tsx` + Astro `ClientRouter`; reduced-motion fallback
 - [ ] 1.9 Add `vercel.json` 301 `/services` -> `/`
