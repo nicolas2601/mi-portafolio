@@ -3,9 +3,6 @@ import { ClientRouter } from "astro:transitions";
 import "@fontsource/space-grotesk";
 import "../styles/global.css";
 import "../styles/p5.css";
-import Dock from "../components/ui/Dock";
-import Footer from "../components/Footer";
-import FluidCursor from "../components/ui/FluidCursor";
 import P5Frame from "../components/P5Frame.astro";
 import StripeTransition from "../components/StripeTransition";
 
@@ -167,25 +164,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <ClientRouter />
   </head>
-  <body
-    class="bg-black text-white antialiased selection:bg-yellow-500/30 selection:text-yellow-200 cursor-none"
-  >
+  <body class="antialiased">
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black"
     >
       Saltar al contenido principal
     </a>
-    <FluidCursor client:load />
-    <Dock client:load />
     <StripeTransition client:load />
 
     <P5Frame>
       <main id="main-content">
         <slot />
       </main>
-
-      <Footer />
     </P5Frame>
   </body>
 </html>

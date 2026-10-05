@@ -3,26 +3,42 @@
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
 
+@font-face {
+  font-family: "Persona 5 Fan";
+  src: url("/fonts/Persona5main.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
 :root {
   --p5-red: #d92323;
   --p5-black: #0d0d0d;
   --p5-white: #ffffff;
   --p5-surface: #1b1b1b;
   --p5-font-display: "Anton", Impact, sans-serif;
+  --p5-font-fan: "Persona 5 Fan", var(--p5-font-display);
   --p5-font-body: "Inter", system-ui, sans-serif;
   --p5-stripe-duration: 560ms;
   --p5-fade-duration: 120ms;
 }
 
 .p5-shell {
+  position: relative;
   min-height: 100vh;
+  isolation: isolate;
   background: var(--p5-black);
   color: var(--p5-white);
   font-family: var(--p5-font-body);
 }
 
+::selection {
+  background: var(--p5-red);
+  color: var(--p5-white);
+}
+
 .p5-display {
-  font-family: var(--p5-font-display);
+  font-family: var(--p5-font-fan);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -50,20 +66,318 @@
 
 .p5-menu-link {
   position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
+  width: fit-content;
+  max-width: 100%;
   min-height: 44px;
-  padding: 0.5rem 1rem;
+  padding: 0.55rem clamp(1.1rem, 4vw, 2rem) 0.55rem 0.8rem;
   color: var(--p5-white);
-  transition: color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+  font-family: var(--p5-font-fan);
+  font-size: var(--p5-menu-size, clamp(2.75rem, 12vw, 5rem));
+  font-style: italic;
+  letter-spacing: 0.015em;
+  line-height: 0.84;
+  text-decoration: none;
+  text-shadow: 0.08em 0.08em 0 var(--p5-black);
+  transform: translateX(var(--p5-menu-offset, 0)) rotate(var(--p5-menu-rotate, 0deg));
+  transition: color 160ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.p5-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1.5vw, 0.9rem);
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  list-style: none;
+}
+
+.p5-menu__hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin: 0 clamp(1.75rem, 5vw, 3rem);
+  color: color-mix(in srgb, var(--p5-white) 48%, transparent);
+  font-family: var(--p5-font-fan);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+.p5-menu-link__shape {
+  position: absolute;
+  z-index: -1;
+  inset: 0.12em -0.45em 0.06em -0.8em;
+  background: var(--p5-red);
+  clip-path: polygon(0 42%, 17% 4%, 82% 0, 100% 34%, 88% 100%, 12% 92%);
+  opacity: 0;
+  transform: scaleX(0.82) translateX(-0.8rem);
+  transform-origin: left center;
+  transition: opacity 160ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.p5-menu-link__label {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  transform: skewX(var(--p5-menu-counter-skew, 0deg));
+}
+
+.p5-menu-link::after {
+  position: absolute;
+  top: 8%;
+  right: -0.05rem;
+  bottom: 4%;
+  width: 3px;
+  content: "";
+  background: var(--p5-white);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity 160ms ease, transform 220ms ease;
+}
+
+.p5-menu-link[data-active="true"] {
+  color: var(--p5-white);
+  text-shadow: 0.08em 0.08em 0 var(--p5-red);
+  transform: translateX(calc(var(--p5-menu-offset, 0) + 0.35rem)) rotate(var(--p5-menu-rotate, 0deg));
+}
+
+.p5-menu-link[data-active="true"] .p5-menu-link__shape,
+.p5-menu-link:hover .p5-menu-link__shape,
+.p5-menu-link:focus-visible .p5-menu-link__shape {
+  opacity: 1;
+  transform: scaleX(1) translateX(0);
+}
+
+.p5-menu-link[data-active="true"] .p5-menu-link__shape {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--p5-white) 72%, transparent));
+}
+
+.p5-menu-link[data-active="true"]::after,
+.p5-menu-link:hover::after,
+.p5-menu-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.p5-menu-link:focus-visible {
+  outline: 3px solid var(--p5-white);
+  outline-offset: 5px;
+}
+
+.p5-menu-item {
+  opacity: 0;
+  animation: p5-menu-entry 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--p5-menu-index) * 70ms);
+}
+
+.p5-menu-item:nth-child(1) .p5-menu-link {
+  --p5-menu-size: clamp(3rem, 13vw, 5.3rem);
+  --p5-menu-counter-skew: 6deg;
+  --p5-menu-rotate: -1deg;
+}
+
+.p5-menu-item:nth-child(2) .p5-menu-link {
+  --p5-menu-size: clamp(2.65rem, 11vw, 4.5rem);
+  --p5-menu-offset: clamp(0.4rem, 5vw, 1.5rem);
+  --p5-menu-counter-skew: 11deg;
+  --p5-menu-rotate: 1deg;
+}
+
+.p5-menu-item:nth-child(3) .p5-menu-link {
+  --p5-menu-size: clamp(2.8rem, 12vw, 4.9rem);
+  --p5-menu-offset: clamp(0.1rem, 2vw, 0.7rem);
+  --p5-menu-counter-skew: 0deg;
+}
+
+.p5-menu-item:nth-child(4) .p5-menu-link {
+  --p5-menu-size: clamp(2.9rem, 12.5vw, 5.1rem);
+  --p5-menu-offset: clamp(0.3rem, 4vw, 1.1rem);
+  --p5-menu-counter-skew: 3deg;
+  --p5-menu-rotate: -1deg;
+}
+
+.p5-menu-item:nth-child(5) .p5-menu-link {
+  --p5-menu-size: clamp(2.25rem, 10vw, 4rem);
+  --p5-menu-offset: clamp(0.15rem, 2.5vw, 0.8rem);
+  --p5-menu-counter-skew: 4deg;
+  --p5-menu-rotate: -2deg;
+}
+
+@keyframes p5-menu-entry {
+  from {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.p5-background {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--p5-black);
+}
+
+.p5-background__stripes,
+.p5-background__stripes::after {
+  position: absolute;
+  inset: -25%;
+  content: "";
+  background: repeating-linear-gradient(
+    -14deg,
+    var(--p5-black) 0 14%,
+    var(--p5-red) 14% 22%,
+    var(--p5-black) 22% 38%,
+    var(--p5-white) 38% 39%,
+    var(--p5-black) 39% 57%
+  );
+  opacity: 0.13;
+  transform: rotate(-4deg) translate3d(0, 0, 0);
+  animation: p5-background-drift 26s ease-in-out infinite alternate;
+}
+
+.p5-background__stripes::after {
+  opacity: 0.13;
+  transform: rotate(8deg) translate3d(-8%, 4%, 0);
+  animation-duration: 34s;
+  animation-direction: alternate-reverse;
+}
+
+.p5-background__halftone {
+  position: absolute;
+  right: -8%;
+  bottom: -12%;
+  width: min(65vw, 50rem);
+  height: min(65vw, 50rem);
+  opacity: 0.22;
+  transform: rotate(-12deg) translate3d(0, 0, 0);
+  animation: p5-background-drift 30s ease-in-out infinite alternate-reverse;
+}
+
+.p5-background__halftone circle {
+  fill: var(--p5-white);
+}
+
+@keyframes p5-background-drift {
+  from {
+    transform: rotate(-4deg) translate3d(-1.5%, -1%, 0);
+  }
+  to {
+    transform: rotate(-4deg) translate3d(2%, 1.5%, 0);
+  }
+}
+
+.p5-frame-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding: 0.75rem clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--p5-white) 18%, transparent);
+}
+
+.p5-frame-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  background: var(--p5-red);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 7% 90%);
+  color: var(--p5-white);
+  font-family: var(--p5-font-fan);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transform: skewX(-8deg);
+}
+
+.p5-frame-brand span {
+  transform: skewX(8deg);
+}
+
+.p5-frame-meta {
+  font-family: var(--p5-font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--p5-white) 62%, transparent);
+}
+
+.p5-frame-brand:focus-visible,
+.p5-music__button:focus-visible,
+.p5-music__slider:focus-visible {
+  outline: 3px solid var(--p5-white);
+  outline-offset: 4px;
+}
+
+.p5-frame-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 4vw, 3rem);
+  border-top: 1px solid color-mix(in srgb, var(--p5-white) 18%, transparent);
+  color: color-mix(in srgb, var(--p5-white) 66%, transparent);
+  font-size: 0.72rem;
+}
+
+.p5-frame-footer__mark {
+  color: var(--p5-red);
+  font-family: var(--p5-font-fan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p5-music {
+  position: fixed;
+  right: clamp(0.75rem, 3vw, 2rem);
+  bottom: clamp(0.75rem, 3vw, 2rem);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.45rem 0.35rem 0.6rem;
+  background: color-mix(in srgb, var(--p5-black) 88%, transparent);
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 5% 90%);
+}
+
+.p5-music__button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--p5-white) 48%, transparent);
+  background: transparent;
+  color: var(--p5-white);
+  cursor: pointer;
+  font-family: var(--p5-font-fan);
+  letter-spacing: 0.08em;
+}
+
+.p5-music__button[data-playing="true"] {
+  border-color: var(--p5-white);
+  background: var(--p5-red);
+}
+
+.p5-music__slider {
+  width: 5.5rem;
+  accent-color: var(--p5-red);
+  cursor: pointer;
 }
 
 .p5-menu-link[data-active="true"],
 .p5-menu-link:hover,
 .p5-menu-link:focus-visible {
-  background: var(--p5-red);
   color: var(--p5-white);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--p5-red) 60%, transparent);
 }
 
 .p5-stripe-overlay {
@@ -141,7 +455,46 @@
     animation: p5-fade var(--p5-fade-duration) ease-out both;
   }
 
-  .p5-menu-link {
+  .p5-menu-link,
+  .p5-menu-link__shape,
+  .p5-menu-link::after {
     transition-duration: 0ms;
+  }
+
+  .p5-menu-item,
+  .p5-background__stripes,
+  .p5-background__stripes::after,
+  .p5-background__halftone {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .p5-menu-link[data-active="true"] {
+    transform: translateX(var(--p5-menu-offset, 0)) rotate(var(--p5-menu-rotate, 0deg));
+  }
+}
+
+@media (max-width: 480px) {
+  .p5-frame-header,
+  .p5-frame-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .p5-frame-header {
+    padding-block: 0.75rem;
+  }
+
+  .p5-frame-footer {
+    padding-block: 1.25rem;
+  }
+
+  .p5-frame-meta {
+    letter-spacing: 0.18em;
+  }
+
+  .p5-menu-link {
+    padding-right: 1.1rem;
   }
 }

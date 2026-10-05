@@ -1,9 +1,6 @@
 import { useState } from "react";
-import type { KeyboardEvent } from "react";
-import {
-  menuActionForKey,
-  moveMenuIndex,
-} from "../lib/menu";
+import type { CSSProperties, KeyboardEvent } from "react";
+import { menuActionForKey, moveMenuIndex } from "../lib/menu";
 
 export interface P5MenuItem {
   label: string;
@@ -33,14 +30,17 @@ function handleMenuKey(
 
   event.preventDefault();
   if (action === "activate") {
-    const activeLink = event.currentTarget.querySelector<HTMLElement>(
-      '[data-active="true"]',
-    );
-    activeLink?.click();
+    event.currentTarget
+      .querySelector<HTMLElement>('[data-active="true"]')
+      ?.click();
     return;
   }
 
   setActiveIndex(moveMenuIndex(activeIndex, action, itemCount));
+}
+
+function menuItemStyle(index: number): CSSProperties {
+  return { "--p5-menu-index": index } as CSSProperties;
 }
 
 export default function P5Menu({ items = defaultItems }: P5MenuProps) {
@@ -49,25 +49,31 @@ export default function P5Menu({ items = defaultItems }: P5MenuProps) {
   return (
     <nav
       aria-label="Primary navigation"
-      className="p5-menu w-full max-w-sm"
+      className="p5-menu w-full max-w-2xl"
       onKeyDown={(event) =>
         handleMenuKey(event, activeIndex, items.length, setActiveIndex)
       }
     >
-      <ul className="space-y-2">
+      <ul className="p5-menu__list">
         {items.map((item, index) => {
           const isActive = index === activeIndex;
 
           return (
-            <li key={item.href}>
+            <li
+              className="p5-menu-item"
+              key={item.href}
+              style={menuItemStyle(index)}
+            >
               <a
                 href={item.href}
-                className="p5-menu-link p5-clip-right p5-display p5-tap-target text-2xl"
+                className="p5-menu-link"
                 data-active={isActive}
+                data-index={index}
                 onFocus={() => setActiveIndex(index)}
                 onMouseEnter={() => setActiveIndex(index)}
               >
-                <span>{item.label}</span>
+                <span className="p5-menu-link__shape" aria-hidden="true" />
+                <span className="p5-menu-link__label">{item.label}</span>
                 {isActive && (
                   <span className="ml-auto text-sm" aria-hidden="true">
                     /
@@ -78,6 +84,10 @@ export default function P5Menu({ items = defaultItems }: P5MenuProps) {
           );
         })}
       </ul>
+      <p className="p5-menu__hint" aria-hidden="true">
+        <span>UP / DOWN MOVE</span>
+        <span>ENTER OPEN</span>
+      </p>
     </nav>
   );
 }
