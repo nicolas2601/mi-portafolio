@@ -1,0 +1,25 @@
+---
+import { cutoutWords } from "../../lib/cutout";
+
+interface Props {
+  title: string;
+  level?: 2 | 3;
+}
+
+const { title, level = 3 } = Astro.props;
+const words = cutoutWords(title);
+const Heading = `h${level}` as "h2" | "h3";
+---
+
+<Heading class="cutout-title">
+  <span class="sr-only">{title}</span>
+  <span class="cutout-title__tiles" aria-hidden="true">
+    {words.map((word) => (
+      <span class="cutout-word">
+        {word.map((tile) => (
+          <span class={`cutout-tile cutout-tile--${tile.variant}`} style={`--tilt: ${tile.tilt}deg`}>{tile.char}</span>
+        ))}
+      </span>
+    ))}
+  </span>
+</Heading>

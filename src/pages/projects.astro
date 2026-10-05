@@ -9,6 +9,8 @@ import "../styles/projects.css";
 export const prerender = true;
 
 const orderedProjects = sortFeaturedFirst(projects);
+const featured = orderedProjects.filter((project) => project.featured);
+const others = orderedProjects.filter((project) => !project.featured);
 ---
 
 <Layout
@@ -24,8 +26,18 @@ const orderedProjects = sortFeaturedFirst(projects);
 
     <ProjectFilter categories={projectCategories} client:visible />
 
-    <div class="projects-list" aria-label="Project list">
-      {orderedProjects.map((project, index) => <ProjectCard project={project} eager={index < 2} />)}
-    </div>
+    <section class="projects-group" aria-labelledby="featured-title">
+      <h2 id="featured-title" class="projects-group__title">Featured</h2>
+      <div class="projects-featured">
+        {featured.map((project, index) => <ProjectCard project={project} variant="poster" eager={index === 0} />)}
+      </div>
+    </section>
+
+    <section class="projects-group" aria-labelledby="more-title">
+      <h2 id="more-title" class="projects-group__title">More builds</h2>
+      <div class="projects-grid">
+        {others.map((project) => <ProjectCard project={project} variant="ticket" />)}
+      </div>
+    </section>
   </section>
 </Layout>

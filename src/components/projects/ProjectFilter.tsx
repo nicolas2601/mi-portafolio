@@ -16,12 +16,19 @@ function readItems() {
   );
 }
 
+function hideEmptyGroups() {
+  document.querySelectorAll<HTMLElement>(".projects-group").forEach((group) => {
+    group.hidden = group.querySelector("[data-project-item]:not([hidden])") === null;
+  });
+}
+
 function applyCategory(category: string): Counts {
   const items = readItems();
   const visible = new Set(filterProjects(items, category).map((item) => item.element));
   items.forEach((item) => {
     item.element.hidden = !visible.has(item.element);
   });
+  hideEmptyGroups();
   return { visible: visible.size, total: items.length };
 }
 
