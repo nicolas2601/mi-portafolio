@@ -1,24 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PageHero from "../components/PageHero";
-import AboutComponent from "../components/About";
-import FinalCTA from "../components/FinalCTA";
+import AboutBio from "../components/about/AboutBio.astro";
+import AboutCertifications from "../components/about/AboutCertifications.astro";
+import AboutEducation from "../components/about/AboutEducation.astro";
+import AboutHero from "../components/about/AboutHero.astro";
+import AboutLinks from "../components/about/AboutLinks.astro";
+import AboutSkills from "../components/about/AboutSkills.astro";
+import { certifications, education, personalInfo, skills } from "../data/info";
+import "../styles/about.css";
 
 export const prerender = true;
+
+const bioParagraphs = personalInfo.bio.split(/\n\s*\n/);
 ---
 
 <Layout
-	title="About Nicolas Moreno | Remote Software Engineer | Django, React, AWS | Colombia"
-	description="Nicolas Moreno — Systems Engineer & Full-Stack Developer from Bucaramanga, Colombia. 2+ years of experience with Django, NestJS, React, Docker. AWS certified. Download my CV and explore my career."
+  title="About Nicolás Moreno | Software Engineer"
+  description="Nicolás Moreno: desarrollador Full-Stack y estudiante de Ingeniería de Sistemas en UNAB, con experiencia en aplicaciones web y servicios backend en producción."
 >
-	<PageHero
-		title="Ingeniero & Solucionador de Problemas"
-		subtitle="Más allá del código: construyo sistemas que funcionan en el mundo real."
-		variant="about"
-		client:load
-	/>
-
-	<AboutComponent client:visible />
-
-	<FinalCTA client:visible />
+  <div class="about-page">
+    <AboutHero info={personalInfo} />
+    <AboutBio paragraphs={bioParagraphs} info={personalInfo} />
+    <AboutEducation items={education} />
+    <AboutCertifications items={certifications} />
+    <AboutSkills groups={skills} />
+    <AboutLinks />
+  </div>
 </Layout>

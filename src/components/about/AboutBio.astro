@@ -1,0 +1,41 @@
+---
+type PersonalInfo = {
+  location: string;
+  bio: string;
+};
+
+interface Props {
+  paragraphs: string[];
+  info: PersonalInfo;
+}
+
+const { paragraphs, info } = Astro.props;
+---
+
+<section class="about-section about-intro" aria-labelledby="about-intro-title">
+  <div class="about-section-heading">
+    <p class="about-index">02 / SIGNAL</p>
+    <h2 id="about-intro-title">The person behind the systems</h2>
+  </div>
+
+  <div class="about-intro-layout">
+    <div class="about-copy">
+      {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    <dl class="about-facts">
+      <div class="about-fact about-fact-primary">
+        <dt>Location</dt>
+        <dd>{info.location}</dd>
+      </div>
+      <div class="about-fact">
+        <dt>Availability</dt>
+        <dd>Remote, full o medio tiempo</dd>
+      </div>
+      <div class="about-fact">
+        <dt>Timezone</dt>
+        <dd>Américas (GMT-5)</dd>
+      </div>
+    </dl>
+  </div>
+</section>
